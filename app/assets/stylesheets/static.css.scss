@@ -2,9 +2,48 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+/* Import Fonts
+------------------------------------------------------------ */
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+
+
+/* Style for the splash image
+------------------------------------------------------------ */
+
 img { max-width: 100%; max-height: auto; }
 
-a:link {text-decoration:none;}
+
+
+/* Social button style overrides
+------------------------------------------------------------ */
+
+a,
+a:visited {
+	color: #ff2222;
+	text-decoration: none;
+	font-family: 'Lato', arial, serif;
+	line-height: 1.5;
+	font-weight: 300;
+	margin: 0 0 10px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a img {
+	border: none;
+}
+
+
+h2 a,
+h2 a:visited {
+	color: #333;
+	font-family: 'Lato', arial, serif;
+}
+
 
 a.button-facebook,
 a.button-googleplus,
