@@ -3,3 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 img { max-width: 100%; max-height: auto; }
+
+a:link {text-decoration:none;}
+
+a.button-facebook,
+a.button-googleplus,
+a.button-linkedin,
+a.button-pinterest,
+a.button-rss,
+a.button-tumblr,
+a.button-twitter {
+    -moz-border-radius: .3em;
+    -webkit-border-radius: .3em;
+    border-radius: .3em;
+    box-shadow: 0 1px 1px #999;
+    color: white;
+    display: inline-block;
+    font-size: 100%;
+    margin: 0 20px 20px 0;
+    padding: .65em 1em;
+    text-align: center;
+    width: 8em;
+}
