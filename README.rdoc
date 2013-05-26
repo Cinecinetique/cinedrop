@@ -24,5 +24,22 @@ Things you may want to cover:
 * ...
 
 
+== VERSION CONTROL
+
+* Create an initial local repo
+
+cd /path/to/my/repo
+git init
+git add .
+git commit -m "<commit message here>"
+
+* Initial push to a remote repo
+
+cd /path/to/my/repo
+git remote add origin https://<your login here>@bitbucket.org/highlykinetic/cinecinetique.git
+git push -u origin --all   # to push up the repo for the first time
+
+
+
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
