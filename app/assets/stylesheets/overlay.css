@@ -1,18 +1,3 @@
-a.button-dribbble,
-a.button-facebook,
-a.button-googleplus,
-a.button-linkedin,
-a.button-pinterest,
-a.button-rss,
-a.button-tumblr,
-a.button-twitter 
- {
-    position: absolute;
-    top: 90%;
-    margin: -35px 0 0 -35px;
-    z-index: 10;
-}
-
 #image {
     z-index: 9;	
 }
@@ -24,7 +9,6 @@ a.button-twitter {
 a.button-facebook {
 	left: 20%;
 }
-
 
 a.button-googleplus {
 	left: 35%;
