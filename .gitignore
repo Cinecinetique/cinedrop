@@ -15,4 +15,4 @@
 /log/*.log
 /tmp
 .elasticbeanstalk/
-Gemfile.lock
+#Gemfile.lock
