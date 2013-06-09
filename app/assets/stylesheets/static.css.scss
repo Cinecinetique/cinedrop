@@ -219,12 +219,12 @@ a.button-email {
     z-index: 10;
     @include mobile-landscape-and-up { 
         font-size: 100%; 
-        width: 8em;
+
     }
     @include mobile-landscape-and-below { 
         top: 80%;
         font-size: 10px;
-        width: 2em;
+        width: 7em
 
     }
 
@@ -260,7 +260,7 @@ a.button-email {
 
     @include mobile-landscape-and-below {
         left: 60%;
-        top: 50%;
+        top: 60%;
         font-size: 12px;
     }
 
