@@ -251,16 +251,22 @@ a.button-email {
 
 a.button-email {
     left: 40%;
-    font-size: 28px; 
+    font-size: 28px;
+
     @include mobile-landscape-and-up {
         top: 50%;
         width: 8em;
     }
-    @include mobile-landscape-and-below { 
+
+    @include mobile-landscape-and-below {
+        top: 50%;
+        font-size: 12px;
+    }
+
+    @include mobile-portrait-only { 
         top: 30%;
         left: 5%;
         font-size: 14px;
-        width: 4em;
 
     }
 }
