@@ -150,6 +150,10 @@ $mq-desktop           : 1382px !default;
 
 img { max-width: 100%; max-height: auto; }
 
+#image {
+    z-index: 9; 
+}
+
 /* Style for the text
 ------------------------------------------------------------ */
 
@@ -205,6 +209,7 @@ a.button-email {
     border-radius: .3em;
     box-shadow: 0 1px 1px #999;
     color: white;
+    font-size: 14px;
     display: inline-block;
     margin: 0 20px 20px 0;
     padding: .65em 1em;
@@ -225,6 +230,25 @@ a.button-email {
 
 }
 
+a.button-twitter {
+    left: 5%;
+    @include mobile-landscape-and-below { left: 10%; }
+}
+
+a.button-facebook {
+    left: 20%;
+    @include mobile-landscape-and-below { left: 30%; }
+}
+
+a.button-googleplus {
+    left: 35%;
+    @include mobile-landscape-and-below { left: 50%; }
+}
+
+a.button-email {
+    left: 50%;
+}
+
 a.button-email {
     left: 40%;
     font-size: 28px; 
@@ -234,7 +258,7 @@ a.button-email {
     }
     @include mobile-landscape-and-below { 
         top: 30%;
-        left: 20%;
+        left: 5%;
         font-size: 14px;
         width: 4em;
 
