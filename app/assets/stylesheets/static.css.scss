@@ -227,6 +227,9 @@ a.button-email {
         width: 7em
 
     }
+    @include mobile-portrait-only {
+        width: 2em
+    }
 
 }
 
@@ -262,12 +265,15 @@ a.button-email {
         left: 60%;
         top: 60%;
         font-size: 12px;
+        width: 8em;
     }
 
     @include mobile-portrait-only { 
         top: 30%;
         left: 5%;
-        font-size: 14px;
+        font-size: 12px;
+        width: 4em;
+
 
     }
 }
