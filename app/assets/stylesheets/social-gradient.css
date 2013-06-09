@@ -134,6 +134,15 @@ a.button-twitter {
     text-shadow: 0 -1px -1px #005ea3;
 }
 
+a.button-email {
+    background-color: #e2733d; /* fallback color */
+    background: -moz-linear-gradient(top, #e2733d, #e88845);
+    background: -ms-linear-gradient(top, #e2733d, #e88845);
+    background: -webkit-linear-gradient(top, #e2733d, #e88845);
+    border: 1px solid #2c4762;
+    text-shadow: 0 -1px -1px #203448;
+}
+
 a.button-twitter:hover {
     background: -moz-linear-gradient(top, #0081ce, #00aced);
     background: -ms-linear-gradient(top, #0081ce, #00aced);

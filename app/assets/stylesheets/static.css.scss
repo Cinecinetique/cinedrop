@@ -14,6 +14,17 @@
 
 img { max-width: 100%; max-height: auto; }
 
+/* Style for the text
+------------------------------------------------------------ */
+
+#summary { 
+    z-index:10; 
+    position: absolute ; 
+    top: 30%; left: 45%;
+    font-size: 100%;
+    font-family: 'Lato', arial, serif;
+    font-weight: 300;
+}
 
 
 /* Social button style overrides
@@ -51,7 +62,8 @@ a.button-linkedin,
 a.button-pinterest,
 a.button-rss,
 a.button-tumblr,
-a.button-twitter {
+a.button-twitter,
+a.button-email {
     -moz-border-radius: .3em;
     -webkit-border-radius: .3em;
     border-radius: .3em;
@@ -67,4 +79,8 @@ a.button-twitter {
     top: 90%;
     z-index: 10;
 
+}
+
+a.button-email {
+    top: 50%;
 }

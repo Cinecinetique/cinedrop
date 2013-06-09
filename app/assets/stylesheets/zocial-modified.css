@@ -30,7 +30,8 @@ a.button-linkedin:before,
 a.button-pinterest:before,
 a.button-rss:before,
 a.button-tumblr:before,
-a.button-twitter:before {
+a.button-twitter:before,
+a.button-email:before {
 	content: "";
 	border-right: 0.075em solid rgba(0,0,0,0.1);
 	float: left;
@@ -60,3 +61,4 @@ a.button-pinterest:before {content: "1";}
 a.button-rss:before {content: "R";}
 a.button-tumblr:before {content: "t";}
 a.button-twitter:before {content: "T";}
+a.button-email:before {content: "]";}
