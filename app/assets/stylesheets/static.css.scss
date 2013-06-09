@@ -259,6 +259,7 @@ a.button-email {
     }
 
     @include mobile-landscape-and-below {
+        left: 60%;
         top: 50%;
         font-size: 12px;
     }
