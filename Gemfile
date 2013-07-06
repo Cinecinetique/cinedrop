@@ -47,3 +47,5 @@ end
 # paperclip for file upload
 
 gem "paperclip", "~> 3.0"
+gem "aws-s3" 
+gem "aws-sdk", "~> 1.11.3"
