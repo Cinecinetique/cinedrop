@@ -1,8 +1,9 @@
 class Document < ActiveRecord::Base
 	has_attached_file :data, 
-                    :styles => { :medium => ["300x300>",:jpg], :thumb => ["100x100>",:jpg] },
-					:default_url => "/images/:style/missing.png",
-					:processors => lambda { |a| a.video? ? [ :video_thumbnail ] : [ :thumbnail ] }
+                        :styles => { :medium => ["300x300>",:jpg], :thumb => ["100x100>",:jpg] },
+                        :convert_options => { :all => " -flatten"},
+			      :default_url => "/images/:style/missing.png",
+				:processors => lambda { |a| a.video? ? [ :video_thumbnail ] : [ :thumbnail ] }
 
 
 	def video?
