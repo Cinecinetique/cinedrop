@@ -1,3 +1,11 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<% if session[:user_id] %>
+<p id="session"> Logged In (<%= link_to 'Logout', logout_path, method: :delete %>)</p>
+<% end %>
+
 <h1>Listing documents</h1>
 
 <table>
