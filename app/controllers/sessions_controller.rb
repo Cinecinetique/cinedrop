@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :edit, :update]
+  skip_before_action :authorize
 
   # GET /sessions
   # GET /sessions.json
