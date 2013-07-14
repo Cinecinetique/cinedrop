@@ -10,7 +10,13 @@
   <%= @document.kind %>
 </p>
 
+<p>
+<% if @document.data_content_type == "application/pdf" %>
+<%= link_to 'View document', @document.data.url %>
+<% else %>
 <%= image_tag @document.data.url %>
+<% end %>
+</p>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
