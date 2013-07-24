@@ -26,7 +26,7 @@
         <td><%= document.name %></td>
         <td><%= document.kind %></td>
         <td><%= image_tag document.data.url(:thumb) %></td>
-        <td><%= link_to 'Show', document %></td>
+        <td data-no-turbolink><%= link_to 'Show', document %></td>
         <td><%= link_to 'Edit', edit_document_path(document) %></td>
         <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
