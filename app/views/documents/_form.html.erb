@@ -15,15 +15,13 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
-    <%= f.label :kind %><br>
-    <%= f.text_field :kind %>
-  </div>
-    <div class="field">
     <%= f.label :data %><br>
     <%= f.file_field :data %>
   </div>
   <div class="actions">
+    <%= f.hidden_field :project_id, :value => "#{@project_id}" %>
     <%= f.submit %>
   </div>
 <% end %>

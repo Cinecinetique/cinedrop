@@ -2,9 +2,9 @@ class Document < ActiveRecord::Base
       belongs_to :project
 	has_attached_file :data, 
                         :styles => lambda { |a| a.instance.video? ? ({:mobile => {:geometry => "400x300", :format => 'mp4', :streaming => true}, :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 1 }, :poster => { :geometry => "400x300#", :format => 'jpg', :time => 1 }}) : ({ :medium => ["400x300>",:jpg], :thumb => ["100x100>",:jpg] }) },
-                        :convert_options => { :all => " -flatten"},
+                        :convert_options => { :all => "-movflags faststart -flatten"},
 			      :default_url => "/images/:style/missing.png",
-				:processors => lambda { |a| a.video? ? [ :ffmpeg, :qtfaststart ] : [ :thumbnail ] }
+				:processors => lambda { |a| a.video? ? [ :ffmpeg ] : [ :thumbnail ] }
 
 
 	def video?
