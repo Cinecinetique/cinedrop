@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to documents_url, notice: "Now logged in as #{user.name}"
+      redirect_to projects_url, notice: "Now logged in as #{user.name}"
     else
       redirect_to login_url, alert: 'Invalid user/password combination'
     end
