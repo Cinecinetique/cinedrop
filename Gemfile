@@ -51,3 +51,5 @@ gem "aws-s3"
 gem "aws-sdk", "~> 1.11.3"
 
 gem "paperclip-ffmpeg"
+
+gem 'bootstrap-sass'
