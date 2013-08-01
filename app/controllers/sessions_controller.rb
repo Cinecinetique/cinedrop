@@ -25,12 +25,12 @@ class SessionsController < ApplicationController
   # POST /sessions
   # POST /sessions.json
   def create
-    user = User.find_by(name: params[:name])
+    user = User.find_by(email: params[:email])
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to projects_url, notice: "Now logged in as #{user.name}"
+      redirect_to projects_url, notice: "Now logged in as #{user.email}"
     else
-      redirect_to login_url, alert: 'Invalid user/password combination'
+      redirect_to login_url, alert: 'Invalid email/password combination'
     end
 
   end
