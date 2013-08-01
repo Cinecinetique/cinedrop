@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
+      session[:email] = user.email
       redirect_to projects_url, notice: "Now logged in as #{user.email}"
     else
       redirect_to login_url, alert: 'Invalid email/password combination'
@@ -54,6 +55,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     session[:current_project] = nil
+    session[:email] = nil
     redirect_to documents_url, notice: 'Logged out'
   end
 
