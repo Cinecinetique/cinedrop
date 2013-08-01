@@ -53,6 +53,7 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1.json
   def destroy
     session[:user_id] = nil
+    session[:current_project] = nil
     redirect_to documents_url, notice: 'Logged out'
   end
 
