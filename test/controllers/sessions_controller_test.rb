@@ -11,7 +11,7 @@ class SessionsControllerTest < ActionController::TestCase
   test "should login" do
     dave = users(:one)
     post :create, email: dave.email, password: 'secret'
-    assert_redirected_to documents_url
+    assert_redirected_to projects_url
     assert_equal dave.id, session[:user_id]
   end
 
