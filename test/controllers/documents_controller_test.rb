@@ -3,6 +3,7 @@ require 'test_helper'
 class DocumentsControllerTest < ActionController::TestCase
   setup do
     @document = documents(:one)
+    @project = projects(:one)
   end
 
   test "should get index" do
@@ -17,11 +18,15 @@ class DocumentsControllerTest < ActionController::TestCase
   end
 
   test "should create document" do
+    image = fixture_file_upload 'sample.jpg'
     assert_difference('Document.count') do
-      post :create, document: { scene_number: @document.scene_number, name: @document.name }
+      post :create, document: { scene_number: @document.scene_number, 
+                                name: @document.name, 
+                                project_id: @project.id,
+                                data: image }
     end
 
-    assert_redirected_to document_path(assigns(:document))
+    assert_redirected_to project_path(@project.id)
   end
 
   test "should show document" do
@@ -35,8 +40,11 @@ class DocumentsControllerTest < ActionController::TestCase
   end
 
   test "should update document" do
-    patch :update, id: @document, document: { scene_number: @document.scene_number, name: @document.name }
-    assert_redirected_to document_path(assigns(:document))
+    image = fixture_file_upload 'sample.jpg'
+    patch :update, id: @document, document: { scene_number: @document.scene_number, 
+                                              name: @document.name,
+                                              data: image }
+    assert_redirected_to project_path(@project.id)
   end
 
   test "should destroy document" do
@@ -44,6 +52,7 @@ class DocumentsControllerTest < ActionController::TestCase
       delete :destroy, id: @document
     end
 
-    assert_redirected_to documents_path
+    assert_redirected_to project_path(@project.id)
   end
+
 end

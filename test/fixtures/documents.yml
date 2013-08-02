@@ -3,7 +3,9 @@
 one:
   name: MyString
   scene_number: 45
+  project: one
 
 two:
   name: MyString
   scene_number: 34
+  project: one

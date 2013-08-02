@@ -16,3 +16,4 @@
 /tmp
 .elasticbeanstalk/
 #Gemfile.lock
+public/system/documents/data/
