@@ -12,7 +12,11 @@
 
 <p>
 <% if @document.data_content_type == "application/pdf" %>
+<div class="embed-container">
+<iframe src="<%= @document.data.url %>">
 <%= link_to 'View document', @document.data.url %>
+</iframe>
+</div>
 <% elsif @document.video? %>
 
 <video id="a240e92d" class="sublime" poster="<%= @document.data.url(:poster) %>" width="400" height="300" title="Midnight Sun" data-uid="a240e92d" preload="none">
