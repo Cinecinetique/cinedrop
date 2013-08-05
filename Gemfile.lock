@@ -67,6 +67,7 @@ GEM
     mime-types (1.23)
     minitest (4.7.4)
     multi_json (1.7.4)
+    mysql2 (0.3.13)
     nokogiri (1.5.10)
     paperclip (3.4.2)
       activemodel (>= 3.0.0)
@@ -142,6 +143,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.0.1)
   jquery-rails
+  mysql2
   paperclip (~> 3.0)
   paperclip-ffmpeg
   rails (= 4.0.0.rc1)
