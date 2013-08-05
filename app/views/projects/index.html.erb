@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @projects.each do |project| %>
+    <% @projects.where("created_by = #{session[:user_id]}").each do |project| %>
       <tr>
         <td><%= project.name %></td>
         <td><%= link_to 'Show', project %></td>

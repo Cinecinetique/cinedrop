@@ -29,6 +29,8 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
 
+    @document.created_by = session[:user_id]
+
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document.project, notice: 'Document was successfully created.' }

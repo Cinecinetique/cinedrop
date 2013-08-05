@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130801081730) do
+ActiveRecord::Schema.define(version: 20130805094925) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20130801081730) do
     t.datetime "data_updated_at"
     t.integer  "project_id"
     t.string   "scene_number"
+    t.integer  "created_by"
   end
 
   add_index "documents", ["project_id"], name: "index_documents_on_project_id"
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 20130801081730) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "created_by"
   end
 
   create_table "sessions", force: true do |t|
