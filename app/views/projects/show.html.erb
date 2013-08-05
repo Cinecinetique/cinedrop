@@ -6,10 +6,10 @@
 <table>
   <thead>
     <tr>
+      <th>Thumbnail</th>
       <th>Name</th>
       <th>Kind</th>
       <th>Project</th>
-      <th>Thumbnail</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,7 +21,6 @@
   </tbody>
 </table>
 
-<%= link_to 'New Document', new_document_path(:project_id => @project.id) %>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'New Document', new_document_path(:project_id => @project.id), :class => "btn btn-primary" %>
+ |
+<%= link_to 'Back', projects_path, :class => "btn btn-link" %>

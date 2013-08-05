@@ -1,10 +1,10 @@
       <tr>
+        <td><%= image_tag document.data.url(:thumb) %></td>
         <td><%= document.name %></td>
         <td><%= document.data_content_type %></td>
         <td><%= document.project.name %></td>
-        <td><%= image_tag document.data.url(:thumb) %></td>
-        <td data-no-turbolink><%= link_to 'Show', document %></td>
-        <td><%= link_to 'Edit', edit_document_path(document) %></td>
-        <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td data-no-turbolink><%= link_to 'Show', document, :class => "btn btn-mini btn-default" %></td>
+        <td><%= link_to 'Edit', edit_document_path(document),  :class => "btn btn-mini btn-primary" %></td>
+        <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>
       </tr>
 
