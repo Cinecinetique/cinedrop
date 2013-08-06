@@ -8,7 +8,13 @@ class ApplicationController < ActionController::Base
 
 	def authorize
 		unless User.find_by(id: session[:user_id])
-			redirect_to login_url, notice: "Please log in"
+			if (request.local?)
+				redirect_to login_url, notice: "Please log in"
+			else
+				redirect_to :protocol => 'https://', 
+	            			:controller => 'sessions', 
+	            			:action => 'new'
+        	end
 		end
 	end
 end
