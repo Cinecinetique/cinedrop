@@ -21,11 +21,12 @@ class DocumentsControllerTest < ActionController::TestCase
     image = fixture_file_upload 'sample.jpg'
     assert_difference('Document.count') do
       post :create, document: { scene_number: @document.scene_number, 
-                                name: @document.name, 
+                                name: "A New Document", 
                                 project_id: @project.id,
                                 data: image }
     end
 
+    assert_not_nil Document.find_by(name: "A New Document").created_by
     assert_redirected_to project_path(@project.id)
   end
 
