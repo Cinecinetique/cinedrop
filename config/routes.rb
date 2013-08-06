@@ -9,9 +9,9 @@ Cinecinetique::Application.routes.draw do
   end
 
 
-  resources :sessions, :constraints => { :protocol => "https"}
+  resources :sessions
 
-  resources :users, :constraints => { :protocol => "https"}
+  resources :users
 
   resources :documents
 
