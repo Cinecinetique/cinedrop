@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  project_id: 
+  method: MyString
+  time_capacity: 1
+  people_capacity: 1
+  amount: 1.5
+  currency: MyString
+
+two:
+  project_id: 
+  method: MyString
+  time_capacity: 1
+  people_capacity: 1
+  amount: 1.5
+  currency: MyString

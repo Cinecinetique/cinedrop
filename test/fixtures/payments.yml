@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  subscription: one
+  worker: one
+  settlement_date: 2013-08-07 17:32:55
+  service: MyString
+  amount: 1.5
+  currency: MyString
+
+two:
+  subscription: two
+  worker: two
+  settlement_date: 2013-08-07 17:32:55
+  service: MyString
+  amount: 1.5
+  currency: MyString
