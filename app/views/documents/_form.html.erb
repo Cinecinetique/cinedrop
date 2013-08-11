@@ -1,4 +1,5 @@
-<%= form_for(@document,:html => {:multipart => true}) do |f| %>
+<%= form_for(@document,:html => {:target=> "upload_response",:multipart => true}, remote: true) do |f| %>
+  <input name="authenticity_token" type="hidden" value=<%= form_authenticity_token %>>
   <% if @document.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
@@ -30,3 +31,6 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<iframe id="upload_response" name="upload_response" title="empty" style="display:none" tabindex="-1" width="0" height="0" seamless></iframe>
+

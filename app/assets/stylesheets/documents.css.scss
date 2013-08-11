@@ -19,3 +19,12 @@
     width: 70%;
     height: 100%;
 }
+
+
+div #feedback {
+  position: relative;
+  padding-top: 30px; /* IE6 workaround*/
+  padding-left: 30%;
+  width: 30%;
+  height: 30%;
+}

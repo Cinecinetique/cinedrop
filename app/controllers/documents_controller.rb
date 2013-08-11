@@ -33,10 +33,10 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to @document.project, notice: 'Document was successfully created.' }
+        format.html { render text: "<script>window.top.location.href ='#{document_url(@document)}';</script>" }
         format.json { render action: 'show', status: :created, location: @document }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', status: :unprocessable_entity }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
@@ -47,10 +47,11 @@ class DocumentsController < ApplicationController
   def update
     respond_to do |format|
       if @document.update(document_params)
-        format.html { redirect_to @document.project, notice: 'Document was successfully updated.' }
+        format.html { render text: "<script>window.top.location.href ='#{document_url(@document)}';</script>" }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        # format.html { render action: 'edit'}
+        format.html { render text: "<script>window.top.location.href ='#{document_url(@document)}';</script>"}
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
