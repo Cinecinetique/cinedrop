@@ -55,3 +55,9 @@ gem "paperclip-ffmpeg"
 gem 'bootstrap-sass'
 
 gem 'mysql2'
+
+
+group :development, :test do
+  gem 'rspec-rails', '~> 2.0'
+end
+

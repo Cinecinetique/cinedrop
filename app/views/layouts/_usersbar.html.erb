@@ -1,0 +1,12 @@
+<ul class="nav nav-pills nav-stacked">
+<li class="nav-header">Team Roster</li>
+<% Worker.where(project_id = session[:current_project]).each do |w| %>
+<li><%=w.user.name %> (<%= w.department %>)</li>
+<% end %>
+<li class="btn btn-link"><%= link_to 'Add new member', new_user_path %></li>
+</ul>
+
+<ul class="nav nav-pills nav-stacked">
+<li class="nav-header">Files Inbox</li>
+</ul>
+

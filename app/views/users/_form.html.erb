@@ -14,21 +14,43 @@
   <fieldset>
     <legend>Enter User Details</legend>
     
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <%= f.fields_for :workers do |builder| %>
+     
+      <div class="field">
+        <%= builder.label :role %><br />
+        <%= builder.text_field :role %>
+      </div>
+
+      <div class="field">
+        <%= builder.label :department %><br />
+        <%= builder.text_field :department %>
+      </div>
+
+      <%= builder.hidden_field :project_id, :value => "#{session[:current_project]}" %>
+
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 
   </fieldset>
 <% end %>

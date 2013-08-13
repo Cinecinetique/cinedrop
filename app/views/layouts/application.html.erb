@@ -20,18 +20,21 @@
     	<div class="container">
     		<div class="row">
     			<% if session[:user_id] %>
-	    			<div class="span3">
-	    				
-				            <div class="well sidebar-nav sidebar-nav-fixed">
-		    				  <%= render 'layouts/sidebar' %>
-				            </div>
-			            
+	    			<div class="span3">	    				
+		          <div class="well sidebar-nav sidebar-nav-fixed">
+	    				  <%= render 'layouts/sidebar' %>
+		          </div>			            
 	    			</div> 
     			<% end %>
-    			<div class="span9"> 
+    			<div class="span6"> 
     				<%= render 'layouts/messages' %>
     				<%= yield %>
     			</div>
+            <div class="span3">              
+              <div class="well sidebar-nav sidebar-nav-fixed">
+                <%= render 'layouts/usersbar' %>
+              </div>                  
+            </div> 
     		</div>
     	</div>
       <footer><%= render 'layouts/footer' %></footer>
