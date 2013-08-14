@@ -1,14 +1,14 @@
-<ul class="nav nav-pills nav-stacked">
-<li class="nav-header">Team Roster</li>
+<table class="table well table-striped">
+<tr><td class="nav-header">Team Roster</td><td></td></tr>
 <% Worker.where(project_id = session[:current_project]).each do |w| %>
-<li><%=w.user.name %> (<%= w.department %>)</li>
+<tr><td><%=w.user.name %> (<%= w.department %>)</td><td></td></tr>
 <% end %>
-<li class="btn btn-link"><%= link_to 'Add new member', new_user_path %></li>
-</ul>
+<tr><td class="btn btn-link"><%= link_to 'Add new member', new_user_path %></td><td></td></tr>
+</table>
 
-<ul class="nav nav-pills nav-stacked">
-<li class="nav-header">Files Inbox</li>
-<li class="btn btn-link">Color grading work on scene 34</li>
-<li class="btn btn-link">Property description for house at 12, Guttard Street</li>
-</ul>
+<table class="table well table-striped">
+<tr><td span="2" class="nav-header">Files Inbox</td><td span="2"></td></tr>
+<tr><td span="2">Color grading work...</td><td><a class="btn btn-link" href="#">Task</a></td><td><a class="btn btn-link" href="#">Import</a></td></td>
+<tr><td span="2">Property descripti...</td><td> <a class="btn btn-link" href="#">Task</a></td><td><a class="btn btn-link" href="#">Import</a></td><tr>
+</table>
 

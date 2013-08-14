@@ -9,7 +9,7 @@
   </ul>
   <p class="navbar-text pull-right">
   <% if session[:user_id] %>
-    logged in as <%= session[:email] %> (<%= link_to('Logout', logout_path, :method=>'delete') %>)
+    logged in as <%= User.find_by(email: session[:email]).name %> (<%= link_to('Logout', logout_path, :method=>'delete') %>)
   <% else %>
     <%= link_to('Login', login_path)  %>
   <% end %>

@@ -32,7 +32,7 @@
       <%= f.password_field :password_confirmation %>
     </div>
 
-    <%= f.fields_for @user.workers do |builder| %>
+    <%= f.fields_for :workers do |builder| %>
      
       <div class="field">
         <%= builder.label :role %><br />
