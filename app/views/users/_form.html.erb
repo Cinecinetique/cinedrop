@@ -31,22 +31,43 @@
       <%= f.label :password_confirmation %><br>
       <%= f.password_field :password_confirmation %>
     </div>
+    <% if @user.workers.count > 0 %>
 
-    <%= f.fields_for :workers, @user.workers.where("project_id = #{session[:current_project]}") do |builder| %>
-     
-      <div class="field">
-        <%= builder.label :role %><br />
-        <%= builder.text_field :role %>
-      </div>
+      <%= f.fields_for :workers, @user.workers.where("project_id = #{session[:current_project]}") do |builder| %>
+       
+        <div class="field">
+          <%= builder.label :role %><br />
+          <%= builder.text_field :role %>
+        </div>
 
-      <div class="field">
-        <%= builder.label :department %><br />
-        <%= builder.text_field :department %>
-      </div>
+        <div class="field">
+          <%= builder.label :department %><br />
+          <%= builder.text_field :department %>
+        </div>
 
-      <%= builder.hidden_field :project_id, :value => "#{session[:current_project]}" %>
+        <%= builder.hidden_field :project_id, :value => "#{session[:current_project]}" %>
 
-    <% end -%>
+      <% end -%>
+    <% else %>
+
+      <%= f.fields_for :workers do |builder| %>
+       
+        <div class="field">
+          <%= builder.label :role %><br />
+          <%= builder.text_field :role %>
+        </div>
+
+        <div class="field">
+          <%= builder.label :department %><br />
+          <%= builder.text_field :department %>
+        </div>
+
+        <%= builder.hidden_field :project_id, :value => "#{session[:current_project]}" %>
+
+      <% end -%>
+    <% end %>
+
+
 
     <div class="actions">
       <%= f.submit %>
