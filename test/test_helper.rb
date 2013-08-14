@@ -15,6 +15,7 @@ class ActiveSupport::TestCase
 
   def login_as(user)
   	session[:user_id] = users(user).id
+    session[:email] = users(user).email
   end
 
   def logout
@@ -23,5 +24,6 @@ class ActiveSupport::TestCase
 
   def setup
   	login_as :one if defined? session
+    session[:current_project] = projects(:one).id
   end
 end

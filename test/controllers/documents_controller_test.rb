@@ -27,7 +27,7 @@ class DocumentsControllerTest < ActionController::TestCase
     end
 
     assert_not_nil Document.find_by(name: "A New Document").created_by
-    assert_redirected_to project_path(@project.id)
+    assert_response :success
   end
 
   test "should show document" do
@@ -45,7 +45,7 @@ class DocumentsControllerTest < ActionController::TestCase
     patch :update, id: @document, document: { scene_number: @document.scene_number, 
                                               name: @document.name,
                                               data: image }
-    assert_redirected_to project_path(@project.id)
+    assert_response :success
   end
 
   test "should destroy document" do

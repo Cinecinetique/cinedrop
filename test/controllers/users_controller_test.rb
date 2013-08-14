@@ -16,11 +16,16 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create user" do
+  test "should create user and worker" do
+    initial_worker_count = Worker.count
     assert_difference('User.count') do
-      post :create, user: { email: 'Neil@foobar.com', password: 'secret', password_confirmation: 'secret' }
+      post :create, :user =>  { :email => 'Neil@foobar.com', 
+        :password =>'secret', 
+        :password_confirmation => 'secret',
+        :workers_attributes => { '0' => { 'role' => 'director', 'department' => 'Production', 'project_id' => projects(:one).id}}
+      }
     end
-
+    assert_equal initial_worker_count+1, Worker.count
     assert_redirected_to users_path
   end
 
