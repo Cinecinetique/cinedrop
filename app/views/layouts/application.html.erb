@@ -32,7 +32,9 @@
     			</div>
             <div class="span3">              
               <div class="well sidebar-nav sidebar-nav-fixed">
+                <% if session[:user_id] %>
                 <%= render 'layouts/usersbar' %>
+                <% end %>
               </div>                  
             </div> 
     		</div>
