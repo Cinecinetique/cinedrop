@@ -3,4 +3,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :workers, dependent: :destroy
   accepts_nested_attributes_for :workers, :allow_destroy => true
+
+  def projects
+  	workers.map { |w| w.project }
+  end
 end

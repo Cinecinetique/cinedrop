@@ -1,16 +1,7 @@
 <h1>Listing projects</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<table class="table">
+     <tr class="nav-header"><td span="4">Projects you have created</td></tr>
     <% @projects.where("created_by = #{session[:user_id]}").each do |project| %>
       <tr>
         <td><%= project.name %></td>
@@ -19,7 +10,15 @@
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
+    <tr class="nav-header"><td span="4">Projects you participate in</td></tr>
+    <% User.find(session[:user_id]).projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
 </table>
 
 <br>
