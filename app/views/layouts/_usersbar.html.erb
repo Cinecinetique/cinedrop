@@ -1,7 +1,7 @@
 <table class="table well table-striped">
 <tr><td class="nav-header">Team Roster</td><td></td></tr>
 <% Worker.where(project_id = session[:current_project]).each do |w| %>
-<tr><td><%=w.user.name %> (<%= w.department %>)</td><td></td></tr>
+<tr><td><%=w.user.name %> (<%= w.department %>)</td><td><i class="icon-tasks"></i></td></tr>
 <% end %>
 <tr><td class="btn btn-link"><%= link_to 'Add new member', new_user_path %></td><td></td></tr>
 </table>
