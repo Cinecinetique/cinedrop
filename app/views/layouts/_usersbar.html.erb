@@ -2,12 +2,12 @@
 <tr>
 	<td class="nav-header">Team Roster</td><td></td>
 </tr>
-<% Worker.where(project_id = session[:current_project]).each do |w| %>
+<% Worker.where("project_id = #{session[:current_project]}").each do |w| %>
 <tr>
 	<td><%=w.user.name %> (<%= w.department %>)</td><td><a class="btn btn-link" href="#" title="Assign a task"><i class="icon-plus-sign"></i></a></td>
 </tr>
 <% end %>
-<tr><td class="btn btn-link"><%= link_to 'Add new member', new_user_path %></td><td></td></tr>
+<tr><td><%= link_to 'Manage members', users_path, :class =>"btn btn-link" %></td><td><%= link_to 'Add member', new_user_path, :class =>"btn btn-link" %></td></tr>
 </table>
 
 <table class="table well table-striped">

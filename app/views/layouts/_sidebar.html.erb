@@ -5,6 +5,9 @@
 </div>
 <ul class="nav nav-pills nav-stacked">
 <li class="nav-header">Managing your project </li>
+<% if session[:user_id] != nil %>
+	<li><%= link_to 'List your projects', projects_path, :class => "btn btn-link pull-left" %></li>
+<% end %>
 <% if @project != nil %>
 <li><%= link_to 'Edit Project Information', edit_project_path(@project), :class => "btn btn-link pull-left" %> </li>
 <% else %>

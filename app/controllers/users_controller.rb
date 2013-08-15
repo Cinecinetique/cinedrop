@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(:email)
+    @workers = Worker.where("project_id = #{session[:current_project]}")
+    @users = @workers.map { |w| w.user}
   end
 
   # GET /users/1
