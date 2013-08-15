@@ -19,24 +19,25 @@
     <main role="main">
     	<div class="container">
     		<div class="row">
-    			<% if session[:user_id] %>
-	    			<div class="span3">	    				
+	    			<div class="span3">
+            <% if session[:user_id] %> 				
 		          <div class="well sidebar-nav sidebar-nav-fixed">
 	    				  <%= render 'layouts/sidebar' %>
-		          </div>			            
+		          </div>	
+            <% end %>		            
 	    			</div> 
-    			<% end %>
+
     			<div class="span6"> 
     				<%= render 'layouts/messages' %>
     				<%= yield %>
     			</div>
-            <div class="span3">              
-              <div class="well sidebar-nav sidebar-nav-fixed">
-                <% if session[:user_id] && session[:current_project] %>
-                <%= render 'layouts/usersbar' %>
-                <% end %>
-              </div>                  
-            </div> 
+            <div class="span3">
+            <% if session[:user_id] && session[:current_project] %>         
+              <div class="well sidebar-nav sidebar-nav-fixed">            
+                <%= render 'layouts/usersbar' %>   
+              </div> 
+            <% end %>                 
+          </div> 
     		</div>
     	</div>
       <footer><%= render 'layouts/footer' %></footer>
