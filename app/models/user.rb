@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   def projects
   	workers.map { |w| w.project }
   end
+
+  def can_admin?
+  	is_admin
+  end
 end

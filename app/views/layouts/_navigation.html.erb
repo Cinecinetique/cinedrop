@@ -8,9 +8,13 @@
     </li>
   </ul>
   <p class="navbar-text pull-right">
+  <% if session[:current_project] %>
+     Current project: <%= Project.find(session[:current_project]).name %> 
+  <% end %>
+     | 
   <% if session[:user_id] %>
 
-     Current project: <%= Project.find(session[:current_project]).name %> | logged in as <%= User.find_by(email: session[:email]).name %> (<%= link_to('Logout', logout_path, :method=>'delete') %>)
+    logged in as <%= User.find_by(email: session[:email]).name %> (<%= link_to('Logout', logout_path, :method=>'delete') %>)
   <% else %>
     <%= link_to('Login', login_path)  %>
   <% end %>

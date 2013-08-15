@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @project.workers.build
   end
 
   # GET /projects/1/edit
@@ -58,6 +59,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    session[:current_project] = nil if session[:current_project] == @project.id
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url }
@@ -73,6 +75,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :document, :from_404)
+      params.require(:project).permit(:name, :document, :from_404, :workers_attributes => [:id, :role, :department, :user_id])
     end
 end

@@ -47,4 +47,13 @@ class ProjectsControllerTest < ActionController::TestCase
 
     assert_redirected_to projects_path
   end
+
+  test "should remove current project from session if destroyed" do
+    session[:current_project] = @project.id
+    assert_difference('Project.count', -1) do
+      delete :destroy, id: @project
+    end
+    assert_nil session[:current_project]
+    assert_redirected_to projects_path
+  end
 end

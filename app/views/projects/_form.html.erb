@@ -11,10 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
+  <fieldset>
+    <legend>Project details</legend>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Your role in the project</legend>
+    <%= f.fields_for :workers do |builder| %>
+        <div class="field">
+          <%= builder.label :role %><br />
+          <%= builder.text_field :role %>
+        </div>
+
+        <div class="field">
+          <%= builder.label :department %><br />
+          <%= builder.text_field :department %>
+        </div>
+
+        <%= builder.hidden_field :user_id, :value => "#{session[:user_id]}" %>
+    <% end %>
+  </fieldset>
 
   <div class="actions">
     <%= f.submit %>
