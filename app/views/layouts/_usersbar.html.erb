@@ -1,14 +1,18 @@
 <table class="table well table-striped">
-<tr><td class="nav-header">Team Roster</td><td></td></tr>
+<tr>
+	<td class="nav-header">Team Roster</td><td></td>
+</tr>
 <% Worker.where(project_id = session[:current_project]).each do |w| %>
-<tr><td><%=w.user.name %> (<%= w.department %>)</td><td><i class="icon-tasks"></i></td></tr>
+<tr>
+	<td><%=w.user.name %> (<%= w.department %>)</td><td><a class="btn btn-link" href="#" title="Assign a task"><i class="icon-plus-sign"></i></a></td>
+</tr>
 <% end %>
 <tr><td class="btn btn-link"><%= link_to 'Add new member', new_user_path %></td><td></td></tr>
 </table>
 
 <table class="table well table-striped">
 <tr><td span="2" class="nav-header">Files Inbox</td><td span="2"></td></tr>
-<tr><td span="2">Color grading work...</td><td><a class="btn btn-link" href="#">Task</a></td><td><a class="btn btn-link" href="#">Import</a></td></td>
-<tr><td span="2">Property descripti...</td><td> <a class="btn btn-link" href="#">Task</a></td><td><a class="btn btn-link" href="#">Import</a></td><tr>
+<tr><td span="2">Color grading work...</td><td><a class="btn btn-link" href="#" title="Assign a task"><i class="icon-plus-sign"></i></a></td><td><a class="btn btn-link" href="#" title="Import into project">Import</a></td></td>
+<tr><td span="2">Property descripti...</td><td> <a class="btn btn-link" href="#" title="Assign a task">+task</a></td><td><a class="btn btn-link" href="#" title="Import into project">Import</a></td><tr>
 </table>
 
