@@ -7,7 +7,7 @@ class Document < ActiveRecord::Base
 			      :default_url => "/images/:style/missing.png",
 				:processors => lambda { |a| a.video? ? [ :ffmpeg ] : [ :thumbnail ] }
       validates_attachment :data, :presence => true,
-                           :size => { :in => 0..400.megabytes }
+                           :size => { :in => 0..40.megabytes }
 
 
 	def video?

@@ -25,6 +25,7 @@
   <div class="field">
     <%= f.label :data %><br>
     <%= f.file_field :data %>
+    <span class="label label-important">For this prototype, maximum file size is 40 MB</span>
   </div>
   <div class="actions">
     <%= f.hidden_field :project_id, :value => "#{session[:current_project]}" %>
