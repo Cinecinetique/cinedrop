@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815075629) do
+ActiveRecord::Schema.define(version: 20130816052601) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20130815075629) do
     t.integer  "project_id"
     t.string   "scene_number"
     t.integer  "created_by"
+    t.string   "type"
   end
 
   add_index "documents", ["project_id"], name: "index_documents_on_project_id"

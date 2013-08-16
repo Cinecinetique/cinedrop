@@ -29,6 +29,11 @@
 
 <% elsif @document.image? %>
 	<%= image_tag @document.data.url %>
+<% elsif @document.audio? %>
+	<audio controls>
+		<source src="<%= @document.data.url(:compressed) %>" />
+		<%= link_to 'Download document', @document.data.url %>
+	</audio>
 <% else %>
 	<%= link_to 'Download document', @document.data.url %>
 <% end %>

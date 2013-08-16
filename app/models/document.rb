@@ -81,7 +81,9 @@ class Document < ActiveRecord::Base
       data_content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   end
 
-
+  def to_partial_path
+    'documents/document'
+  end
 
 
 end

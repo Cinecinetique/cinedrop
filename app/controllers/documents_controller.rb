@@ -27,7 +27,19 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
+    if document_params[:data].content_type == 'application/pdf'
+      @document = Pdf.new(document_params)
+    elsif Msword.content_types.include?(document_params[:data].content_type)
+      @document = Msword.new(document_params)
+    elsif Msexcel.content_types.include?(document_params[:data].content_type)
+      @document = Msexcel.new(document_params)
+    elsif Image.content_types.include?(document_params[:data].content_type)
+      @document = Image.new(document_params)
+    elsif Video.content_types.include?(document_params[:data].content_type)
+      @document = Video.new(document_params)
+    else
+      @document = Document.new(document_params)
+    end
 
     @document.created_by = session[:user_id]
 

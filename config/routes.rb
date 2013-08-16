@@ -15,6 +15,13 @@ Cinecinetique::Application.routes.draw do
 
   resources :documents
 
+  resources :pdfs, :controller => 'documents'
+  resources :mswords, :controller => 'documents'
+  resources :msexcels, :controller => 'documents'
+  resources :images, :controller => 'documents'
+  resources :videos, :controller => 'documents'
+  resources :audios, :controller => 'documents'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
