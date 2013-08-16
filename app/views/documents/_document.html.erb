@@ -1,6 +1,15 @@
       <tr>
       	<td><%= document.scene_number %>
-        <td><%= image_tag document.data.url(:thumb), :class => "img-thumbnail img-responsive" %></td>
+        <% if document.media? %>
+          <td><%= image_tag document.data.url(:thumb), :class => "img-thumbnail img-responsive" %></td>
+        <% elsif document.xls? || document.xlsx? %>
+          <td><%= image_tag "/images/Excel.gif", :class => "img-thumbnail img-responsive" %></td>
+        <% elsif document.doc? || document.docx? %>
+          <td><%= image_tag "/images/Word.gif", :class => "img-thumbnail img-responsive" %></td>
+        <% else %>
+          <td><%= image_tag "/images/File.gif", :class => "img-thumbnail img-responsive" %></td>
+        <% end %>
+
         <td><%= document.name %></td>
         <!-- <td><%= document.data_content_type %></td> -->
         <!-- <td><%= document.project.name %></td> -->

@@ -11,7 +11,7 @@
 
 
 <p>
-<% if @document.data_content_type == "application/pdf" %>
+<% if @document.pdf? %>
 <div class="embed-container">
 <iframe src="<%= @document.data.url %>">
 <%= link_to 'View document', @document.data.url %>
@@ -27,8 +27,10 @@
   <source src="https://cdn.sublimevideo.net/vpa/ms_720p.webm" data-quality="hd" /> -->
 </video>
 
+<% elsif @document.image? %>
+	<%= image_tag @document.data.url %>
 <% else %>
-<%= image_tag @document.data.url %>
+	<%= link_to 'Download document', @document.data.url %>
 <% end %>
 </p>
 
