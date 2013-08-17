@@ -27,7 +27,7 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    if document_params[:data].content_type == 'application/pdf'
+    if Pdf.content_types.include?(document_params[:data].content_type)
       @document = Pdf.new(document_params)
     elsif Msword.content_types.include?(document_params[:data].content_type)
       @document = Msword.new(document_params)
@@ -37,7 +37,10 @@ class DocumentsController < ApplicationController
       @document = Image.new(document_params)
     elsif Video.content_types.include?(document_params[:data].content_type)
       @document = Video.new(document_params)
+    elsif Audio.content_types.include?(document_params[:data].content_type)
+      @document = Audio.new(document_params)
     else
+      logger.warn "**** USING DOCUMENT! ****"
       @document = Document.new(document_params)
     end
 
@@ -57,8 +60,9 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
+
     respond_to do |format|
-      if @document.update(document_params)
+      if @document.update(document_params(@document.class.to_s))
         format.html { render text: "<script>window.top.location.href ='#{document_url(@document)}';</script>" }
         format.json { head :no_content }
       else
@@ -87,8 +91,12 @@ class DocumentsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def document_params
-      params.require(:document).permit(:name, :project_id, :data, :scene_number)
+    def document_params(kind = nil)
+      if kind
+        params.require(kind.downcase.to_sym).permit(:name, :project_id, :data, :scene_number)
+      else
+        params.require(:document).permit(:name, :project_id, :data, :scene_number)
+      end
     end
 end
 

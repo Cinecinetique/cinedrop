@@ -1,7 +1,8 @@
 class Video < Document
-      belongs_to :project
 	has_attached_file :data, 
-                        :styles => {:mobile => {:geometry => "400x300", :format => 'mp4', :streaming => true}, :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 1 }, :poster => { :geometry => "400x300#", :format => 'jpg', :time => 1 }},
+                        :styles => { :mobile => {:geometry => "400x300", :format => 'mp4', :streaming => true}, 
+                                     :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 1 }, 
+                                     :poster => { :geometry => "400x300#", :format => 'jpg', :time => 1 }},
                         :convert_options => { :mobile => "-movflags faststart"},
 			      :default_url => "/images/:style/missing.png",
 				:processors => [ :ffmpeg ]

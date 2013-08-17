@@ -33,13 +33,12 @@ $(document).on 'page:change', ->
 		$("#feedback").html "A problem has occured. Verify you've supplied all required parameters and try again."
 		console.log xhr.responseText
 
-	$(".new_document").on 'submit', ->
+	$("form").on 'submit', ->
 		$("#feedback").html spinner.el
 
-	$(".edit_document").on 'submit', ->
-		$("#feedback").html spinner.el
 
-	$(".edit_document").on 'ajax:success', (e, data, status, xhr) ->
+
+	$("form").on 'ajax:success', (e, data, status, xhr) ->
 		console.log data
 		spinner.stop()
 		document.write(data);	

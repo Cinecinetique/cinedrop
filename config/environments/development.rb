@@ -30,6 +30,6 @@ Cinecinetique::Application.configure do
 
 
   config.paperclip_defaults = {
-    :storage => :filesystem,
+      :storage => :filesystem
   }
 end

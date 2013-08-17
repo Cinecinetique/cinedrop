@@ -1,5 +1,4 @@
 class Msexcel < Document
-	belongs_to :project
 	has_attached_file :data, 
 				          :default_url => "/images/:style/missing.png"
 	validates_attachment :data, :presence => true,

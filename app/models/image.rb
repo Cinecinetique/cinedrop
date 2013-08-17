@@ -1,15 +1,12 @@
 class Image < Document
-  belongs_to :project
-	has_attached_file :data, 
+  	has_attached_file :data, 
                     :styles => { :medium => ["400x300>",:jpg], :thumb => ["100x100>",:jpg] },
 			              :default_url => "/images/:style/missing.png"
-      validates_attachment :data, :presence => true,
+    validates_attachment :data, :presence => true,
                            :size => { :in => 0..40.megabytes }
 
-	
-
   def self.content_types
-    ['image/gif','image/jpg','image/pjpg','image/png','image/tiff','image/svg+xml']
+    ['image/gif','image/jpg','image/jpeg','image/pjpg','image/png','image/tiff','image/svg+xml']
   end
 
 
