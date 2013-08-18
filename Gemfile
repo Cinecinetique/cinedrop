@@ -46,11 +46,11 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # paperclip for file upload
 
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 3.5.1"
 gem "aws-s3" 
 gem "aws-sdk", "~> 1.11.3"
 
-gem "paperclip-ffmpeg"
+gem "paperclip-ffmpeg", "~> 0.11"
 
 gem 'bootstrap-sass'
 

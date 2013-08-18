@@ -1,10 +1,9 @@
 class Audio < Document
 	has_attached_file :data, 
-                      :styles => { :compressed => {:geometry => "400x300", :format => 'mp3', :streaming => true},
-                                   :ogg_compressed => {:geometry => "400x300", :format => 'ogg', :streaming => true} },
-                      :convert_options => { :mobile => "-movflags faststart"},
-				      :default_url => "/images/:style/missing.png",
-				      :processors => [ :ffmpeg ]
+                    :styles => { :compressed => {:format => 'mp3'},
+                                 :ogg_compressed => {:format => 'ogg'} },
+        				    :default_url => "/images/:style/missing.png",
+        				    :processors => [ :audio_processor ]
 					  
     validates_attachment :data, :presence => true,
                            :size => { :in => 0..70.megabytes }

@@ -31,8 +31,8 @@
 	<%= image_tag @document.data.url %>
 <% elsif @document.audio? %>
 	<audio controls>
-		<source src="<%= @document.data.url(:compressed) %>" />
-		<source src="<%= @document.data.url(:ogg_compressed) %>" />
+		<source src="<%= @document.data.url(:compressed) %>" type="audio/mp3" />
+		<source src="<%= @document.data.url(:ogg_compressed) %>" type="audio/ogg" />
 		<%= link_to 'Download document', @document.data.url %>
 	</audio>
 <% else %>
