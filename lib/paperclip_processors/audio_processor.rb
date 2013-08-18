@@ -25,10 +25,9 @@ module Paperclip
 		        parameters << @format_options[@format.to_sym]
 		        parameters << "-y :dest"
 		        parameters = parameters.flatten.compact.join(" ").strip.squeeze(" ")
-		        Paperclip.log("**** #{parameters}")
 
 		        success = Paperclip.run('ffmpeg', parameters, :source => src.path, :dest => dst.path)
-		      rescue Cocaine::ExitStatusError => e
+		      rescue Paperclip::Errors::CommandNotFoundError
 		        raise Paperclip::Error, "There was an error processing audio for #{@basename}" if whiny
 		      end
 		      dst

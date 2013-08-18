@@ -7,7 +7,7 @@ class Video < Document
 			      :default_url => "/images/:style/missing.png",
 				:processors => [ :ffmpeg ]
       validates_attachment :data, :presence => true,
-                           :size => { :in => 0..40.megabytes }
+                           :size => { :in => 0..100.megabytes }
       before_post_process :media?
 
 	def self.content_types
