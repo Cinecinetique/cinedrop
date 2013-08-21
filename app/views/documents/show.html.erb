@@ -45,6 +45,6 @@
 <%= link_to 'Assign a task', "#" %> |
 <%= link_to 'Share with a partner', "#" %>
 <% if @document.office? %>
-| <%= link_to 'View on Google Docs', "http://docs.google.com/viewer?url=#{signed_url(@document)}&embedded=true" %>
+| <%= link_to 'View on Google Docs', "http://docs.google.com/viewer?url=#{signed_url(@document)}&embedded=true",:target => "_blank" %>
 <% end %>
 
