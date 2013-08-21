@@ -44,3 +44,7 @@
 <%= link_to 'Back', project_path(@document.project) %> |
 <%= link_to 'Assign a task', "#" %> |
 <%= link_to 'Share with a partner', "#" %>
+<% if @document.office? %>
+| <%= link_to 'View on Google Docs', "http://docs.google.com/viewer?url=#{document_url}&embedded=true" %>
+<% end %>
+
