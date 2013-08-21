@@ -26,22 +26,22 @@ opts = {
   position: 'relative'
 }
 
-$(document).on 'page:change', -> 
-	console.log "page changed"
-	spinner = new Spinner(opts).spin();	
-	$(".new_document").on 'ajax:error', (e, xhr, status, error) ->
-		$("#feedback").html "A problem has occured. Verify you've supplied all required parameters and try again."
-		console.log xhr.responseText
+# $(document).on 'page:change', -> 
+# 	console.log "page changed"
+# 	spinner = new Spinner(opts).spin();	
+# 	$(".new_document").on 'ajax:error', (e, xhr, status, error) ->
+# 		$("#feedback").html "A problem has occured. Verify you've supplied all required parameters and try again."
+# 		console.log xhr.responseText
 
-	$("form").on 'submit', ->
-		$("#feedback").html spinner.el
+# 	$("form").on 'submit', ->
+# 		$("#feedback").html spinner.el
 
 
 
-	$("form").on 'ajax:success', (e, data, status, xhr) ->
-		console.log data
-		spinner.stop()
-		document.write(data);	
+# 	$("form").on 'ajax:success', (e, data, status, xhr) ->
+# 		console.log data
+# 		spinner.stop()
+# 		document.write(data);	
 
 
 

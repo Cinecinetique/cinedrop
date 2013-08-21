@@ -27,7 +27,10 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    if Pdf.content_types.include?(document_params[:data].content_type)
+    if document_params[:data] == nil
+      logger.warn "**** USING DOCUMENT! ****"
+      @document = Document.new(document_params)
+    elsif Pdf.content_types.include?(document_params[:data].content_type)
       @document = Pdf.new(document_params)
     elsif Msword.content_types.include?(document_params[:data].content_type)
       @document = Msword.new(document_params)
@@ -48,10 +51,10 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { render text: "<script>window.top.location.href ='#{document_url(@document)}';</script>" }
+        format.html { redirect_to document_url(@document) }
         format.json { render action: 'show', status: :created, location: @document }
       else
-        format.html { render action: 'new', status: :unprocessable_entity }
+        format.html { render action: 'new' }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
@@ -63,11 +66,10 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.update(document_params(@document.class.to_s))
-        format.html { render text: "<script>window.top.location.href ='#{document_url(@document)}';</script>" }
+        format.html { redirect_to document_url(@document) }
         format.json { head :no_content }
       else
-        # format.html { render action: 'edit'}
-        format.html { render text: "<script>window.top.location.href ='#{document_url(@document)}';</script>"}
+        format.html { render action: 'edit'}
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
