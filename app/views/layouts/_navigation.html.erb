@@ -8,7 +8,7 @@
     </li>
   </ul>
   <p class="navbar-text pull-right">
-  <% if session[:current_project] %>
+  <% if session[:current_project] && Project.ids.include?(session[:current_project]) %>
      Current project: <%= Project.find(session[:current_project]).name %> 
   <% end %>
      | 
