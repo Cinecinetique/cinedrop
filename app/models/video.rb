@@ -1,4 +1,5 @@
 class Video < Document
+      HOST_TYPES = [ "vimeo", "youtube" ]
 	has_attached_file :data, 
                         :styles => { :mobile => {:geometry => "400x300", :format => 'mp4', :streaming => true}, 
                                      :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 1 }, 
@@ -6,7 +7,7 @@ class Video < Document
                         :convert_options => { :mobile => "-movflags faststart"},
 			      :default_url => "/images/:style/missing.png",
 				:processors => [ :ffmpeg ]
-      validates_attachment :data, :presence => true,
+      validates_attachment :data,
                            :size => { :in => 0..100.megabytes }
       before_post_process :media?
 

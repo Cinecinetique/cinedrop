@@ -21,11 +21,33 @@
     <%= f.text_field :scene_number %>
   </div>
 
+  <fieldset>
+  <legend class="text-info">Browse your computer to upload a file</legend>
+  <span class="label label-important">For this prototype, maximum file size is 40 MB</span>
   <div class="field">
     <%= f.label :data %><br>
     <%= f.file_field :data %>
-    <span class="label label-important">For this prototype, maximum file size is 40 MB</span>
+    
   </div>
+  </fieldset>
+
+  <fieldset>
+  <legend class="text-info">Or use the url of a file directly</legend>
+
+  <div class="field">
+    <%= f.label :data_host %><br>
+    <%= f.select :data_host, Video::HOST_TYPES,
+prompt: 'Select a video hosting' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :data_ref %><br>
+    <%= f.text_field :data_ref %>
+  </div>
+
+
+</fieldset>
+
   <div class="actions">
     <%= f.hidden_field :project_id, :value => "#{session[:current_project]}" %>
     <%= f.submit %>

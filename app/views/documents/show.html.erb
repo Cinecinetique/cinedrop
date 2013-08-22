@@ -35,6 +35,15 @@
 		<source src="<%= @document.data.url(:ogg_compressed) %>" type="audio/ogg" />
 		<%= link_to 'Download document', @document.data.url %>
 	</audio>
+<% elsif @document.data_host == 'vimeo' %>
+
+<iframe src="http://player.vimeo.com/video/<%= @document.data_ref %>" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+<% elsif @document.data_host == 'youtube' %>
+
+<video class="sublime" data-youtube-id="<%= @document.data_ref %>" width="400" height="300" preload="none">
+</video>
+
 <% else %>
 	<%= link_to 'Download document', @document.data.url %>
 <% end %>

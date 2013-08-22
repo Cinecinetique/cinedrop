@@ -2,7 +2,7 @@ class Document < ActiveRecord::Base
       belongs_to :project
     	has_attached_file :data,
     			              :default_url => "/images/:style/missing.png"
-      validates_attachment :data, :presence => true
+      validates_attachment :data
       before_post_process :media?
 
 	def video?
