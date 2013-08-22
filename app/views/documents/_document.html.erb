@@ -3,17 +3,17 @@
         <% if document.video? || document.image? || document.pdf? %>
           <td><%= image_tag document.data.url(:thumb), :class => "img-thumbnail img-responsive" %></td>  
         <% elsif document.xls? || document.xlsx? %>
-          <td><%= image_tag "/images/Excel.gif", :class => "img-thumbnail img-responsive" %></td>
+          <td><%= image_tag "/images/excel.png", :class => "img-thumbnail img-responsive" %></td>
         <% elsif document.doc? || document.docx? %>
-          <td><%= image_tag "/images/Word.gif", :class => "img-thumbnail img-responsive" %></td>
+          <td><%= image_tag "/images/word.png", :class => "img-thumbnail img-responsive" %></td>
         <% elsif document.audio? %>
-          <td><%= image_tag "/images/File.gif", :class => "img-thumbnail img-responsive" %></td>
+          <td><%= image_tag "/images/audio.png", :class => "img-thumbnail img-responsive" %></td>
         <% elsif document.data_host == 'youtube' %>
           <td><%= image_tag "http://img.youtube.com/vi/#{document.data_ref}/2.jpg", :class => "img-thumbnail img-responsive" %></td>
         <% elsif document.data_host == 'vimeo' %>
         <td><%= image_tag "#{vimeo_thumbnail(document)}", :size => "120x90", :class => "img-thumbnail img-responsive" %></td>
         <% else %>
-          <td><%= image_tag "/images/File.gif", :class => "img-thumbnail img-responsive" %></td>
+          <td><%= image_tag "/images/file.png", :class => "img-thumbnail img-responsive" %></td>
         <% end %>
 
         <td><%= document.name %></td>
