@@ -10,6 +10,8 @@
           <td><%= image_tag "/images/File.gif", :class => "img-thumbnail img-responsive" %></td>
         <% elsif document.data_host == 'youtube' %>
           <td><%= image_tag "http://img.youtube.com/vi/#{document.data_ref}/2.jpg", :class => "img-thumbnail img-responsive" %></td>
+        <% elsif document.data_host == 'vimeo' %>
+        <td><%= image_tag "#{vimeo_thumbnail(document)}", :class => "img-thumbnail img-responsive" %></td>
         <% else %>
           <td><%= image_tag "/images/File.gif", :class => "img-thumbnail img-responsive" %></td>
         <% end %>

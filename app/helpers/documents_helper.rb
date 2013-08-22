@@ -9,4 +9,5 @@ module DocumentsHelper
 		url = s3.buckets[ENV['AWS_BUCKET']].objects[document.data.path[1..-1]].url_for(:read)
 		url.to_s
 	end
+
 end
