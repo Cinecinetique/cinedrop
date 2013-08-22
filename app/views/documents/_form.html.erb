@@ -23,12 +23,11 @@
 
   <fieldset>
   <legend class="text-info">Browse your computer to upload a file</legend>
-  <span class="label label-important">For this prototype, maximum file size is 40 MB</span>
   <div class="field">
-    <%= f.label :data %><br>
+    <%= f.label :data %>
     <%= f.file_field :data %>
-    
   </div>
+  <span class="help-block">For this prototype, maximum file size is 40 MB</span>
   </fieldset>
 
   <fieldset>
@@ -39,11 +38,13 @@
     <%= f.select :data_host, Video::HOST_TYPES,
 prompt: 'Select a video hosting' %>
   </div>
-
+  </span>
   <div class="field">
     <%= f.label :data_ref %><br>
     <%= f.text_field :data_ref %>
   </div>
+  <span class="help-block">e.g: http://www.youtube.com/watch?v=[<b>Data ref</b>]</span>
+  <span class="help-block">or http://vimeo.com/[<b>Data ref</b>]
 
 
 </fieldset>
