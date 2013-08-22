@@ -1,13 +1,15 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @document.name %>
-</p>
-
-<p>
-  <strong>Scene number:</strong>
-  <%= @document.scene_number %>
-</p>
+<table class="table">
+	<thead>
+    <tr>
+      <th>Name</th>
+      <th>Scene number</th>
+    </tr>
+  </thead>
+  <tbody>
+	  <tr><td> <%= @document.name %></td><td><%= @document.scene_number %></td></tr>
+  </tbody>
+</table>
 
 
 <p>
@@ -43,7 +45,8 @@
 
 <video class="sublime" data-youtube-id="<%= @document.data_ref %>" width="400" height="300" preload="none">
 </video>
-
+<% elsif @document.office? %>
+<%= link_to 'Download document', @document.data.url %> or <%= link_to 'View on Google Docs', "http://docs.google.com/viewer?url=#{signed_url(@document)}&embedded=true",:target => "_blank" %>
 <% else %>
 	<%= link_to 'Download document', @document.data.url %>
 <% end %>
@@ -53,7 +56,5 @@
 <%= link_to 'Back', project_path(@document.project) %> |
 <%= link_to 'Assign a task', "#" %> |
 <%= link_to 'Share with a partner', "#" %>
-<% if @document.office? %>
-| <%= link_to 'View on Google Docs', "http://docs.google.com/viewer?url=#{signed_url(@document)}&embedded=true",:target => "_blank" %>
-<% end %>
+
 
