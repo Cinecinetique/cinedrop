@@ -8,12 +8,20 @@ Cinecinetique::Application.routes.draw do
     delete 'logout' => :destroy
   end
 
-
   resources :sessions
 
   resources :users
 
+  resources :documents do
+    collection do
+      get 'heartbeat'
+    end
+  end
+
+  
   resources :documents
+
+
 
   resources :pdfs, :controller => 'documents'
   resources :mswords, :controller => 'documents'

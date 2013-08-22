@@ -49,6 +49,7 @@ prompt: 'Select a video hosting' %>
 
 </fieldset>
 
+  <iframe id="feedback" data-url="<%= heartbeat_documents_path %>" class="display:none" with="0" height="0" seamless></iframe>
   <div class="actions">
     <%= f.hidden_field :project_id, :value => "#{session[:current_project]}" %>
     <%= f.submit %>

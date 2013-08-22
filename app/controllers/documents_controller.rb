@@ -20,6 +20,11 @@ class DocumentsController < ApplicationController
     @project_id = params[:project_id]
   end
 
+  # GET /documents/heartbeat
+  def heartbeat
+    respond_to :js
+  end
+  
   # GET /documents/1/edit
   def edit
   end
