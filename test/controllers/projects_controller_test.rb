@@ -3,7 +3,23 @@ require 'test_helper'
 class ProjectsControllerTest < ActionController::TestCase
   setup do
     @project = projects(:one)
+    @project.created_by = users(:two).id
+    @project.send(:create_bucket)
   end
+
+  teardown do
+    cleanup_buckets("#{Rails.env}-#{users(:two).id}-#{@project.name.parameterize}")
+  end
+
+
+  def cleanup_buckets(bucket)
+    s3 = AWS::S3.new
+    bucket_name_on_s3 = s3.buckets[bucket]
+    if bucket_name_on_s3.exists?
+      bucket_name_on_s3.delete
+    end
+  end
+
 
   test "should get index" do
     get :index
@@ -23,6 +39,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
     assert_not_nil Project.find_by(name:"The Test One").created_by
     assert_redirected_to project_path(assigns(:project))
+    cleanup_buckets("#{Rails.env}-#{users(:one).id}-the-test-one")
   end
 
   test "should show project" do
