@@ -48,7 +48,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem "paperclip", "~> 3.5.1"
 gem "aws-s3" 
-gem "aws-sdk", "~> 1.11.3"
+gem "aws-sdk", "~> 1.12.0"
 
 gem "paperclip-ffmpeg", "~> 0.11"
 
@@ -61,5 +61,6 @@ gem 'vimeo'
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'mocha', :require => false
+  gem 'fakes3'
 end
 

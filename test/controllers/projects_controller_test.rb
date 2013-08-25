@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'aws/s3'
 
 class ProjectsControllerTest < ActionController::TestCase
   setup do
