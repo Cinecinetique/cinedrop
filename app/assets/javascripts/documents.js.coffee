@@ -43,25 +43,25 @@ opts = {
 # 		spinner.stop()
 # 		document.write(data);	
 
-@KeepAlive =
-  poll: ->
-    #console.log 'setting up Timeout'
-    setTimeout @request, 20000
+# @KeepAlive =
+#   poll: ->
+#     #console.log 'setting up Timeout'
+#     setTimeout @request, 20000
   
-  request: ->
-    #console.log 'executing request'
-    $.ajax $('#feedback').data('url'),
-      type: 'GET'
-      dataType: 'script'
-      error: (jqXHR, textStatus, errorThrown) ->
-          console.log errorThrown
-          console.log "AJAX Error: #{textStatus}"
-      success: (data, textStatus, jqXHR) ->
-          console.log "."
+#   request: ->
+#     #console.log 'executing request'
+#     $.ajax $('#feedback').data('url'),
+#       type: 'GET'
+#       dataType: 'script'
+#       error: (jqXHR, textStatus, errorThrown) ->
+#           console.log errorThrown
+#           console.log "AJAX Error: #{textStatus}"
+#       success: (data, textStatus, jqXHR) ->
+#           console.log "."
 
     
 
-$(document).on 'page:load', -> 
-  console.log 'page loaded'
-  KeepAlive.poll()
+# $(document).on 'page:load', -> 
+#   console.log 'page loaded'
+#   KeepAlive.poll()
 
