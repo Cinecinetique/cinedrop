@@ -3,7 +3,8 @@ class Audio < Document
                     :styles => { :compressed => {:format => 'mp3'},
                                  :ogg_compressed => {:format => 'ogg'} },
         				    :default_url => "/images/:style/missing.png",
-        				    :processors => [ :audio_processor ]
+        				    :processors => [ :audio_processor ],
+                    :bucket => proc { |attachment| attachment.instance.project.bucket_name }
 					  
     validates_attachment :data, :presence => true,
                            :size => { :in => 0..70.megabytes }

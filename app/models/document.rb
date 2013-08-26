@@ -1,7 +1,8 @@
 class Document < ActiveRecord::Base
       belongs_to :project
     	has_attached_file :data,
-    			              :default_url => "/images/:style/missing.png"
+    			              :default_url => "/images/:style/missing.png",
+                        :bucket => proc { |attachment| attachment.instance.project.bucket_name }
       validates_attachment :data
       before_post_process :media?
 

@@ -15,26 +15,22 @@
 <p>
 <% if @document.pdf? %>
 	<div class="embed-container">
-	<iframe src="<%= @document.data.url %>">
-	<%= link_to 'View document', @document.data.url %>
+	<iframe src="<%= signed_url_for(:original,@document) %>">
+	<%= link_to 'View document', signed_url_for(:original,@document) %>
 	</iframe>
 	</div>
 <% elsif @document.video? %>
 
-<video id="a240e92d" class="sublime" poster="<%= @document.data.url(:poster) %>" width="400" height="300" title="Midnight Sun" data-uid="a240e92d" preload="none">
- <source src="<%= @document.data.url(:mobile) %>" />
- <!--  <source src="https://cdn.sublimevideo.net/vpa/ms_360p.mp4" />
-  <source src="https://cdn.sublimevideo.net/vpa/ms_720p.mp4" data-quality="hd" />
-  <source src="https://cdn.sublimevideo.net/vpa/ms_360p.webm" />
-  <source src="https://cdn.sublimevideo.net/vpa/ms_720p.webm" data-quality="hd" /> -->
+<video id="a240e92d" class="sublime" poster="<%= signed_url_for(:poster, @document) %>" width="400" height="300" title="Midnight Sun" data-uid="a240e92d" preload="none">
+ <source src="<%= signed_url_for(:mobile, @document) %>" />
 </video>
 
 <% elsif @document.image? %>
-	<%= image_tag @document.data.url %>
+	<%= image_tag signed_url_for(:medium,@document) %>
 <% elsif @document.audio? %>
 	<audio controls>
-		<source src="<%= @document.data.url(:compressed) %>" type="audio/mp3" />
-		<source src="<%= @document.data.url(:ogg_compressed) %>" type="audio/ogg" />
+		<source src="<%= signed_url_for(:compressed, @document) %>" type="audio/mp3" />
+		<source src="<%= signed_url_for(:ogg_compressed, @document) %>" type="audio/ogg" />
 		<%= link_to 'Download document', @document.data.url %>
 	</audio>
 <% elsif @document.data_host == 'vimeo' %>
@@ -46,15 +42,18 @@
 <video class="sublime" data-youtube-id="<%= @document.data_ref %>" width="400" height="300" preload="none">
 </video>
 <% elsif @document.office? %>
-<%= link_to 'Download document', @document.data.url %> or <%= link_to 'View on Google Docs', "http://docs.google.com/viewer?url=#{signed_url(@document)}&embedded=true",:target => "_blank" %>
+<%= link_to 'Download document', signed_url_for(:original, @document) %> or <%= link_to 'View on Google Docs', google_viewer_url(signed_url_for(:original,@document)),:target => "_blank" %>
 <% else %>
 	<%= link_to 'Download document', @document.data.url %>
 <% end %>
 </p>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', project_path(@document.project) %> |
+<% if @document.data %>
+	<%= link_to 'Download original', signed_url_for(:original, @document) %> |
+<% end %>
 <%= link_to 'Assign a task', "#" %> |
-<%= link_to 'Share with a partner', "#" %>
+<%= link_to 'Share with a partner', "#" %> |
+<%= link_to 'Back to project list', project_path(@document.project) %> 
 
 

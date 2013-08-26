@@ -1,7 +1,7 @@
       <tr>
       	<td><%= document.scene_number %>
         <% if document.video? || document.image? || document.pdf? %>
-          <td><%= image_tag document.data.url(:thumb), :class => "img-thumbnail img-responsive" %></td>  
+          <td><%= image_tag signed_url_for(:thumb, document), :class => "img-thumbnail img-responsive" %></td>  
         <% elsif document.xls? || document.xlsx? %>
           <td><%= image_tag "/images/excel.png", :class => "img-thumbnail img-responsive" %></td>
         <% elsif document.doc? || document.docx? %>

@@ -6,7 +6,8 @@ class Video < Document
                                      :poster => { :geometry => "400x300#", :format => 'jpg', :time => 1 }},
                         :convert_options => { :mobile => "-movflags faststart"},
 			      :default_url => "/images/:style/missing.png",
-				:processors => [ :ffmpeg ]
+				:processors => [ :ffmpeg ],
+                        :bucket => proc { |attachment| attachment.instance.project.bucket_name }
       validates_attachment :data,
                            :size => { :in => 0..100.megabytes }
       before_post_process :media?

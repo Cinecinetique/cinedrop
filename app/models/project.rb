@@ -5,6 +5,9 @@ class Project < ActiveRecord::Base
 	validates :name, :uniqueness => true
 	accepts_nested_attributes_for :workers, :allow_destroy => true
 
+	def bucket_name
+		"#{Rails.env}-#{created_by}-#{name.parameterize}"
+	end
 
 	private
 
@@ -15,7 +18,7 @@ class Project < ActiveRecord::Base
 		if bucket_name_on_s3.exists?
 			false
 		else
-			bucket = s3.buckets.create(bucket_name)
+			bucket = s3.buckets.create(bucket_name, {:location_constraint => "ap-southeast-1"})
 		end
 
 	end

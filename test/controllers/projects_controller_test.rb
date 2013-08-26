@@ -3,6 +3,7 @@ require 'aws/s3'
 
 class ProjectsControllerTest < ActionController::TestCase
   setup do
+    sleep 1
     @project = projects(:one)
     @project.created_by = users(:two).id
     @project.send(:create_bucket)

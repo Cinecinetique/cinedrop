@@ -27,12 +27,12 @@ Cinecinetique::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-
+  #AWS.config(:logger => Rails.logger, :http_wire_trace => true, :log_level => :debug)
 
   config.paperclip_defaults = {
       :storage => :s3,
+      :s3_permissions => :bucket_owner_full_control,
       :s3_credentials => {
-        :bucket => ENV['AWS_BUCKET'],
         :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
         :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
         :s3_host_name => "s3-ap-southeast-1.amazonaws.com",

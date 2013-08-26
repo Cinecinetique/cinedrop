@@ -38,7 +38,7 @@ describe Project, "When a new project is created" do
 		project.valid?.should be_false
 	end
 
-	it "should knows how to create a S3 bucket" do
+	it "should knows how to create a S3 bucket in Singapore" do
 
 		project = Project.new(@parameters)
 		fake_s3 = mock()
@@ -49,7 +49,7 @@ describe Project, "When a new project is created" do
 		buckets.expects(:[]).returns(bucket_name_on_s3)
 		AWS::S3::Bucket.stubs(:new).returns(bucket_name_on_s3)
 		bucket_name_on_s3.expects(:exists?).returns(false)
-		buckets.expects(:create).with("#{Rails.env}-#{project.created_by}-the-eternal-xyz").returns(true)
+		buckets.expects(:create).with("#{Rails.env}-#{project.created_by}-the-eternal-xyz",{:location_constraint => "ap-southeast-1"}).returns(true)
 		project.send(:create_bucket).should be_true	
 
 	end

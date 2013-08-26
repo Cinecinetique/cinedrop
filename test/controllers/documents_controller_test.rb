@@ -6,6 +6,7 @@ class DocumentsControllerTest < ActionController::TestCase
     @project = projects(:one)
   end
 
+
   test "should get index" do
     get :index
     assert_response :success
