@@ -1,0 +1,25 @@
+<%= form_for(@worker) do |f| %>
+
+<fieldset>
+    <legend>Add an existing user to the project</legend>
+     <%= f.select :user_id, User.find(session[:user_id]).managed_users.map { |u| [u.name,u.id]},
+prompt: 'Select a user', include_blank: true %>
+        <div class="field">
+          <%= f.label :role %><br />
+          <%= f.text_field :role %>
+        </div>
+
+        <div class="field">
+          <%= f.label :department %><br />
+          <%= f.text_field :department %>
+        </div>
+
+        <%= f.hidden_field :project_id, :value => "#{session[:current_project]}" %>
+</fieldset>
+
+   <div class="actions">
+      <%= f.submit %>
+    </div>
+
+
+<% end %>

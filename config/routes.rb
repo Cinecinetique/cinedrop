@@ -30,6 +30,9 @@ Cinecinetique::Application.routes.draw do
   resources :videos, :controller => 'documents'
   resources :audios, :controller => 'documents'
 
+
+  resources :workers
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

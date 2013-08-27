@@ -8,6 +8,19 @@ class User < ActiveRecord::Base
   	workers.map { |w| w.project }
   end
 
+  def projects_created
+    Project.where("created_by = #{id}")
+  end
+
+  def managed_users
+    projects_teams = []
+
+    projects_created.each do |project| 
+      project.team.each { |member| projects_teams << member}
+    end
+    projects_teams.uniq
+  end
+
   def can_admin?
   	is_admin
   end

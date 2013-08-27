@@ -9,6 +9,10 @@ class Project < ActiveRecord::Base
 		"#{Rails.env}-#{created_by}-#{name.parameterize}"
 	end
 
+	def team
+		workers.map { |w| w.user}
+	end
+
 	private
 
 	def create_bucket
