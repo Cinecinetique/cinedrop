@@ -7,8 +7,9 @@
     <%= link_to('Community', documents_path, :method=>'delete') %>
     </li>
   </ul>
+  <div ng-controller="NavigationCtrl">
   <p class="navbar-text pull-right">
-    Notifications: <%= link_to "5", '#', :class => "badge badge-warning" %> &nbsp;&nbsp;|&nbsp;
+    Notifications: <%= link_to "5", '#', :class => "badge badge-warning", "data-placement" => "bottom", "data-title" => "Changes", "bs-popover" => "'popover.html'" %> &nbsp;&nbsp;|&nbsp;
   <% if session[:current_project] && Project.ids.include?(session[:current_project]) %>
      Current project:&nbsp; <%= Project.find(session[:current_project]).name %> 
   <% end %>
@@ -19,4 +20,18 @@
   <% else %>
     <%= link_to('Login', login_path)  %>
   <% end %>
+
   </p>
+
+<script type="text/ng-template" id="popover.html">
+  <form name="NotificationPopoverForm">
+  <ul>
+  <li ng-repeat="item in items">{{item.name}}</li>
+  </ul>
+  <div class="form-actions">
+    <button type="button" class="btn btn-mini" ng-click="hide()">Close</button>
+    <button class="btn btn-mini btn-primary" ng-click="popover.saved=true;hide()">Mark as Seen</button>
+  </div>
+</form>
+</script>
+</div>

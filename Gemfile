@@ -58,6 +58,10 @@ gem 'mysql2'
 
 gem 'vimeo'
 
+gem 'angularjs-rails'
+gem 'ng-rails-csrf'
+gem 'firebase'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'mocha', :require => false

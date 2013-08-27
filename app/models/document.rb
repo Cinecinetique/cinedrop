@@ -11,6 +11,7 @@ class Document < ActiveRecord::Base
                         :bucket => proc { |attachment| attachment.instance.project.bucket_name }
       validates_attachment :data
       before_post_process :media?
+      #after_save :push_to_firebase
 
 	def video?
       [ 'application/x-mp4',
@@ -89,6 +90,11 @@ class Document < ActiveRecord::Base
 
   def to_partial_path
     'documents/document'
+  end
+
+  def push_to_firebase
+    response = Firebase.push("changes", { :name => self.name, :updated_at => self.updated_at })
+    true
   end
 
 
