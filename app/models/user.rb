@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     projects_teams.uniq
   end
 
+  def position(project_id)
+    Worker.where("user_id = #{id} and project_id = #{project_id}").first
+  end
+
   def can_admin?
   	is_admin
   end
