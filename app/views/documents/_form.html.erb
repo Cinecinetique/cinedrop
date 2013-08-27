@@ -36,7 +36,7 @@
   <div class="field">
     <%= f.label :data_host %><br>
     <%= f.select :data_host, Video::HOST_TYPES,
-prompt: 'Select a video hosting' %>
+prompt: 'Select a video hosting', include_blank: true %>
   </div>
   </span>
   <div class="field">
