@@ -1,5 +1,5 @@
 class Video < Document
-      HOST_TYPES = [ "vimeo", "youtube" ]
+      
 	has_attached_file :data, 
                         :styles => { :mobile => {:geometry => "400x300", :format => 'mp4', :streaming => true}, 
                                      :thumb => { :geometry => "120x90#", :format => 'jpg', :time => 1 }, 

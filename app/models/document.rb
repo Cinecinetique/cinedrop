@@ -1,5 +1,11 @@
 class Document < ActiveRecord::Base
+  HOST_TYPES = [ "vimeo", "youtube", "flickr", "soundcloud" ]
       belongs_to :project
+      validates :name, :presence => true
+      validates :data_ref, :presence => true, unless: Proc.new { |d| d.data_host.blank? }
+      validates :data_host, :presence => true, unless: Proc.new { |d| d.data_ref.blank? }
+      validates :data_host, inclusion: { in: HOST_TYPES, message: "%{value} is not a valid host service" },
+                 unless: Proc.new { |d| d.data_host.blank? }
     	has_attached_file :data,
     			              :default_url => "/images/:style/missing.png",
                         :bucket => proc { |attachment| attachment.instance.project.bucket_name }
