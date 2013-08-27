@@ -58,16 +58,6 @@ describe Document, "When a new document is created without file attachement" do
 			data_host: "youtube",
 			data_ref: "yyy",
 		}		
-		parameters_ok[2] = {
-			name: "a name",
-			data_host: "soundcloud",
-			data_ref: "yyy",
-		}		
-		parameters_ok[3] = {
-			name: "a name",
-			data_host: "flickr",
-			data_ref: "yyy",
-		}
 		document = Document.new(parameters_notok)
 		expect { document.save! }.to raise_error(ActiveRecord::RecordInvalid)
 

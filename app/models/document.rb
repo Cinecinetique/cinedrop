@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-  HOST_TYPES = [ "vimeo", "youtube", "flickr", "soundcloud" ]
+  HOST_TYPES = [ "vimeo", "youtube" ]
       belongs_to :project
       validates :name, :presence => true
       validates :data_ref, :presence => true, unless: Proc.new { |d| d.data_host.blank? }
