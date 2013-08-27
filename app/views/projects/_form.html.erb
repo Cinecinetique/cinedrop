@@ -21,7 +21,7 @@
 
   <fieldset>
     <legend>Your role in the project</legend>
-    <%= f.fields_for :workers do |builder| %>
+    <%= f.fields_for :workers, @project.workers.where("user_id = #{@project.created_by}") do |builder| %>
         <div class="field">
           <%= builder.label :role %><br />
           <%= builder.text_field :role %>
