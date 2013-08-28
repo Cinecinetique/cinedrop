@@ -27,7 +27,7 @@
 <script type="text/ng-template" id="popover.html">
   <form name="NotificationPopoverForm">
   <ul>
-  <li ng-repeat="item in items">{{item.updated_at}}: {{item.name}} was updated by {{item.changed_by}}</li>
+  <li ng-repeat="item in items">{{item.updated_at | date:'On EEE, dd @ h:mma'}}: "{{item.name}}" was updated by {{item.changed_by}}</li>
   </ul>
   <div class="form-actions">
     <button type="button" class="btn btn-mini" ng-click="hide()">Close</button>

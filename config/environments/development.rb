@@ -39,4 +39,6 @@ Cinecinetique::Application.configure do
         :s3_endpoint => "s3-ap-southeast-1.amazonaws.com"
       }
   }
+
+  Firebase.base_uri = "https://ccq-notifications.firebaseio.com/"
 end

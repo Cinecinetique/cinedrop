@@ -33,4 +33,6 @@ Cinecinetique::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  Firebase.base_uri = "https://ccq-test-notifications.firebaseio.com/"
 end
