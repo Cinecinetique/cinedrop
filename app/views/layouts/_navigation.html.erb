@@ -8,8 +8,9 @@
     </li>
   </ul>
   <div ng-controller="NavigationCtrl">
+
   <p class="navbar-text pull-right">
-    Notifications:  <%= link_to "#", '#', :class => "badge badge-warning", "data-placement" => "bottom", "data-title" => "Changes", "bs-popover" => "'popover.html'" %> &nbsp;&nbsp;|&nbsp;
+    Notifications: <%= link_to "{{nb_changes}}", '#', :class => "badge badge-warning", "data-placement" => "bottom", "data-title" => "Changes", "bs-popover" => "'popover.html'" %> &nbsp;&nbsp;|&nbsp;
   <% if session[:current_project] && Project.ids.include?(session[:current_project]) %>
      Current project:&nbsp; <%= Project.find(session[:current_project]).name %> 
   <% end %>

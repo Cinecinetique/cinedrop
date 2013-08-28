@@ -1,8 +1,10 @@
 app = angular.module("CineCinetique", ["ngResource", "ng-rails-csrf", "$strap.directives", "firebase"])
 
-fbUrl = "https://ccq-notifications.firebaseio.com/changes"
+changesUrl = "https://ccq-notifications.firebaseio.com/changes"
+countUrl = "https://ccq-notifications.firebaseio.com/changes_count"
 
 
 @NavigationCtrl =  ($scope, angularFire) ->
-	promise = angularFire(fbUrl, $scope, 'items', {});
-	
+
+	changes_promise = angularFire(changesUrl, $scope, 'items', {});
+	count_promise = angularFire(countUrl, $scope, 'nb_changes', 1);

@@ -96,7 +96,11 @@ class Document < ActiveRecord::Base
   end
 
   def push_to_firebase
-    response = Firebase.push("changes", { :name => name, :updated_at => updated_at, :changed_by => User.find(changed_by).name })
+    previous_changes_count = Firebase.get("changes_count")
+    if previous_changes_count.success? 
+      push_response = Firebase.push("changes", { :name => name, :updated_at => updated_at, :changed_by => User.find(changed_by).name })
+      set_response = Firebase.set("changes_count", previous_changes_count.raw_body.to_i + 1) if push_response.success?
+    end
     true
   end
 
