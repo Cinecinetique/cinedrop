@@ -10,8 +10,6 @@ class DocumentsController < ApplicationController
   # GET /documents/1
   # GET /documents/1.json
   def show
-
-    logger.info "document file name: #{@document.data_file_name}"
   end
 
   # GET /documents/new

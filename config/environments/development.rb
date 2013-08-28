@@ -30,7 +30,7 @@ Cinecinetique::Application.configure do
   #AWS.config(:logger => Rails.logger, :http_wire_trace => true, :log_level => :debug)
 
   config.paperclip_defaults = {
-      :storage => :s3,
+      :storage => Cinecinetique::STORAGE,
       :s3_permissions => :bucket_owner_full_control,
       :s3_credentials => {
         :access_key_id => ENV['AWS_ACCESS_KEY_ID'],

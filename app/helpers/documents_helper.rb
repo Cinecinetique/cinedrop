@@ -2,10 +2,12 @@ module DocumentsHelper
 	require 'cgi'
 	
 	def signed_url_for(style, document)
-		s3 = AWS::S3.new()
-		if s3.buckets[document.project.bucket_name].exists?
+		if Cinecinetique::STORAGE == :s3
+			s3 = AWS::S3.new()
 			url = s3.buckets[document.project.bucket_name].objects[document.data.path(style)[1..-1]].url_for(:read)
 			url.to_s
+		else
+			document.data.url(style)
 		end
 	end
 

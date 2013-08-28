@@ -4,8 +4,5 @@ fbUrl = "https://ccq-notifications.firebaseio.com/changes"
 
 
 @NavigationCtrl =  ($scope, angularFire) ->
-	$scope.popover = {
-		"title": "Changed documents"
-	}
 	promise = angularFire(fbUrl, $scope, 'items', {});
 	
