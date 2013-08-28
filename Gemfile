@@ -61,6 +61,7 @@ gem 'vimeo'
 gem 'angularjs-rails'
 gem 'ng-rails-csrf'
 gem 'firebase'
+gem 'thin' 
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

@@ -1,4 +1,7 @@
+require 'firebase'
+
 class Document < ActiveRecord::Base
+
   HOST_TYPES = [ "vimeo", "youtube" ]
       belongs_to :project
       validates :name, :presence => true
@@ -11,7 +14,7 @@ class Document < ActiveRecord::Base
                         :bucket => proc { |attachment| attachment.instance.project.bucket_name }
       validates_attachment :data
       before_post_process :media?
-      #after_save :push_to_firebase
+      after_save :push_to_firebase
 
 	def video?
       [ 'application/x-mp4',
@@ -93,7 +96,7 @@ class Document < ActiveRecord::Base
   end
 
   def push_to_firebase
-    response = Firebase.push("changes", { :name => self.name, :updated_at => self.updated_at })
+    response = Firebase.push("changes", { :name => name, :updated_at => updated_at, :changed_by => User.find(changed_by).name })
     true
   end
 

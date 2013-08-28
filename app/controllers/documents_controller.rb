@@ -53,6 +53,7 @@ class DocumentsController < ApplicationController
     end
 
     @document.created_by = session[:user_id]
+    @document.changed_by = session[:user_id]
 
     respond_to do |format|
       if @document.save
@@ -69,6 +70,8 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
 
+    @document.changed_by = session[:user_id]
+
     respond_to do |format|
       if @document.update(document_params(@document.class.to_s))
         format.html { redirect_to document_url(@document) }
@@ -83,6 +86,8 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
+
+    logger.info "document deleted by #{session[:user_id]}"
     project = @document.project
     @document.destroy
     respond_to do |format|
