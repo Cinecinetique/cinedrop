@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+<fieldset>
   <div class="field">
     <%= f.label :name %>
     <div class="input-prepend"><span class="add-on"><i class="icon-file"></i></span><%= f.text_field :name %></div>
@@ -30,34 +31,48 @@
     <%= f.label :page %>
     <div class="input-prepend"><span class="add-on"><i class="icon-book"></i></span><%= f.text_field :page %></div>
   </div>
-
-  <fieldset>
-  <legend class="text-info">Browse your computer to upload a file</legend>
-  <div class="field">
-    <%= f.label :data %>
-    <%= f.file_field :data %>
-  </div>
-  <span class="help-block">For this prototype, maximum file size is 40 MB</span>
   </fieldset>
 
-  <fieldset>
-  <legend class="text-info">Or use the url of a file directly</legend>
+ <!--  <div class="" id="DataSelectionModal">
+          <div class="modal-body"> -->
+            <div class="well">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#upload" data-toggle="tab">Upload from Computer</a></li>
+                  <li><a href="#hosted" data-toggle="tab">Add external video link</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                
+                        <div class="tab-pane active in" id="upload">
 
-  <div class="field">
-    <%= f.label :data_host %><br>
-    <%= f.select :data_host, Video::HOST_TYPES,
-prompt: 'Select a video hosting', include_blank: true %>
-  </div>
-  </span>
-  <div class="field">
-    <%= f.label :data_ref %><br>
-    <%= f.text_field :data_ref %>
-  </div>
-  <span class="help-block">e.g: http://www.youtube.com/watch?v=[<b>Data ref</b>]</span>
-  <span class="help-block">or http://vimeo.com/[<b>Data ref</b>]
+                            <fieldset>
+                            <div class="field">
+                              <%= f.label :data %>
+                              <%= f.file_field :data %>
+                            </div>
+                            </fieldset>
+            
+                        </div>
 
+                        <div class="tab-pane fade" id="hosted">
+                              <fieldset>
 
-</fieldset>
+                              <div class="field">
+                                <%= f.label :data_host %><br>
+                                <%= f.select :data_host, Video::HOST_TYPES,
+                            prompt: 'Select a video hosting', include_blank: true %>
+                              </div>
+                              </span>
+                              <div class="field">
+                                <%= f.label :data_ref %><br>
+                                <%= f.text_field :data_ref %>
+                              </div>
+                              <span class="help-block">e.g: http://www.youtube.com/watch?v=[<b>Data ref</b>]</span>
+                              <span class="help-block">or http://vimeo.com/[<b>Data ref</b>]
+                            </fieldset>
+                        </div>
+                </div>
+            </div>
+
 
   <iframe id="feedback" name="feedback" title="empty" style="display:none" data-url="<%= heartbeat_documents_path %>" tabindex="-1" width="0" height="0" seamless></iframe>
   <div class="actions">
