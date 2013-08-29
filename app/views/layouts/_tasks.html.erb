@@ -2,7 +2,7 @@
 	<script type="text/javascript">
 	var user_id = <%= @user.id %>
 	</script>
-	<span>{{remaining_tasks().length}} of {{tasks.length}} remaining</span>
+	<span>{{remaining_tasks_count()}} of {{tasks.length}} remaining</span>
 	[ <a href="" ng-click="archive()">archive</a> ]
 	<ul class="unstyled">
 		<li ng-repeat="task in tasks">

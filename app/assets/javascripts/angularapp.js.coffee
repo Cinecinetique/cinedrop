@@ -23,24 +23,24 @@ tasksUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/user_ta
 
 @TasksCtrl = ($scope, angularFire) ->
 	tasks_promise = angularFire("#{tasksUrls['development']}#{user_id}/", $scope, 'tasks', []);
+	tasks_promise.then ->
+		$scope.returnTotalTasks = ->
+		    return $scope.tasks.length
 
-	$scope.returnTotalTasks = ->
-	    return $scope.tasks.length
+		$scope.remaining_tasks_count = -> 
+		    remaining_tasks = [] 
 
-	$scope.remaining_tasks = -> 
-	    remaining_tasks = []
+		    for task in $scope.tasks
+		        remaining_tasks.push task if !task.done
+		    remaining_tasks.length
 
-	    for task in $scope.tasks
-	        remaining_tasks.push task if !task.done
-	    remaining_tasks
+		    
+		$scope.addNewTask = ->
+		    if $scope.newTaskText.length
+		        $scope.tasks.push {text: $scope.newTaskText, done: false}
+		        $scope.newTaskText = ''
 
-	    
-	$scope.addNewTask = ->
-	    if $scope.newTaskText.length
-	        $scope.tasks.push {text: $scope.newTaskText, done: false}
-	        $scope.newTaskText = ''
-
-	$scope.archive = () ->
-	    filtered_tasks = $scope.remaining_tasks()
-	    $scope.tasks = filtered_tasks
+		$scope.archive = () ->
+		    filtered_tasks = $scope.remaining_tasks()
+		    $scope.tasks = filtered_tasks
 
