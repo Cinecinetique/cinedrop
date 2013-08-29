@@ -11,6 +11,9 @@ countUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/changes
 tasksUrls = {}
 tasksUrls["development"] = "https://ccq-notifications.firebaseio.com/user_tasks/"
 tasksUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/user_tasks/"
+remindersUrls = {}
+remindersUrls["development"] = "https://ccq-notifications.firebaseio.com/reminders/"
+remindersUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/reminders/"
 
 
 @NavigationCtrl =  ($scope, angularFire) ->
@@ -22,17 +25,20 @@ tasksUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/user_ta
 		$scope.nb_changes = 0
 
 @TasksCtrl = ($scope, angularFire) ->
-	tasks_promise = angularFire("#{tasksUrls['development']}#{user_id}/", $scope, 'tasks', []);
+	tasks_promise = switch 
+		when mode == 'user_tasks' then angularFire("#{tasksUrls['development']}#{remote_id}/", $scope, 'tasks', [])
+		when mode == 'reminders' then angularFire("#{remindersUrls['development']}#{remote_id}/", $scope, 'tasks', [])
+
 	tasks_promise.then ->
 		$scope.returnTotalTasks = ->
 		    return $scope.tasks.length
 
-		$scope.remaining_tasks_count = -> 
+		$scope.remaining_tasks = -> 
 		    remaining_tasks = [] 
 
 		    for task in $scope.tasks
 		        remaining_tasks.push task if !task.done
-		    remaining_tasks.length
+		    remaining_tasks
 
 		    
 		$scope.addNewTask = ->

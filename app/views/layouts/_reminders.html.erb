@@ -1,7 +1,7 @@
 <div class="well" ng-controller="TasksCtrl">
 	<script type="text/javascript">
-	var remote_id = <%= @user.id %>
-	var mode = "user_tasks"
+	var remote_id = <%= @document.id %>
+	var mode = "reminders"
 	</script>
 	<span>{{remaining_tasks().length}} of {{tasks.length}} remaining</span>
 	[ <a href="" ng-click="archive()">archive</a> ]
