@@ -12,7 +12,7 @@
   <p class="navbar-text pull-right">
     Notifications: <%= link_to "{{nb_changes}}", '#', :class => "badge badge-warning", "data-placement" => "bottom", "data-title" => "Changes", "bs-popover" => "'popover.html'" %> &nbsp;&nbsp;|&nbsp;
   <% if session[:current_project] && Project.ids.include?(session[:current_project]) %>
-     Current project:&nbsp; <%= Project.find(session[:current_project]).name %> 
+     Current project:&nbsp; <%= link_to Project.find(session[:current_project]).name, project_path(session[:current_project]) %> 
   <% end %>
      &nbsp;&nbsp;|&nbsp; 
   <% if session[:user_id] && User.ids.include?(session[:user_id])%>
