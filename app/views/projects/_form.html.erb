@@ -21,7 +21,8 @@
 
   <fieldset>
     <legend>Your role in the project</legend>
-    <%= f.fields_for :workers, @project.workers.where("user_id = #{@project.created_by}") do |builder| %>
+    <% if @project.workers.where("user_id = #{@project.created_by}").count > 0 %>
+      <%= f.fields_for :workers, @project.workers.where("user_id = #{@project.created_by}") do |builder| %>
         <div class="field">
           <%= builder.label :role %><br />
           <%= builder.text_field :role %>
@@ -31,9 +32,23 @@
           <%= builder.label :department %><br />
           <%= builder.text_field :department %>
         </div>
+          <%= builder.hidden_field :user_id, :value => "#{session[:user_id]}" %>
+      <% end %>
+    <% else %>
+      <%= f.fields_for :workers, @project.workers do |builder| %>
+        <div class="field">
+          <%= builder.label :role %><br />
+          <%= builder.text_field :role %>
+        </div>
 
+        <div class="field">
+          <%= builder.label :department %><br />
+          <%= builder.text_field :department %>
+        </div>
         <%= builder.hidden_field :user_id, :value => "#{session[:user_id]}" %>
     <% end %>
+    <% end %>
+
   </fieldset>
 
   <div class="actions">
