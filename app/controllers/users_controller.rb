@@ -5,8 +5,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @workers = Worker.where("project_id = #{session[:current_project]}")
-    @users = @workers.map { |w| w.user}
+    if session[:current_project] && Project.ids.include?(session[:current_project])
+      @workers = Worker.where("project_id = #{session[:current_project]}")
+      @users = @workers.map { |w| w.user}
+    else
+      @workers = []
+      @users = []
+    end
   end
 
   # GET /users/1
