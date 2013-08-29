@@ -1,10 +1,21 @@
 <p id="notice"><%= notice %></p>
+<h3>User Info</h3>
+<table class="table">
+	<thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% if session[:current_project] and Project.ids.include?(session[:current_project]) %>
+	  <tr><td> <%= mail_to @user.email, @user.name %></td><td><%= @user.position(session[:current_project]).role %></td><td><%= @user.position(session[:current_project]).department %></td></tr>
+	<% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
+<h3>Tasks List</h3>
 <%= render 'layouts/tasks' %> 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

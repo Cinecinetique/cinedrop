@@ -4,7 +4,7 @@
 </tr>
 <% Worker.where("project_id = #{session[:current_project]}").each do |w| %>
 <tr>
-	<td><%=w.user.name %> (<%= w.department %>)</td><td><a class="btn btn-link" href="#" title="Assign a task"><i class="icon-hand-right"></i></a></td>
+	<td><%=w.user.name %> (<%= w.department %>)</td><td><a class="btn btn-link" href="<%= user_path(w.user.id) %>" title="Show User info; See tasks list"><i class="icon-hand-right"></i></a></td>
 </tr>
 <% end %>
 <tr><td><%= link_to 'Manage members', users_path, :class =>"btn btn-link" %></td><td><%= link_to 'Add member', new_user_path, :class =>"btn btn-link" %></td></tr>

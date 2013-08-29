@@ -22,7 +22,9 @@ class User < ActiveRecord::Base
   end
 
   def position(project_id)
-    Worker.where("user_id = #{id} and project_id = #{project_id}").first
+    if project_id
+      Worker.where("user_id = #{id} and project_id = #{project_id}").first
+    end
   end
 
   def can_admin?
