@@ -8,6 +8,10 @@ countUrls = {}
 countUrls["development"] = "https://ccq-notifications.firebaseio.com/changes_count"
 countUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/changes_count"
 
+tasksUrls = {}
+tasksUrls["development"] = "https://ccq-notifications.firebaseio.com/user_tasks/"
+tasksUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/user_tasks/"
+
 
 @NavigationCtrl =  ($scope, angularFire) ->
 	changes_promise = angularFire(changesUrls[rails_env], $scope, 'items', {});
@@ -18,32 +22,25 @@ countUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/changes
 		$scope.nb_changes = 0
 
 @TasksCtrl = ($scope, angularFire) ->
-        console.log ' * Tasks Controller loaded *'
-        $scope.tasks = [
-            {text: 'walk the dog', done: false},
-            {text: 'feed the cat', done: false}
-        ];
+	tasks_promise = angularFire("#{tasksUrls['development']}#{user_id}/", $scope, 'tasks', []);
 
-        $scope.returnTotalTasks = ->
-            console.log ' * returnTotalTasks *'
-            return $scope.tasks.length
+	$scope.returnTotalTasks = ->
+	    return $scope.tasks.length
 
-        $scope.remaining_tasks = -> 
-            remaining_tasks = []
+	$scope.remaining_tasks = -> 
+	    remaining_tasks = []
 
-            for task in $scope.tasks
-                remaining_tasks.push task if !task.done
-            remaining_tasks
+	    for task in $scope.tasks
+	        remaining_tasks.push task if !task.done
+	    remaining_tasks
 
-            
-        $scope.addNewTask = ->
-            console.log ' * addNewTask *'
-            if $scope.newTaskText.length
-                $scope.tasks.push {text: $scope.newTaskText, done: false}
-                $scope.newTaskText = ''
+	    
+	$scope.addNewTask = ->
+	    if $scope.newTaskText.length
+	        $scope.tasks.push {text: $scope.newTaskText, done: false}
+	        $scope.newTaskText = ''
 
-        $scope.archive = () ->
-            console.log ' * clearFinishedTasks *'
-            filtered_tasks = $scope.remaining_tasks()
-            $scope.tasks = filtered_tasks
+	$scope.archive = () ->
+	    filtered_tasks = $scope.remaining_tasks()
+	    $scope.tasks = filtered_tasks
 

@@ -1,4 +1,7 @@
 <div class="well" ng-controller="TasksCtrl">
+	<script type="text/javascript">
+	var user_id = <%= @user.id %>
+	</script>
 	<span>{{remaining_tasks().length}} of {{tasks.length}} remaining</span>
 	[ <a href="" ng-click="archive()">archive</a> ]
 	<ul class="unstyled">
