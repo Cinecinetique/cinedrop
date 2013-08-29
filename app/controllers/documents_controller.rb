@@ -103,9 +103,9 @@ class DocumentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params(kind = nil)
       if kind
-        params.require(kind.downcase.to_sym).permit(:name, :project_id, :data, :scene_number,:data_ref, :data_host)
+        params.require(kind.downcase.to_sym).permit(:name, :project_id, :data, :scene_number,:data_ref, :data_host, :location, :page)
       else
-        params.require(:document).permit(:name, :project_id, :data, :scene_number,:data_ref, :data_host)
+        params.require(:document).permit(:name, :project_id, :data, :scene_number,:data_ref, :data_host, :location, :page)
       end
     end
 end

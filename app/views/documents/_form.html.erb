@@ -12,13 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :name %>
+    <div class="input-prepend"><span class="add-on"><i class="icon-file"></i></span><%= f.text_field :name %></div>
+  </div>
+
+  <div class="field">
+    <%= f.label "Scene number" %>
+    <div class="input-prepend"><span class="add-on"><i class="icon-facetime-video"></i></span><%= f.text_field :scene_number %></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <div class="input-prepend"><span class="add-on"><i class="icon-globe"></i></span><%= f.text_field :location %></div>
   </div>
 
     <div class="field">
-    <%= f.label "Scene number" %><br>
-    <%= f.text_field :scene_number %>
+    <%= f.label :page %>
+    <div class="input-prepend"><span class="add-on"><i class="icon-book"></i></span><%= f.text_field :page %></div>
   </div>
 
   <fieldset>

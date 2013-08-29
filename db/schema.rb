@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130828035434) do
+ActiveRecord::Schema.define(version: 20130829105117) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20130828035434) do
     t.string   "data_ref"
     t.string   "data_host"
     t.integer  "changed_by"
+    t.string   "location"
+    t.string   "page"
   end
 
   add_index "documents", ["project_id"], name: "index_documents_on_project_id"
