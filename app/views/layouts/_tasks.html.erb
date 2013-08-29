@@ -1,0 +1,14 @@
+<div class="well" ng-controller="TasksCtrl">
+	<span>{{remaining_tasks().length}} of {{tasks.length}} remaining</span>
+	[ <a href="" ng-click="archive()">archive</a> ]
+	<ul class="unstyled">
+		<li ng-repeat="task in tasks">
+			<input type="checkbox" ng-model="task.done">
+			<span class="done-{{task.done}}">{{task.text}}</span>
+		</li>
+	</ul>
+	<form ng-submit="addNewTask()">
+		<input type="text" ng-model="newTaskText" size="30"placeholder="add new task here">
+		<input class="btn-primary" type="submit" value="add">
+	</form>
+</div>
