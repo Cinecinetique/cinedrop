@@ -3,14 +3,12 @@ require 'aws/s3'
 
 class ProjectsControllerTest < ActionController::TestCase
   setup do
-    sleep 1
     @project = projects(:one)
     @project.created_by = users(:two).id
-    @project.send(:create_bucket)
   end
 
   teardown do
-    cleanup_buckets("#{Rails.env}-#{users(:two).id}-#{@project.name.parameterize}")
+   @project = nil
   end
 
 
