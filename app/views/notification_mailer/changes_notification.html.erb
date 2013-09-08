@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+Dear user,
+
+At <%= @document.updated_at.to_s %>
+
+The document <%= @document.name %> has been changed by <%= User.find(@document.changed_by).name %>.
+
+You can view the document  <%= link_to "here", document_url(@document.id) %> 
+
+
+<hr/>
+This is an automated email, please do not reply
+
+
+  </body>
+</html>

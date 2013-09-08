@@ -35,4 +35,6 @@ Cinecinetique::Application.configure do
   config.active_support.deprecation = :stderr
 
   Firebase.base_uri = "https://ccq-test-notifications.firebaseio.com/"
+
+  default_url_options[:host] = "localhost:3000"
 end

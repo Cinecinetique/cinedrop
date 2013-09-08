@@ -4,6 +4,7 @@ class DocumentsControllerTest < ActionController::TestCase
   setup do
     @document = documents(:one)
     @project = projects(:one)
+    @user = users(:one)
   end
 
 
@@ -45,7 +46,7 @@ class DocumentsControllerTest < ActionController::TestCase
     image = fixture_file_upload 'sample.jpg'
     patch :update, id: @document, document: { scene_number: @document.scene_number, 
                                               name: @document.name,
-                                              data: image }
+                                              data: image}
     assert_redirected_to document_url(@document)
   end
 

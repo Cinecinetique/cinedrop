@@ -40,5 +40,17 @@ Cinecinetique::Application.configure do
       }
   }
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'email-smtp.us-east-1.amazonaws.com',
+    port:                 465,
+    domain:               'cinecinetique.com',
+    user_name:            ENV['SES_USERNAME'],
+    password:             ENV['SES_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+
   Firebase.base_uri = "https://ccq-notifications.firebaseio.com/"
+
+  default_url_options[:host] = "localhost:3000"
 end
