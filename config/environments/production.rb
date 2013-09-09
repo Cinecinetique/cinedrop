@@ -101,7 +101,7 @@ Cinecinetique::Application.configure do
     authentication:       'plain',
     enable_starttls_auto: true  }
 
-    default_url_options[:host] = "www.cinecinetique.com"
+    default_url_options[:host] = "http://ccq-test.elasticbeanstalk.com"
 
 
   Firebase.base_uri = "https://ccq-prod-notifications.firebaseio.com/"

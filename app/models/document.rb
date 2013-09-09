@@ -106,7 +106,11 @@ class Document < ActiveRecord::Base
 
   def notify_users
     project.team.each do |user|
-      NotificationMailer.changes_notification(self, user).deliver
+      begin
+        NotificationMailer.changes_notification(self, user).deliver
+      rescue Exception => ex
+        Rails.logger.error("Error when sending email to #{user.email} for document #{id}: #{ex}")
+      end
     end
 
     true
