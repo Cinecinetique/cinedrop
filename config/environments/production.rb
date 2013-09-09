@@ -93,15 +93,15 @@ Cinecinetique::Application.configure do
   ses_credentials = YAML.load_file("/tmp/ses_credentials.yml")
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'email-smtp.us-east-1.amazonaws.com',
-    port:                 465,
-    domain:               'cinecinetique.com',
-    user_name:            ses_credentials['SES_USERNAME'],
-    password:             ses_credentials['SES_PASSWORD'],
-    authentication:       'plain',
-    enable_starttls_auto: true  }
+    :address =>             'email-smtp.us-east-1.amazonaws.com',
+    :port =>                587,
+    :domain =>              'cinecinetique.com',
+    :user_name =>          ses_credentials['SES_USERNAME'],
+    :password =>            ses_credentials['SES_PASSWORD'],
+    :authentication =>      :login,
+    :enable_starttls_auto => true  }
 
-    default_url_options[:host] = "http://ccq-test.elasticbeanstalk.com"
+    default_url_options[:host] = "https://www.cinecinetique.com"
 
 
   Firebase.base_uri = "https://ccq-prod-notifications.firebaseio.com/"
