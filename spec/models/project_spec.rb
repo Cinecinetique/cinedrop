@@ -15,13 +15,6 @@ describe Project, "When a new project is created" do
 	  @parameters = nil
 	end
 
-	# after(:all) do
-	#   s3 = AWS::S3.new
-	#   bucket_name_on_s3 = s3.buckets["#{Rails.env}-#{User.find_by(name: "Nathan Bar").id}-the-eternal-xyz"]
-	# 	if bucket_name_on_s3.exists?
-	# 		bucket_name_on_s3.delete
-	# 	end
-	# end
 
 	it "should be valid if name is unique" do
 
