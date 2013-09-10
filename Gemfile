@@ -63,6 +63,8 @@ gem 'ng-rails-csrf'
 gem 'firebase'
 gem 'thin' 
 
+gem 'acts_as_list'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'mocha', :require => false

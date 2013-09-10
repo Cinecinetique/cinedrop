@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
 	has_many :documents
+	has_many :scenes,  ->  { order "position" }, inverse_of: :project
 	has_many :workers, dependent: :destroy
 	before_create :create_bucket
 	validates :name, :uniqueness => true

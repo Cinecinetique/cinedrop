@@ -1,5 +1,7 @@
 Cinecinetique::Application.routes.draw do
 
+  resources :scenes
+
   resources :projects
 
   controller :sessions do

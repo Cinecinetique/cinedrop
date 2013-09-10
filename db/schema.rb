@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130829105117) do
+ActiveRecord::Schema.define(version: 20130910005928) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -54,6 +54,19 @@ ActiveRecord::Schema.define(version: 20130829105117) do
     t.datetime "updated_at"
     t.integer  "created_by"
   end
+
+  create_table "scenes", force: true do |t|
+    t.integer  "project_id"
+    t.string   "script_story"
+    t.string   "script_video"
+    t.string   "script_audio"
+    t.string   "slugline"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scenes", ["project_id"], name: "index_scenes_on_project_id"
 
   create_table "sessions", force: true do |t|
     t.string   "new"

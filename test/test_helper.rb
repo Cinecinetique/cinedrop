@@ -26,14 +26,5 @@ class ActiveSupport::TestCase
   def setup
   	login_as :one if defined? session
     session[:current_project] = projects(:one).id
-    # AWS.config(
-    #     :access_key_id => 'anything',
-    #     :secret_access_key => 'anything',
-    #     :s3_endpoint => 'localhost',
-    #     :s3_hostname => 'localhost',
-    #     :s3_port => 4567,
-    #     :use_ssl => false,
-    #     :http_wire_trace => true
-    # )
   end
 end

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @scene.project.name %>
+</p>
+
+<p>
+  <strong>Script story:</strong>
+  <%= @scene.script_story %>
+</p>
+
+<p>
+  <strong>Script video:</strong>
+  <%= @scene.script_video %>
+</p>
+
+<p>
+  <strong>Script audio:</strong>
+  <%= @scene.script_audio %>
+</p>
+
+<p>
+  <strong>Slugline:</strong>
+  <%= @scene.slugline %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @scene.position %>
+</p>
+
+<%= link_to 'Edit', edit_scene_path(@scene) %> |
+<%= link_to 'Back', scenes_path %>
