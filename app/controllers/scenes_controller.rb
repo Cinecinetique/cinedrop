@@ -1,10 +1,10 @@
 class ScenesController < ApplicationController
-  before_action :set_scene, only: [:show, :edit, :update, :destroy]
+  before_action :set_scene, only: [:show, :edit, :update, :destroy, :sort]
 
   # GET /scenes
   # GET /scenes.json
   def index
-    @scenes = Scene.where("project_id = #{session[:current_project]}")
+    @scenes = Scene.where("project_id = #{session[:current_project]}").order("position")
     @project = Project.find(session[:current_project])
   end
 
@@ -61,6 +61,14 @@ class ScenesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def sort
+    @scene.update(scene_params)
+
+    # this action will be called via ajax
+    render nothing: true
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

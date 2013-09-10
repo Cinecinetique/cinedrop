@@ -6,7 +6,7 @@
 <tr><td>Slug:</td><td><%= @project.slug %></td></tr>
 </table>
 
-<table class="table">
+<table class="table" id="sortable" data-update_url="/sort">
   <thead>
     <tr>
       <th>VIDEO</th>
@@ -18,7 +18,7 @@
 
   <tbody>
     <% @scenes.each do |scene| %>
-      <tr>
+      <tr class="item" data-item_id="<%= scene.id %>">
         <td><%= scene.script_video.upcase %></td>
         <td><%= scene.script_audio.upcase %></td>
         <td class="hidden-print"><%= link_to 'Edit', edit_scene_path(scene),  :class => "btn btn-mini btn-primary" %></td>

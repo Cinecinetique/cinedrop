@@ -64,6 +64,7 @@ gem 'firebase'
 gem 'thin' 
 
 gem 'acts_as_list'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

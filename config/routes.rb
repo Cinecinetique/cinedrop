@@ -1,5 +1,10 @@
 Cinecinetique::Application.routes.draw do
 
+
+  controller :scenes do
+    post 'sort' => :sort
+  end
+
   resources :scenes
 
   resources :projects
