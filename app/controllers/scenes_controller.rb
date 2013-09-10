@@ -4,7 +4,8 @@ class ScenesController < ApplicationController
   # GET /scenes
   # GET /scenes.json
   def index
-    @scenes = Scene.all
+    @scenes = Scene.where("project_id = #{session[:current_project]}")
+    @project = Project.find(session[:current_project])
   end
 
   # GET /scenes/1
@@ -28,7 +29,7 @@ class ScenesController < ApplicationController
 
     respond_to do |format|
       if @scene.save
-        format.html { redirect_to @scene, notice: 'Scene was successfully created.' }
+        format.html { redirect_to scenes_path, notice: 'Scene was successfully created.' }
         format.json { render action: 'show', status: :created, location: @scene }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class ScenesController < ApplicationController
   def update
     respond_to do |format|
       if @scene.update(scene_params)
-        format.html { redirect_to @scene, notice: 'Scene was successfully updated.' }
+        format.html { redirect_to scenes_path, notice: 'Scene was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -1,15 +1,16 @@
-<h1>Listing scenes</h1>
+<h1>News Broadcast Script</h1>
 
-<table>
+<table class="table">
+<tr><td>Project title:</td><td><%= @project.name %></td></tr>
+<tr><td>Project date:</td><td><%= @project.date %></td></tr>
+<tr><td>Slug:</td><td><%= @project.slug %></td></tr>
+</table>
+
+<table class="table">
   <thead>
     <tr>
-      <th>Project</th>
-      <th>Script story</th>
-      <th>Script video</th>
-      <th>Script audio</th>
-      <th>Slugline</th>
-      <th>Position</th>
-      <th></th>
+      <th>VIDEO</th>
+      <th>AUDIO</th>
       <th></th>
       <th></th>
     </tr>
@@ -18,15 +19,10 @@
   <tbody>
     <% @scenes.each do |scene| %>
       <tr>
-        <td><%= scene.project.name %></td>
-        <td><%= scene.script_story %></td>
-        <td><%= scene.script_video %></td>
-        <td><%= scene.script_audio %></td>
-        <td><%= scene.slugline %></td>
-        <td><%= scene.position %></td>
-        <td><%= link_to 'Show', scene %></td>
-        <td><%= link_to 'Edit', edit_scene_path(scene) %></td>
-        <td><%= link_to 'Destroy', scene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= scene.script_video.upcase %></td>
+        <td><%= scene.script_audio.upcase %></td>
+        <td><%= link_to 'Edit', edit_scene_path(scene),  :class => "btn btn-mini btn-primary" %></td>
+        <td><%= link_to 'Del', scene, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +30,7 @@
 
 <br>
 
-<%= link_to 'New Scene', new_scene_path %>
+<%= link_to 'Change Order', new_scene_path %> |
+<%= link_to 'New Scene', new_scene_path %> | 
+<%= link_to 'Print Script', new_scene_path %> 
+
