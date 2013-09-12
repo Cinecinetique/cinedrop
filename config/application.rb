@@ -22,5 +22,9 @@ module Cinecinetique
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     #config.action_controller.include_all_helpers = false
+    config.generators do |g|
+           g.test_framework  :rspec, :fixture => true, :views => false
+           g.integration_tool :rspec, :fixture => true, :views => true
+    end
   end
 end

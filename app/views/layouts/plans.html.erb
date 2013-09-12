@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="Cinecinetique">
+<head>
+  <title>Cinecinetique - Empowering Film and Video Producers</title>
+  <%= stylesheet_link_tag    "application", media: "all"  %>
+  <%= stylesheet_link_tag params[:controller], media: "all"  %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript" src="//cdn.sublimevideo.net/js/jmlda1xc.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/0.7.4/angular-strap.min.js"></script>
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angularFire/0.2.0/angularfire.min.js"></script>
+  <script type="text/javascript">
+    var rails_env = '<%= Rails.env %>';
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	
+
+	 <header class="navbar navbar-fixed-top navbar-inverse hidden-print">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render 'layouts/navigation' %>
+        </div>
+      </nav>
+    </header>
+
+
+
+    <main role="main">
+		<div class="container-fluid">
+			<div class="row-fluid">
+<%= yield %>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

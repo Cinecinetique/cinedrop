@@ -14,7 +14,8 @@ class Document < ActiveRecord::Base
                         :bucket => proc { |attachment| attachment.instance.project.bucket_name }
       validates_attachment :data
       before_post_process :media?
-      after_save :push_to_firebase, :notify_users
+      after_save :push_to_firebase
+      after_save :notify_users
 
 	def video?
       [ 'application/x-mp4',

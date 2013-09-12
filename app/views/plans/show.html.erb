@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @plan.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @plan.description %>
+</p>
+
+<p>
+  <strong>Features:</strong>
+  <%= @plan.features %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @plan.price %>
+</p>
+
+<p>
+  <strong>Trial period:</strong>
+  <%= @plan.trial_period %>
+</p>
+
+<p>
+  <strong>Paid instalments:</strong>
+  <%= @plan.paid_instalments %>
+</p>
+
+<p>
+  <strong>Is available:</strong>
+  <%= @plan.is_available %>
+</p>
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>

@@ -261,8 +261,8 @@ date}</string>
 			<integer>55</integer>
 			<key>Points</key>
 			<array>
-				<string>{429.00000768282467, 147.5}</string>
-				<string>{429.00000768282467, 186.5}</string>
+				<string>{429.03991995518356, 161.49999989594451}</string>
+				<string>{429.05563648171812, 186.5000137666525}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -291,7 +291,7 @@ date}</string>
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{374, 49}, {110, 14}}</string>
+					<string>{{374, 21}, {110, 14}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -327,7 +327,7 @@ date}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{374, 63}, {110, 84}}</string>
+					<string>{{374, 35}, {110, 126}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -361,7 +361,10 @@ description\
 features\
 price\
 trial_period\
-yearly_instalment}</string>
+yearly_instalment\
+available\
+max_projects\
+max_users}</string>
 						<key>VerticalPad</key>
 						<integer>0</integer>
 					</dict>
@@ -426,7 +429,7 @@ yearly_instalment}</string>
 			<key>Points</key>
 			<array>
 				<string>{428.99999556422006, 465.5}</string>
-				<string>{428.99999556422006, 285.5}</string>
+				<string>{428.99999556422006, 271.5}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -643,8 +646,8 @@ referrals}</string>
 			<integer>43</integer>
 			<key>Points</key>
 			<array>
-				<string>{313.49782296456647, 233.25966383534592}</string>
-				<string>{373.50137379801902, 238.87740417594759}</string>
+				<string>{313.49927609722533, 231.45102472813511}</string>
+				<string>{373.50014066733951, 234.68324324643814}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -744,7 +747,7 @@ referrals}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{374, 201}, {110, 84}}</string>
+					<string>{{374, 201}, {110, 70}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -773,8 +776,7 @@ referrals}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
 
-\f0\fs24 \cf0 max_projects\
-max_users\
+\f0\fs24 \cf0 \
 current_projects\
 current_users\
 start_date\
@@ -1025,7 +1027,7 @@ date}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-09-11 13:12:43 +0000</string>
+	<string>2013-09-12 09:19:03 +0000</string>
 	<key>Modifier</key>
 	<string>rija</string>
 	<key>NotesVisible</key>

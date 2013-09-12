@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130910074239) do
+ActiveRecord::Schema.define(version: 20130912115733) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -47,6 +47,22 @@ ActiveRecord::Schema.define(version: 20130910074239) do
 
   add_index "payments", ["subscription_id"], name: "index_payments_on_subscription_id"
   add_index "payments", ["worker_id"], name: "index_payments_on_worker_id"
+
+  create_table "plans", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "features"
+    t.float    "price"
+    t.integer  "trial_period"
+    t.integer  "paid_instalments"
+    t.boolean  "is_available"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "max_projects"
+    t.integer  "max_users"
+    t.integer  "position"
+    t.string   "call_to_action"
+  end
 
   create_table "projects", force: true do |t|
     t.string   "name"

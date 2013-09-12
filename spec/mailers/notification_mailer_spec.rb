@@ -7,11 +7,11 @@ describe NotificationMailer, "When a document has changed and email notification
 	  	@document.id = 68
   	  	@document.name = "The continuity log"
   	  	@document.updated_at = Time.now
-	  	user.expects(:email).returns("a@b.com")
+	  	user.should_receive(:email).and_return("a@b.com")
   	  	@creator = User.new
 	  	@creator.name = "The creator"
-	  	@document.expects(:changed_by).returns(234).twice # twice, because there are two views (html and text)
-	  	User.expects(:find).with(234).returns(@creator).twice
+	  	@document.should_receive(:changed_by).twice.and_return(234) # twice, because there are two views (html and text)
+	  	User.should_receive(:find).with(234).twice.and_return(@creator)
 		@mail  = NotificationMailer.changes_notification(@document, user)
 	end
 

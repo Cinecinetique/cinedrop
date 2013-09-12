@@ -1,0 +1,44 @@
+// Place all the styles related to the Plans controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+    height: 100%;
+    padding: 30px;
+    padding-top: 40px;
+    padding-bottom: 10px;
+  }
+
+.col {
+	margin-bottom: -99999px;
+	padding-bottom: 99999px;
+}
+
+.col-wrap {
+	overflow: hidden; 
+}
+
+.well { 
+  	position: relative;
+    height: 90%;
+    padding-bottom: 30%;
+
+}
+
+.prices { 
+	position: absolute; 
+	bottom: 10%; 
+	left: 25%; 
+	right: 10%; 
+}
+
+.buttons { 
+	position: absolute; 
+	bottom: 0; 
+	left: 25%; 
+	right: 10%; 
+}
+
+.message {
+    height: 10%;
+}
