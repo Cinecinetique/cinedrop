@@ -1,11 +1,14 @@
 <%= link_to "Cinecinetique - alpha", root_path, :class => 'brand' %>
 <ul class="nav">
 	<li>
-    <%= link_to('Statistics', documents_path, :method=>'delete') %>
-    </li>
-	<li>
-    <%= link_to('Community', documents_path, :method=>'delete') %>
-    </li>
+    <%= link_to('Community', documents_path, :method=>'get') %>
+  </li>
+  <li>
+    <%= link_to('Pricing', pricing_path, :method=>'get') %>
+  </li>
+  <li>
+    <%= link_to('Terms & Conditions', terms_path, :method=>'get') %>
+  </li>
   </ul>
   <div ng-controller="NavigationCtrl">
 

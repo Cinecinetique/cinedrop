@@ -5,6 +5,11 @@ Cinecinetique::Application.routes.draw do
     post 'sort' => :sort
   end
 
+  controller :static do
+    get 'pricing' => :pricing
+    get 'terms' => :terms
+  end
+
   resources :scenes
 
   resources :projects

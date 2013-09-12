@@ -1,0 +1,28 @@
+body {
+    padding: 30px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+	.well { 
+	  	position: relative;
+	    height: 90%;
+	}
+
+	.prices { 
+		position: absolute; 
+		bottom: 10%; 
+		left: 10%; 
+		right: 10%; 
+	}
+
+	.buttons { 
+		position: absolute; 
+		bottom: 0; 
+		left: 20%; 
+		right: 10%; 
+	}
+
+	.message {
+	    height: 10%;
+	}
