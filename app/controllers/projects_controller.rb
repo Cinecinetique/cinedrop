@@ -28,11 +28,12 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-
     @project.created_by = session[:user_id]
 
+    project_cycle = ProjectCycle.new(@project)
+
     respond_to do |format|
-      if @project.save
+      if project_cycle.create
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render action: 'show', status: :created, location: @project }
       else

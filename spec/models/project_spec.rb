@@ -34,6 +34,7 @@ describe Project, "When a new project is created" do
 	it "should knows how to create a S3 bucket in Singapore" do
 
 		project = Project.new(@parameters)
+		project_cycle = ProjectCycle.new(project)
 		fake_s3 = double('fake_s3')
 		buckets = double('buckets')
 		bucket_name_on_s3  = double('bucket_name_on_s3')
@@ -43,30 +44,10 @@ describe Project, "When a new project is created" do
 		AWS::S3::Bucket.stub(:new).and_return(bucket_name_on_s3)
 		bucket_name_on_s3.should_receive(:exists?).and_return(false)
 		buckets.should_receive(:create).with("#{Rails.env}-#{project.created_by}-the-eternal-xyz",{:location_constraint => "ap-southeast-1"}).and_return(true)
-		project.send(:create_bucket).should be_true	
+		project_cycle.send(:create_bucket).should be_true	
 
 	end
 
-	it "should create a S3 bucket before create" do
-		Project._create_callbacks.select { |cb| cb.kind.eql?(:before) }
-			.collect(&:filter)
-			.include?(:create_bucket)
-			.should be_true
-	end
-
-	it "should fail to save project if the bucket creation fails" do
-		project = Project.new(@parameters)
-		fake_s3 = double('fake_s3')
-		buckets = double('buckets')
-		bucket_name_on_s3  = double('bucket_name_on_s3')
-
-		AWS::S3.should_receive(:new).and_return(fake_s3)
-		fake_s3.should_receive(:buckets).and_return(buckets)
-		buckets.should_receive(:[]).and_return(bucket_name_on_s3)
-		AWS::S3::Bucket.stub(:new).and_return(bucket_name_on_s3)
-		bucket_name_on_s3.should_receive(:exists?).and_return(true)
-		project.send(:create_bucket).should be_false	
-	end
 
 
 end
