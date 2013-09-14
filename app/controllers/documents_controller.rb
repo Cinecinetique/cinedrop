@@ -53,8 +53,10 @@ class DocumentsController < ApplicationController
     @document.created_by = session[:user_id]
     @document.changed_by = session[:user_id]
 
+    document_cycle = DocumentCycle.new(@document)
+
     respond_to do |format|
-      if @document.save
+      if document_cycle.create
         format.html { redirect_to document_url(@document) }
         format.json { render action: 'show', status: :created, location: @document }
       else
@@ -69,9 +71,9 @@ class DocumentsController < ApplicationController
   def update
 
     @document.changed_by = session[:user_id]
-
+    document_cycle = DocumentCycle.new(@document)
     respond_to do |format|
-      if @document.update(document_params(@document.class.to_s))
+      if document_cycle.update(document_params(@document.class.to_s))
         format.html { redirect_to document_url(@document) }
         format.json { head :no_content }
       else

@@ -37,10 +37,7 @@ describe Document, "When a new document is created without file attachement" do
 		parameters = {
 			name: "a name",
 		}
-		changes_count.should_receive(:success?).and_return(false)
-		Firebase.should_receive(:get).with("changes_count").and_return(changes_count)
 		document = Document.new(parameters)
-		document.should_receive(:notify_users).and_return(true)
 		expect { document.save! }.to_not raise_error
 	end
 
@@ -69,10 +66,7 @@ describe Document, "When a new document is created without file attachement" do
 		expect { document.save! }.to raise_error(ActiveRecord::RecordInvalid)
 
 		parameters_ok.each do |parameter_ok|
-			changes_count.should_receive(:success?).and_return(false)
-			Firebase.should_receive(:get).with("changes_count").and_return(changes_count)
 			document = Document.new(parameter_ok)
-			document.should_receive(:notify_users).and_return(true)
 			expect { document.save! }.to_not raise_error
 		end
 	end
@@ -106,8 +100,8 @@ describe Document, "When the document changes" do
 			NotificationMailer.should_receive(:changes_notification).with(document,user_one).and_return(mail)
 			NotificationMailer.should_receive(:changes_notification).with(document,user_two).and_return(mail)
 			mail.should_receive(:deliver).twice
-
-			expect { document.save! }.to_not raise_error
+			document_cycle = DocumentCycle.new(document)
+			expect { document_cycle.create }.to_not raise_error
 		end
 	end
 end

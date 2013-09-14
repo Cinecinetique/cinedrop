@@ -14,8 +14,6 @@ class Document < ActiveRecord::Base
                         :bucket => proc { |attachment| attachment.instance.project.bucket_name }
       validates_attachment :data
       before_post_process :media?
-      after_save :push_to_firebase
-      after_save :notify_users
 
 	def video?
       [ 'application/x-mp4',
@@ -94,27 +92,6 @@ class Document < ActiveRecord::Base
 
   def to_partial_path
     'documents/document'
-  end
-
-  def push_to_firebase
-    previous_changes_count = Firebase.get("changes_count")
-    if previous_changes_count.success? 
-      push_response = Firebase.push("changes", { :name => name, :updated_at => updated_at, :changed_by => User.find(changed_by).name })
-      set_response = Firebase.set("changes_count", previous_changes_count.raw_body.to_i + 1) if push_response.success?
-    end
-    true
-  end
-
-  def notify_users
-    project.team.each do |user|
-      begin
-        NotificationMailer.changes_notification(self, user).deliver
-      rescue Exception => ex
-        Rails.logger.error("Error when sending email to #{user.email} for document #{id}: #{ex}")
-      end
-    end
-
-    true
   end
 
 
