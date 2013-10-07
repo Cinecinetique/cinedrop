@@ -11,6 +11,26 @@
 </head>
 <body>
 
+    <header class="navbar navbar-fixed-top navbar-inverse hidden-print">
+        <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Cinecinetique</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="https://docs.google.com/a/cinecinetique.com/forms/d/1U5dLBEPEr_LFN4isKcICBl3i2ujBUKkQb7FWNCtph2Y/viewform">Contact Us</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+        </div>
+    </header>
+    
 <%= yield %>
 
 <footer><%= render 'layouts/footer' %></footer>

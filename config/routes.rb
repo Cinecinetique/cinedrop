@@ -10,6 +10,7 @@ Cinecinetique::Application.routes.draw do
   controller :static do
     get 'pricing' => :pricing
     get 'terms' => :terms
+    get 'product' => :product
   end
 
   resources :scenes

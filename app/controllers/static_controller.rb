@@ -3,7 +3,7 @@ class StaticController < ApplicationController
 	def index       
     end
 
-    def pricing
+    def product
     end
 
     def terms
