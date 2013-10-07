@@ -10,9 +10,12 @@
 <tr><td><%= link_to 'Manage members', users_path, :class =>"btn btn-link" %></td><td><%= link_to 'Add member', new_user_path, :class =>"btn btn-link" %></td></tr>
 </table>
 
-<table class="table well table-striped">
-<tr><td span="2" class="nav-header">Files Inbox</td><td span="2"></td></tr>
-<tr><td span="2">Color grading work...</td><td><a class="btn btn-link" href="#" title="Assign a task"><i class="icon-plus-sign"></i></a></td><td><a class="btn btn-link" href="#" title="Import into project">Import</a></td></td>
-<tr><td span="2">Property descripti...</td><td><a class="btn btn-link" href="#" title="Assign a task"><i class="icon-plus-sign"></i></a></td><td><a class="btn btn-link" href="#" title="Import into project">Import</a></td><tr>
-</table>
-
+<div ng-controller="FileOutboxCtrl">
+	<table id="files-to-send" class="table well table-striped">
+	<tr><td span="2" class="nav-header">Files Outbox</td><td span="2"></td></tr>
+	<tr >
+	<td id="file_outbox_dropzone" droppable drop="handleDrop(item)">
+	</td>
+	</tr>
+	</table>
+</div>

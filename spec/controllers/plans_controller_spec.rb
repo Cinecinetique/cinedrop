@@ -34,7 +34,7 @@ describe PlansController do
     it "assigns all plans as @plans" do
       plan = Plan.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:plans).should eq([plan])
+      assigns(:plans).count.should eq(5)
     end
   end
 

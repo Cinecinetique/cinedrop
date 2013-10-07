@@ -1,22 +1,24 @@
-      <tr>
-      	<td><%= document.scene_number %>
+      <tr id="<%= "document_#{document.name.parameterize}" %>">
+      	<td><%= document.scene_number %></td>
+        <td id="<%= document.id %>" draggable>
         <% if document.video? || document.image? || document.pdf? %>
-          <td><%= image_tag signed_url_for(:thumb, document), :class => "img-thumbnail img-responsive" %></td>  
+          <%= image_tag signed_url_for(:thumb, document), :id => document.id, :class => "img-thumbnail img-responsive" %>  
         <% elsif document.xls? || document.xlsx? %>
-          <td><%= image_tag "/images/excel.png", :class => "img-thumbnail img-responsive" %></td>
+          <%= image_tag "/images/excel.png", :id => document.id, :class => "img-thumbnail img-responsive" %>
         <% elsif document.doc? || document.docx? %>
-          <td><%= image_tag "/images/word.png", :class => "img-thumbnail img-responsive" %></td>
+          <%= image_tag "/images/word.png", :id => document.id, :class => "img-thumbnail img-responsive" %>
         <% elsif document.audio? %>
-          <td><%= image_tag "/images/audio.png", :class => "img-thumbnail img-responsive" %></td>
+          <%= image_tag "/images/audio.png", :id => document.id, :class => "img-thumbnail img-responsive" %>
         <% elsif document.data_host == 'youtube' %>
-          <td><%= image_tag "http://img.youtube.com/vi/#{document.data_ref}/2.jpg", :class => "img-thumbnail img-responsive" %></td>
+          <%= image_tag "http://img.youtube.com/vi/#{document.data_ref}/2.jpg", :id => document.id, :class => "img-thumbnail img-responsive" %>
         <% elsif document.data_host == 'vimeo' %>
-        <td><%= image_tag "#{vimeo_thumbnail(document)}", :size => "120x90", :class => "img-thumbnail img-responsive" %></td>
+        <%= image_tag "#{vimeo_thumbnail(document)}", :size => "120x90", :id => document.id, :class => "img-thumbnail img-responsive" %>
         <% else %>
-          <td><%= image_tag "/images/file.png", :class => "img-thumbnail img-responsive" %></td>
+          <%= image_tag "/images/file.png", :id => document.id, :class => "img-thumbnail img-responsive" %>
         <% end %>
+        </td>
 
-        <td><%= document.name %></td>
+        <td id="document-name-<%= document.id %>"><%= document.name %></td>
         <!-- <td><%= document.data_content_type %></td> -->
         <!-- <td><%= document.project.name %></td> -->
         <td data-no-turbolink><%= link_to 'Show', document, :class => "btn btn-mini btn-default" %></td>

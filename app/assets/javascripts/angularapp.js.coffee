@@ -50,3 +50,85 @@ remindersUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/rem
 		    filtered_tasks = $scope.remaining_tasks()
 		    $scope.tasks = filtered_tasks
 
+@FileOutboxCtrl = ($scope) ->
+	$scope.handleDrop = (item) ->
+        console.log 'Item has been dropped'
+        console.log item
+        # generate link for that document
+        # add a row in that list
+        #console.log $(item)
+        console.log document.getElementById(item)
+        newRow = document.getElementById("files-to-send").insertRow(-1)
+        newCell = newRow.insertCell(0)
+        newText = document.createTextNode document.getElementById("document-name-"+item).innerHTML
+        newCell.appendChild newText
+        newCell.id = "tosend_" + document.getElementById(item).parentNode.id
+        # clonedNode = document.getElementById(item).parentNode.cloneNode(true)
+        # clonedNode.id = "tosend-" + document.getElementById(item).parentNode.id
+        # console.log clonedNode
+        # document.getElementById("files-to-send").appendChild(clonedNode)
+        false
+
+
+app.directive 'draggable', -> 
+    (scope, element) -> 
+        el = element[0]
+        el.draggable = true
+        el.addEventListener(
+            'dragstart',
+            (e) -> 
+                e.dataTransfer.effectAllowed = 'copy'
+                e.dataTransfer.setData('Text', el.id)
+                el.classList.add('drag')
+        )
+
+        el.addEventListener(
+            'dragend',
+           (e) ->
+                el.classList.remove('drag')
+        )
+
+app.directive 'droppable', ->
+	    scope:
+            drop: '&'
+        link: (scope, element) ->
+            el = element[0]
+
+            el.addEventListener(
+                'dragover',
+                (e) ->
+                    if e.preventDefault 
+                        e.preventDefault()
+                    el.classList.add('over')
+                    e.dataTransfer.dropEffect = 'copy'
+                    false
+            )
+
+            el.addEventListener(
+                'dragenter',
+                (e) ->
+                    el.classList.add('over')
+                    false
+            )
+
+            el.addEventListener(
+                'dragleave',
+                (e) ->
+                    el.classList.remove('over')
+            )
+
+            el.addEventListener(
+                'drop',
+                (e) ->
+                    if e.stopPropagation
+                        e.stopPropagation()
+                    console.log "dropping"
+                    el.classList.remove('over')
+                    item_id = e.dataTransfer.getData('Text')
+                    scope.drop({item: item_id})
+                    if e.preventDefault 
+                        e.preventDefault()
+                    false
+            )
+        
+

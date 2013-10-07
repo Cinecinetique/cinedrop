@@ -67,8 +67,12 @@ gem 'acts_as_list'
 gem 'jquery-ui-rails'
 
 group :development, :test do
+  gem 'selenium-webdriver', '>= 2.25.0'
+  gem 'launchy'
   gem 'rspec-rails', '~> 2.0'
   gem 'rspec-multi-mock'
   gem 'fakes3'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
 
