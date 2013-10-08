@@ -1,5 +1,6 @@
 Cinecinetique::Application.routes.draw do
 
+  get '/portfolio', :to => redirect('/portfolio/index.html')
 
   resources :plans
 
@@ -47,6 +48,8 @@ Cinecinetique::Application.routes.draw do
 
 
   resources :workers
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
