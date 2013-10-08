@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-	skip_before_action :authorize, only: [:index]
+	skip_before_action :authorize, only: [:index, :product]
 	def index       
     end
 
