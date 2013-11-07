@@ -29,6 +29,10 @@ Cinecinetique::Application.routes.draw do
   resources :users
 
   resources :documents do
+    get :share
+  end
+  
+  resources :documents do
     collection do
       get 'heartbeat'
     end

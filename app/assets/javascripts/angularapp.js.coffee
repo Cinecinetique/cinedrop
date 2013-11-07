@@ -61,7 +61,10 @@ remindersUrls["production"] = "https://ccq-prod-notifications.firebaseio.com/rem
         newRow = document.getElementById("files-to-send").insertRow(-1)
         newCell = newRow.insertCell(0)
         newText = document.createTextNode document.getElementById("document-name-"+item).innerHTML
-        newCell.appendChild newText
+        newLinkElement = document.createElement("a")
+        newLinkElement.href= "/documents/" + item + "/share"
+        newLinkElement.appendChild newText
+        newCell.appendChild newLinkElement
         newCell.id = "tosend_" + document.getElementById(item).parentNode.id
         # clonedNode = document.getElementById(item).parentNode.cloneNode(true)
         # clonedNode.id = "tosend-" + document.getElementById(item).parentNode.id

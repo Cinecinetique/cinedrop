@@ -22,6 +22,12 @@ class DocumentsController < ApplicationController
   def heartbeat
     respond_to :js
   end
+
+  # GET /documents/share/1
+  def share
+    document = Document.find(params[:document_id])
+    redirect_to signed_url_for('original',document)
+  end
   
   # GET /documents/1/edit
   def edit
@@ -108,6 +114,16 @@ class DocumentsController < ApplicationController
         params.require(kind.downcase.to_sym).permit(:name, :project_id, :data, :scene_number,:data_ref, :data_host, :location, :page, :changed_by)
       else
         params.require(:document).permit(:name, :project_id, :data, :scene_number,:data_ref, :data_host, :location, :page, :changed_by)
+      end
+    end
+
+    def signed_url_for(style, document)
+      if Cinecinetique::STORAGE == :s3
+        s3 = AWS::S3.new()
+        url = s3.buckets[document.project.bucket_name].objects[document.data.path(style)[1..-1]].url_for(:read)
+        url.to_s
+      else
+        @document.data.url(style)
       end
     end
 end
