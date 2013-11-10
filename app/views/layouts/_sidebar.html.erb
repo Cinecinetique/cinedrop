@@ -3,7 +3,7 @@
 <span class="add-on"><i class="icon-search"></i></span><input id="inputIcon" type="text">
 </div>
 <ul class="nav nav-pills nav-stacked">
-<li class="nav-header">Simple Apps</li>
+<li class="nav-header">Project Apps</li>
 <% if session[:user_id] != nil %>
 	<li><%= link_to 'List your projects', projects_path, :class => "btn btn-link pull-left" %></li>
 <% end %>
@@ -13,21 +13,21 @@
 <li><%= link_to 'Edit Project Information', '#', :class => "btn btn-link pull-left disabled" %> </li>
 <% end %>
 <li><a class="btn btn-link pull-left" href="/import_other">Import from other projects</a></li>
+<li><a class="btn btn-link pull-left" href="/submit_festival">Submit project to a festival</a></li>
 </ul>
 
 <ul class="nav nav-pills nav-stacked">
-<li class="nav-header">Advanced Apps</li>
-<li><a class="btn btn-link pull-left" href="/archive">Access Archive content</a></li>
-<li><a class="btn btn-link pull-left" href="/submit_festival">Submit project to a festival</a></li>
+<li class="nav-header">Community Apps</li>
 <% if @project != nil and @project.id != nil %>
-<li><a class="btn btn-link pull-left" href="/scenes">News Broadcast script editor</a></li>
+<li><a class="btn btn-link pull-left" href="/location">Mentor/apprentice link</a></li>
+<li><a class="btn btn-link pull-left" href="/trough">Knowledge base</a></li>
 <% end %>
 </ul>
 
-
 <ul class="nav nav-pills nav-stacked">
 <li class="nav-header">Professional Apps</li>
+<li><a class="btn btn-link pull-left" href="/archive">Access Archive content</a></li>
+<li><a class="btn btn-link pull-left" href="/scenes">News Broadcast script editor</a></li>
+<li><a class="btn btn-link pull-left" href="/proposal">Proposal and budgeting editor</a></li>
 <li><a class="btn btn-link pull-left" href="/crowdfund">Crowdfunding Tool</a></li>
-<li><a class="btn btn-link pull-left" href="/video_tools">Media QA Tools</a></li>
-<li><a class="btn btn-link pull-left" href="/location">Location Management</a></li>
 </ul>
