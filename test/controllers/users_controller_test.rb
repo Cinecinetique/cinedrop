@@ -39,6 +39,12 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should post invite" do
+    @project = projects(:one)
+    post :invite, email: @user.email, project_id: @project
+    assert_redirected_to project_url(@project)
+  end
+
   test "should update user" do
     patch :update, id: @user, user: { email: 'Neil@foobar.com', password: 'secret', password_confirmation: 'secret' }
     assert_redirected_to users_path

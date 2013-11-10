@@ -1,0 +1,19 @@
+<%= form_tag('/users/invite') do -%>
+
+
+  <fieldset>
+    <legend>Or find a user by email</legend>
+    
+    <div class="field">
+      <%= label_tag :email %><br>
+      <%= text_field_tag :email %>
+    </div>
+
+    <%= hidden_field_tag :project_id, "#{session[:current_project]}" %>
+  </fieldset>
+
+  <div class="actions">
+    <%= submit_tag 'Send invite' %>
+  </div>
+
+  <% end %>

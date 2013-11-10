@@ -1,0 +1,32 @@
+<%= form_for(@worker) do |f| %>
+  <% if @worker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@worker.errors.count, "error") %> prohibited this worker from being saved:</h2>
+
+      <ul>
+      <% @worker.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+        <div class="field">
+          <%= f.label :role %><br />
+          <%= f.text_field :role %>
+        </div>
+
+        <div class="field">
+          <%= f.label :department %><br />
+          <%= f.text_field :department %>
+        </div>
+
+        <%= f.hidden_field :user_id, :value => "#{@user.id}" %>
+        <%= f.hidden_field :project_id, :value => "#{@project.id}" %>
+
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+  </fieldset>
+<% end %>

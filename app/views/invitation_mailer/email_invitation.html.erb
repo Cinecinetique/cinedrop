@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+Dear user,
+
+You have been invited to join the project <%= @project.name %> by <%= @user_name %>
+
+If you wish to accept the invitaion, you can join the project by cliking the link below:  
+
+<%= link_to "Join project", new_worker_url(:p => @project.id) %> 
+
+<br/>
+Otherwise, you can safely ignore this email.
+
+<hr/>
+This is an automated email, please do not reply
+
+
+  </body>
+</html>

@@ -26,12 +26,18 @@ Cinecinetique::Application.routes.draw do
 
   resources :sessions
 
+  resources :users do
+    collection do
+      post :invite
+    end
+  end
+
   resources :users
 
   resources :documents do
     get :share
   end
-  
+
   resources :documents do
     collection do
       get 'heartbeat'

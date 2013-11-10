@@ -1,0 +1,13 @@
+Dear user,
+
+You have been invited to join the project <%= @project.name %> by <%= @user_name %>
+
+If you wish to accept the invitaion, you can join the project by cliking the link below:  
+
+<%= link_to "Join project", new_worker_url(:p => @project.id)  %> 
+
+Otherwise, you can safely ignore this email.
+
+---
+
+This is an automated email, please do not reply

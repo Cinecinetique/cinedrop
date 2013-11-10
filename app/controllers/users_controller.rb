@@ -31,6 +31,21 @@ class UsersController < ApplicationController
     @user.workers.build
   end
 
+  # POST /users/invite/[:user_email,:project_id]
+  def invite
+    user = User.find_by_email(params[:email])
+    project = Project.find(params[:project_id])
+    respond_to do |format|
+      if send_invite(project, user)
+        format.html { redirect_to project_url(project), notice: "An invite was successfully sent to #{user.email} " }
+        format.json { render action: 'show', status: :created, location: project }
+      else
+        format.html { redirect_to project_url(project) }
+        format.json { render json: user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /users
   # POST /users.json
   def create
@@ -80,5 +95,13 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :workers_attributes => [:id, :role, :department, :project_id])
+    end
+
+    def send_invite(project, user)
+      begin
+        InvitationMailer.email_invitation(project, user).deliver
+      rescue Exception => ex
+        Rails.logger.error("Error when sending invitation email to #{user.email}")
+      end
     end
 end

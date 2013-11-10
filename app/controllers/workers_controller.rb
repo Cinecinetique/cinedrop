@@ -15,7 +15,10 @@ class WorkersController < ApplicationController
 
   # GET /workers/new
   def new
+    project_id =  params[:p] if params[:p] =~ /\d/
     @worker = Worker.new
+    @user = User.find(session[:user_id])
+    @project = Project.find(project_id)
   end
 
   # GET /workers/1/edit
@@ -29,7 +32,7 @@ class WorkersController < ApplicationController
 
     respond_to do |format|
       if @worker.save
-        format.html { redirect_to project_path(session[:current_project]), notice: "User #{@worker.user.name} was successfully added to project #{Project.find(session[:current_project]).name}." }
+        format.html { redirect_to project_path(@worker.project_id), notice: "User #{@worker.user.name} was successfully added to project #{Project.find(@worker.project_id).name}." }
         format.json { render action: 'show', status: :created, location: @worker }
       else
         format.html { render action: 'new' }
