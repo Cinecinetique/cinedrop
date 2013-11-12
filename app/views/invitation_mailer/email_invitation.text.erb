@@ -1,13 +1,21 @@
-Dear user,
+Dear <%= @guest_name %>,
 
-You have been invited to join the project <%= @project.name %> by <%= @user_name %>
 
-If you wish to accept the invitaion, you can join the project by cliking the link below:  
+You have been invited by <%= @current_user %> to join the project <%= @project.name %> 
+on the Cinecinetique platform.
 
-<%= link_to "Join project", new_worker_url(:p => @project.id)  %> 
+If you wish to accept the invitation, you can join the project by clicking the link below:  
 
+<%= link_to "Join project", new_worker_url(:p => @project.id) %> 
+
+(you will be asked to sign up if you're not already a user of the Cinecinetique platform)
 Otherwise, you can safely ignore this email.
 
----
 
+--
+The friendly team at Cinecinetique
+www.cinecinetique.com
+
+
+-------------------------------------------------
 This is an automated email, please do not reply

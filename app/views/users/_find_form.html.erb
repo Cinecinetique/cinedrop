@@ -5,9 +5,15 @@
     <legend>Or invite a user by email</legend>
     
     <div class="field">
+      <%= label_tag :name %><br>
+      <%= text_field_tag :name %>
+    </div>
+
+    <div class="field">
       <%= label_tag :email %><br>
       <%= text_field_tag :email %>
     </div>
+
 
     <%= hidden_field_tag :project_id, "#{session[:current_project]}" %>
   </fieldset>

@@ -33,15 +33,16 @@ class UsersController < ApplicationController
 
   # POST /users/invite/[:user_email,:project_id]
   def invite
-    user = User.find_by_email(params[:email])
+    user_name =  params[:name] if params[:name] =~ /[0-9a-zA-Z\s]+/
+    user_email = params[:email] if params[:email] =~ /[0-9a-zA-Z@\s_-]+/
     project = Project.find(params[:project_id])
     respond_to do |format|
-      if send_invite(project, user)
-        format.html { redirect_to project_url(project), notice: "An invite was successfully sent to #{user.email} " }
-        format.json { render action: 'show', status: :created, location: project }
+      if user_name && user_email && project && send_invite(project, user_name, user_email)
+        format.html { redirect_to users_url, notice: "An invite was successfully sent to #{user_email} " }
       else
-        format.html { redirect_to project_url(project) }
-        format.json { render json: user.errors, status: :unprocessable_entity }
+        format.html { 
+          redirect_to users_url, notice: "Could not send invite to #{user_name}, #{user_email}"
+        }
       end
     end
   end
@@ -97,11 +98,12 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :workers_attributes => [:id, :role, :department, :project_id])
     end
 
-    def send_invite(project, user)
+    def send_invite(project, user_name, user_email)
       begin
-        InvitationMailer.email_invitation(project, user).deliver
+        InvitationMailer.email_invitation(project, user_name, user_email, current_user).deliver
       rescue Exception => ex
-        Rails.logger.error("Error when sending invitation email to #{user.email}")
+        Rails.logger.error("Error when sending invitation email to #{user_email}: #{ex.to_s}")
+        false
       end
     end
 end
