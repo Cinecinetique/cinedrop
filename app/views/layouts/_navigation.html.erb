@@ -4,22 +4,22 @@
     <%= link_to('Dashboard', projects_path, :method=>'get') %>
   </li>
   <li>
-    <%= link_to('Pricing', plans_path, :method=>'get') %>
+    <%= link_to('Plans', plans_path, :method=>'get') %>
   </li>
   <li>
-    <%= link_to('Terms & Conditions', terms_path, :target => '_blank', :method=>'get') %>
+    <%= link_to('Terms', terms_path, :target => '_blank', :method=>'get') %>
   </li>
   </ul>
   <div ng-controller="NavigationCtrl">
 
   <p class="navbar-text pull-right">
   <% if user_signed_in? && session[:current_project] && Project.ids.include?(session[:current_project]) %>
-    Notifications: <%= link_to "{{nb_changes}}", '#', :class => "badge badge-warning", "data-placement" => "bottom", "data-title" => "Changes", "bs-popover" => "'popover.html'" %> &nbsp;&nbsp;|&nbsp;
+    Notificat. : <%= link_to "{{nb_changes}}", '#', :class => "badge badge-warning", "data-placement" => "bottom", "data-title" => "Changes", "bs-popover" => "'popover.html'" %> &nbsp;&nbsp;|&nbsp;
      Current project:&nbsp; <%= link_to Project.find(session[:current_project]).name, project_path(session[:current_project]) %> 
   <% end %>
      &nbsp;&nbsp;|&nbsp; 
   <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.name %></strong>.
+      Logged in as <strong><%= current_user.name =~ /.+/ ? current_user.name : current_user.email %></strong>.
       <%= link_to 'Edit profile', edit_user_registration_path %> |
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
