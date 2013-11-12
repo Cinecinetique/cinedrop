@@ -1,6 +1,7 @@
 Cinecinetique::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'registrations' }
+  
   get '/portfolio', :to => redirect('/portfolio/index.html')
 
   resources :plans
@@ -26,6 +27,7 @@ Cinecinetique::Application.routes.draw do
   # end
 
   # resources :sessions
+
 
   resources :users do
     collection do
