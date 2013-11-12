@@ -4,13 +4,11 @@
 </div>
 <ul class="nav nav-pills nav-stacked">
 <li class="nav-header">Project Apps</li>
-<% if session[:user_id] != nil %>
+<% if current_user != nil %>
 	<li><%= link_to 'List your projects', projects_path, :class => "btn btn-link pull-left" %></li>
 <% end %>
-<% if @project != nil and @project.id != nil %>
-<li><%= link_to 'Edit Project Information', edit_project_path(@project), :class => "btn btn-link pull-left" %> </li>
-<% else %>
-<li><%= link_to 'Edit Project Information', '#', :class => "btn btn-link pull-left disabled" %> </li>
+<% if session[:current_project] != nil %>
+<li><%= link_to 'Edit Project Information', edit_project_path(session[:current_project]), :class => "btn btn-link pull-left" %> </li>
 <% end %>
 <li><a class="btn btn-link pull-left" href="/import_other">Import from other projects</a></li>
 <li><a class="btn btn-link pull-left" href="/submit_festival">Submit project to a festival</a></li>

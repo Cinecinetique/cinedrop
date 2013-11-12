@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -28,7 +29,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    @project.created_by = session[:user_id]
+    @project.created_by = current_user.id
 
     project_cycle = ProjectCycle.new(@project)
 

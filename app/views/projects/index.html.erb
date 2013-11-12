@@ -2,7 +2,7 @@
 
 <table class="table">
      <tr class="nav-header"><td span="4">Projects you have created</td></tr>
-    <% @projects.where("created_by = #{session[:user_id]}").each do |project| %>
+    <% @projects.where("created_by = #{current_user.id}").each do |project| %>
       <tr>
         <td><%= project.name %></td>
         <td><%= link_to 'Show', project, :class => "btn btn-mini btn-default" %></td>
@@ -11,7 +11,7 @@
       </tr>
     <% end %>
     <tr class="nav-header"><td span="4">Projects you participate in</td></tr>
-    <% User.find(session[:user_id]).projects.each do |project| %>
+    <% User.find(current_user.id).projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
         <td><%= link_to 'Show', project, :class => "btn btn-mini btn-default" %></td>
@@ -23,6 +23,6 @@
 
 <br>
 
-<% if User.find(session[:user_id]).can_admin? %>
+<% if User.find(current_user.id).can_admin? %>
 <%= link_to 'New Project', new_project_path %>
 <% end %>

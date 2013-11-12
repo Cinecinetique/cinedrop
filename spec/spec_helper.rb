@@ -42,4 +42,6 @@ RSpec.configure do |config|
 
 
   config.global_fixtures = :all
+
+  config.include Devise::TestHelpers, :type => :controller
 end

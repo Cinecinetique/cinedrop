@@ -4,6 +4,7 @@ one:
   name: Nathan Bar
   email: nathan@bar.com
   password_digest: <%= BCrypt::Password.create('secret')%>
+  confirmed_at: <%= DateTime.now-1 %>
 
 two:
   name: Sarah Foo

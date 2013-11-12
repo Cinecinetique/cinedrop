@@ -1,5 +1,6 @@
 Cinecinetique::Application.routes.draw do
 
+  devise_for :users
   get '/portfolio', :to => redirect('/portfolio/index.html')
 
   resources :plans
@@ -18,13 +19,13 @@ Cinecinetique::Application.routes.draw do
 
   resources :projects
 
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
-  end
+  # controller :sessions do
+  #   get 'login' => :new
+  #   post 'login' => :create
+  #   delete 'logout' => :destroy
+  # end
 
-  resources :sessions
+  # resources :sessions
 
   resources :users do
     collection do

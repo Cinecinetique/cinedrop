@@ -17,12 +17,15 @@ class WorkersController < ApplicationController
   def new
     project_id =  params[:p] if params[:p] =~ /\d/
     @worker = Worker.new
-    @user = User.find(session[:user_id])
+    @user = User.find(current_user.id)
     @project = Project.find(project_id)
   end
 
   # GET /workers/1/edit
   def edit
+    @worker = Worker.find(params[:id])
+    @user = User.find(@worker.user.id)
+    @project = Project.find(session[:current_project])
   end
 
   # POST /workers

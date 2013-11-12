@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   # GET /documents
@@ -56,8 +57,8 @@ class DocumentsController < ApplicationController
       @document = Document.new(document_params)
     end
 
-    @document.created_by = session[:user_id]
-    @document.changed_by = session[:user_id]
+    @document.created_by = current_user.id
+    @document.changed_by = current_user.id
 
     document_cycle = DocumentCycle.new(@document)
 
@@ -76,7 +77,7 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
 
-    @document.changed_by = session[:user_id]
+    @document.changed_by = current_user.id
     document_cycle = DocumentCycle.new(@document)
     respond_to do |format|
       if document_cycle.update(document_params(@document.class.to_s))
@@ -93,7 +94,7 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
 
-    logger.info "document deleted by #{session[:user_id]}"
+    logger.info "document deleted by #{current_user.id}"
     project = @document.project
     @document.destroy
     respond_to do |format|

@@ -1,8 +1,5 @@
 <%= link_to "Cinecinetique - alpha", root_path, :class => 'brand' %>
 <ul class="nav">
-	<li>
-    <%= link_to('Community', documents_path, :method=>'get') %>
-  </li>
   <li>
     <%= link_to('Pricing', plans_path, :method=>'get') %>
   </li>
@@ -13,17 +10,19 @@
   <div ng-controller="NavigationCtrl">
 
   <p class="navbar-text pull-right">
+  <% if user_signed_in? && session[:current_project] && Project.ids.include?(session[:current_project]) %>
     Notifications: <%= link_to "{{nb_changes}}", '#', :class => "badge badge-warning", "data-placement" => "bottom", "data-title" => "Changes", "bs-popover" => "'popover.html'" %> &nbsp;&nbsp;|&nbsp;
-  <% if session[:current_project] && Project.ids.include?(session[:current_project]) %>
      Current project:&nbsp; <%= link_to Project.find(session[:current_project]).name, project_path(session[:current_project]) %> 
   <% end %>
      &nbsp;&nbsp;|&nbsp; 
-  <% if session[:user_id] && User.ids.include?(session[:user_id])%>
-
-    logged in as <%= User.find_by(email: session[:email]).name %> (<%= link_to('Logout', logout_path, :method=>'delete') %>)
-  <% else %>
-    <%= link_to('Login', login_path)  %>
-  <% end %>
+  <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.name %></strong>.
+      <%= link_to 'Edit profile', edit_user_registration_path %> |
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> |
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
 
   </p>
 
