@@ -67,6 +67,8 @@ gem 'acts_as_list'
 gem 'jquery-ui-rails'
 
 gem 'devise'
+gem 'cancan'
+gem 'rolify'
 
 group :development, :test do
   gem 'selenium-webdriver', '>= 2.25.0'

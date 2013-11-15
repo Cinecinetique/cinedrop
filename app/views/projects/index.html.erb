@@ -23,6 +23,6 @@
 
 <br>
 
-<% if User.find(current_user.id).can_admin? %>
-<%= link_to 'New Project', new_project_path %>
+<% if can? :create, Project %>
+  <%= link_to 'New Project', new_project_path %>
 <% end %>

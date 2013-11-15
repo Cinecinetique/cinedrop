@@ -30,7 +30,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should post invite" do
     @project = projects(:one)
     post :invite, email: @user.email, project_id: @project
-    assert_redirected_to project_url(@project)
+    assert_redirected_to users_url
   end
 
 

@@ -14,7 +14,9 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 
   def setup
-  	sign_in users(:one)
+    user = users(:one)
+    user.add_role :subscriber
+  	sign_in user
     session[:current_project] = projects(:one).id
   end
 

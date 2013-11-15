@@ -7,6 +7,7 @@
 require 'cucumber/rails'
 require 'capybara'
 require_relative 'fixtures'
+require_relative 'aws_helper'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -66,9 +67,8 @@ Capybara.configure do |config|
   end
 
 
-World(Capybara, Fixtures)
+World(Capybara, Fixtures, AwsHelper)
 
-#%x("cd #{File.dirname(__FILE__)}/../..;RAILS_ENV=test rails s thin -p 4000")
 
 
 

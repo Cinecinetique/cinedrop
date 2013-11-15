@@ -4,9 +4,8 @@ As a producer
 I want to share the documents of my choice from my project with a partner
 So that the partner can do the required work on the document
 
-
 Background: Logged in
-	Given I am logged in as "Rija"
+	Given I am logged in as "Vera"
 
 Scenario: Preparing a file to be sent to a partner
 	Given there is a document in my project
