@@ -31,3 +31,12 @@ end
 Then(/^the project "(.*?)" is removed from the platform$/) do |arg1|
   page.should_not have_content('MyProject')
 end
+
+Given(/^I am crew on project "(.*?)"$/) do |arg1|
+  visit("/projects")
+  page.should have_content("Project 1")
+end
+
+Then(/^I cannot request project "(.*?)" to be deleted$/) do |arg1|
+	page.should_not have_content("Delete")
+end

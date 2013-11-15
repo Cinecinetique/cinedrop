@@ -7,7 +7,9 @@
         <td><%= project.name %></td>
         <td><%= link_to 'Show', project, :class => "btn btn-mini btn-default" %></td>
         <td><%= link_to 'Edit', edit_project_path(project),  :class => "btn btn-mini btn-primary" %></td>
-        <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>
+        <% if can? :destroy, project %>
+          <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>
+        <% end %>
       </tr>
     <% end %>
     <tr class="nav-header"><td span="4">Projects you participate in</td></tr>
@@ -16,7 +18,9 @@
         <td><%= project.name %></td>
         <td><%= link_to 'Show', project, :class => "btn btn-mini btn-default" %></td>
         <td><%= link_to 'Edit', edit_project_path(project),  :class => "btn btn-mini btn-primary" %></td>
-        <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>
+        <% if can? :destroy, project %>
+          <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>
+        <% end %>
       </tr>
     <% end %>
 </table>

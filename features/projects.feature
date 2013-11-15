@@ -21,14 +21,11 @@ Scenario: A subscriber can delete a project she/he has created
 	And I confirm the request
 	Then the project "MyProject" is removed from the platform
 
-@wip
-Scenario: A susbscriber cannot delete a project she/he hasn't created
+@ok
+Scenario: A susbscriber is not allowed to delete a project she/he hasn't created
 	Given I am logged in as "Subscriber"
-	And a project "Not Mine" not created by me exists on the platform
-	When I request project "Mine" to be deleted
-	And I confirm the request
-	Then the project "Not Mine" is not removed from the platform
-	And an error message is displayed
+	And I am crew on project "Project 1"
+	Then I cannot request project "Project 1" to be deleted
 
 Scenario: A subscriber with the small plan cannot create more than one project
 

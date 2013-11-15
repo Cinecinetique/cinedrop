@@ -34,7 +34,9 @@ class Ability
     if user.has_role? :subscriber
         can :create, Project
         can :update, Project
-        can :destroy, Project
+        can :destroy, Project do |project|
+            project.try(:created_by) == user.id
+        end
     end
 
     if user.has_role? :crew or user.has_role? :admin or user.has_role? :subscriber

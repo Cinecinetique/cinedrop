@@ -66,6 +66,7 @@ Capybara.configure do |config|
     config.app_host          = "http://localhost:3000"
   end
 
+Rails.env="development"
 
 World(Capybara, Fixtures, AwsHelper)
 
