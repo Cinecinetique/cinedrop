@@ -27,11 +27,14 @@ Scenario: A susbscriber is not allowed to delete a project she/he hasn't created
 	And I am crew on project "Project 1"
 	Then I cannot request project "Project 1" to be deleted
 
+@ok
+Scenario: A member is not allowed to create a project
+	Given I am logged in as "Member"
+	Then I cannot request a new project to be created
+
 Scenario: A subscriber with the small plan cannot create more than one project
 
 Scenario: A subscriber with the medium plan cannot create more than five projects
-
-Scenario: A member cannot create a project
 
 Scenario: A user who is a crew on a project and a subscriber can create a project
 

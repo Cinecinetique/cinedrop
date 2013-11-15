@@ -40,3 +40,7 @@ end
 Then(/^I cannot request project "(.*?)" to be deleted$/) do |arg1|
 	page.should_not have_content("Delete")
 end
+
+Then(/^I cannot request a new project to be created$/) do
+  page.should_not have_content('New Project')
+end
