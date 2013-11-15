@@ -34,6 +34,8 @@ After do |scenario|
 			click_link("Delete")
 			page.driver.browser.switch_to.alert.accept
 		end
+	end
+	if scenario.title =~ /can.*project/
 		cleanup_buckets("development-9-myproject")
 	end
 end

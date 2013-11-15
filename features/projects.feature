@@ -5,23 +5,23 @@ I want to manage my allocated number of projects
 So that I can create, delete the project
 And change its information
 
-Background: Logged in
 	
 @ok
 Scenario: A subscriber can create one project
 	Given I am logged in as "Subscriber"
-	When I request a new project project to be created
+	When I request a new project to be created
 	And I fill in the project details
 	Then a new project is created
 
-@wip
+@ok
 Scenario: A subscriber can delete a project she/he has created
 	Given I am logged in as "Subscriber"
-	And a project "Mine" created by me exists on the platform
-	When I request project "Mine" to be deleted
+	And a project "MyProject" created by me exists on the platform
+	When I request project "MyProject" to be deleted
 	And I confirm the request
-	Then the project "Mine" is removed from the platform
+	Then the project "MyProject" is removed from the platform
 
+@wip
 Scenario: A susbscriber cannot delete a project she/he hasn't created
 	Given I am logged in as "Subscriber"
 	And a project "Not Mine" not created by me exists on the platform
