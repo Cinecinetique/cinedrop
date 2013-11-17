@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_many :workers, dependent: :destroy
   accepts_nested_attributes_for :workers, :allow_destroy => true
 
+  after_create :setup_initial_role
+
+
   def projects
   	workers.map { |w| w.project }
   end
@@ -32,5 +35,9 @@ class User < ActiveRecord::Base
 
   def can_admin?
   	is_admin
+  end
+
+  def setup_initial_role
+    self.add_role :member
   end
 end

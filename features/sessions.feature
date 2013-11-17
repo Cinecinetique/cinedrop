@@ -11,4 +11,9 @@ When the user submit the sign up form
 Then the user is redirected to the sign in page
 And a message is displayed asking the user to check her email
 
-Scenario: A user confirming an email address
+@ok
+Scenario: Signing In as a member
+Given a user is confirmed
+When the user signs in
+Then the user is redirected to the plans page
+

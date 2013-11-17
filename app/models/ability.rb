@@ -31,6 +31,10 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
 
+    if user.has_role? :member or user.has_role? :crew or user.has_role? :admin or user.has_role? :subscriber
+        can :read, Plan
+    end
+
     if user.has_role? :subscriber
         can :create, Project
         can :update, Project

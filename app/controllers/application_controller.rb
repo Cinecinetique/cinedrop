@@ -29,9 +29,17 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
       Rails.logger.debug "**********: in after_sign_in_path_for in ApplicationController"
       if session[:previous_url] && session[:previous_url] == "/"
-      	projects_path
+      	if current_user.has_role? :crew or current_user.has_role? :admin or current_user.has_role? :subscriber
+          projects_path
+        else
+          plans_path
+        end
       else
-		    session[:previous_url] || projects_path || root_path
+          if current_user.has_role? :crew or current_user.has_role? :admin or current_user.has_role? :subscriber
+            session[:previous_url] || projects_path || root_path
+          else
+            session[:previous_url] || plans_path || root_path
+          end
 		  end
     end
 
