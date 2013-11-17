@@ -8,7 +8,7 @@ So that I can safely conduct my business as allowed by the system
 Scenario: Signing Up as a member
 Given a user is visiting the signup page
 When the user submit the sign up form
-Then the user is redirected to a welcome page
+Then the user is redirected to the sign in page
 And a message is displayed asking the user to check her email
 
 Scenario: A user confirming an email address
