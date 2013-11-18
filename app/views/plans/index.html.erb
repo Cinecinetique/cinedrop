@@ -23,7 +23,14 @@
             <% if plan.name == "Consultancy" %>
               <p><a class="btn btn-large" href="https://docs.google.com/a/cinecinetique.com/forms/d/1U5dLBEPEr_LFN4isKcICBl3i2ujBUKkQb7FWNCtph2Y/viewform"><i class="icon-ok"></i> <%= plan.call_to_action %></a></p>
             <% else %>
-              <p><a class="btn btn-large" href="#"><i class="icon-ok"></i> <%= plan.call_to_action %></a></p>
+
+              <form action="<%= PAYPAL_URL %>/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="<%= plan.paypal_dev_button %>">
+<input id=<%= plan.name.downcase %> type="image" src="<%= PAYPAL_URL %>/en_GB/HK/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="<%= PAYPAL_URL %>/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
             <% end %>
           <% else %>
           <p><a class="btn btn-large disabled" href="#"><i class="icon-remove"></i> Not Available</a></p>

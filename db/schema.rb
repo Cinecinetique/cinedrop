@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114024911) do
+ActiveRecord::Schema.define(version: 20131118105101) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -62,6 +62,9 @@ ActiveRecord::Schema.define(version: 20131114024911) do
     t.integer  "max_users"
     t.integer  "position"
     t.string   "call_to_action"
+    t.string   "paypal_dev_button"
+    t.string   "paypal_test_button"
+    t.string   "paypal_prod_button"
   end
 
   create_table "projects", force: true do |t|

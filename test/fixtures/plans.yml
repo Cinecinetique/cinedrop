@@ -52,3 +52,7 @@ consultancy:
   call_to_action: "Contact Us"
   max_projects:
   max_users:
+  paypal_dev_button:
+  paypal_test_button:
+  paypal_prod_button:
+
