@@ -20,7 +20,11 @@
       </div>
       <div class="buttons">
           <% if plan.is_available %>
-          <p><a class="btn btn-large" href="#"><i class="icon-ok"></i> <%= plan.call_to_action %></a></p>
+            <% if plan.name == "Consultancy" %>
+              <p><a class="btn btn-large" href="https://docs.google.com/a/cinecinetique.com/forms/d/1U5dLBEPEr_LFN4isKcICBl3i2ujBUKkQb7FWNCtph2Y/viewform"><i class="icon-ok"></i> <%= plan.call_to_action %></a></p>
+            <% else %>
+              <p><a class="btn btn-large" href="#"><i class="icon-ok"></i> <%= plan.call_to_action %></a></p>
+            <% end %>
           <% else %>
           <p><a class="btn btn-large disabled" href="#"><i class="icon-remove"></i> Not Available</a></p>
           <% end %>
