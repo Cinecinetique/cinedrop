@@ -1,50 +1,50 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 simple:
-  name: "Simple"
+  name: "Solo"
   position: 0
-  description: "Our simplest plan for light usage"
+  description: "Our simplest plan for solo filmmakers, micro projects"
   features: "<ul><li>Document management tool</li><li>Task Management tool</li><li>News Script Editor</li></ul>"
   trial_period: 0
   paid_instalments: 12
-  price: 19.00
+  price: 9.00
   is_available: true
   call_to_action: "Subscribe"
-  max_projects: 2
-  max_users: 10
+  max_projects: 1
+  max_users: 3
 
 advanced:
-  name: "Advanced"
+  name: "Indies"
   position: 1
-  description: "Our plan for silo-ed use in an institution or for freelancers"
+  description: "Our plan for independent filmmakers, film classes"
   features: "<ul><li>Document management tool</li><li>Task Management tool</li><li>News Script Editor</li></ul>"
   trial_period: 0
   paid_instalments: 12
-  price: 49.00
-  is_available: false
+  price: 39.00
+  is_available: true
   call_to_action: "Subscribe"
-  max_projects: 10
-  max_users: 40
+  max_projects: 3
+  max_users: 7
 
 professional:
-  name: "Professional"
+  name: "Agencies"
   position: 2
-  description: "Ideal for agencies or organisation wide adoption"
+  description: "Ideal for media organisation, agencies and production companies"
   features: "<ul><li>Document management tool</li><li>Task Management tool</li><li>News Script Editor</li></ul>"
   trial_period: 0
   paid_instalments: 12
-  price: 150.00
-  is_available: false
+  price: 159.00
+  is_available: true
   call_to_action: "Subscribe"
-  max_projects: 30
-  max_users: 200
+  max_projects: 10
+  max_users: 50
 
 
 consultancy:
   name: "Consultancy"
   position: 3
-  description:
-  features: "<ul><li>Media distribution</li><li>Software Development</li><li>Integration</li><li>DevOps</li><li>Production office</li></ul>"
+  description: "Our consultants can work with you on your special or recurring projects and events"
+  features: "<ul><li>Media distribution</li><li>Screening to a test audience</li><li>Production office</li><li>Organisation of festivals, competitions and workshops</ul>"
   trial_period: 0
   paid_instalments:
   price:

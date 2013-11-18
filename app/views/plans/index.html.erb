@@ -3,12 +3,18 @@
       <h2 class="muted"><%= plan.name %> </h2>
       <%= sanitize(plan.features) %>
       <p><%= plan.description %></p>
-      <p> Max. no. of concurrent projects: <strong><%= plan.max_projects %></strong></p>
-      <p> Max. no. of users/project: <strong><%= plan.max_users %></strong></p>
+      <% if plan.max_projects != nil %>
+        <p> Max. no. of concurrent projects: <strong><%= plan.max_projects %></strong></p>
+      <% end %>
+      <% if plan.max_users != nil %>
+        <p> Max. no. of users/project: <strong><%= plan.max_users %></strong></p>
+      <% end %>
       <div class="prices">
         <hr>
         <% if !plan.price.nil? %>
         <h4>US$ <%= plan.price %> / month</h4>
+        <% else %>
+          <br/>
         <% end %>
         <hr>
       </div>
