@@ -4,7 +4,8 @@ require 'aws/s3'
 class ProjectsControllerTest < ActionController::TestCase
   setup do
     @project = projects(:one)
-    @project.created_by = users(:two).id
+    @project.created_by = users(:one).id
+    
   end
 
   teardown do
@@ -13,10 +14,17 @@ class ProjectsControllerTest < ActionController::TestCase
 
 
   def cleanup_buckets(bucket)
-    s3 = AWS::S3.new
-    bucket_name_on_s3 = s3.buckets[bucket]
-    if bucket_name_on_s3.exists?
-      bucket_name_on_s3.delete
+    begin
+      s3 = AWS::S3.new
+      bucket_name_on_s3 = s3.buckets[bucket]
+      if bucket_name_on_s3.exists?
+        bucket_name_on_s3.delete
+      end
+    rescue EOFError => e
+      sleep 10
+      if bucket_name_on_s3.exists?
+          bucket_name_on_s3.delete
+        end
     end
   end
 
