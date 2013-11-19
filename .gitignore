@@ -21,4 +21,3 @@ doc/
 
 # Ignoring files with sensitive information
 config/initializers/paypal.rb
-test/fixtures/plans.yml
