@@ -1,0 +1,77 @@
+<%= form_for(@subscription) do |f| %>
+  <% if @subscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+      <ul>
+      <% @subscription.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.datetime_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.datetime_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :currency %><br>
+    <%= f.text_field :currency %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_frequency %><br>
+    <%= f.number_field :billing_frequency %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.number_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br>
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :plan %><br>
+    <%= f.text_field :plan %>
+  </div>
+  <div class="field">
+    <%= f.label :initial_amount %><br>
+    <%= f.text_field :initial_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :initial_currency %><br>
+    <%= f.text_field :initial_currency %>
+  </div>
+  <div class="field">
+    <%= f.label :initial_billing_frequency %><br>
+    <%= f.number_field :initial_billing_frequency %>
+  </div>
+  <div class="field">
+    <%= f.label :previous_amount %><br>
+    <%= f.text_field :previous_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :previous_currency %><br>
+    <%= f.text_field :previous_currency %>
+  </div>
+  <div class="field">
+    <%= f.label :previous_billing_frequency %><br>
+    <%= f.number_field :previous_billing_frequency %>
+  </div>
+  <div class="field">
+    <%= f.label :last_plan_price_change_date %><br>
+    <%= f.datetime_select :last_plan_price_change_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

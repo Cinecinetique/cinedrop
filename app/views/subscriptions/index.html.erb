@@ -1,0 +1,55 @@
+<h1>Listing subscriptions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Amount</th>
+      <th>Currency</th>
+      <th>Billing frequency</th>
+      <th>Status</th>
+      <th>User</th>
+      <th>Plan</th>
+      <th>Initial amount</th>
+      <th>Initial currency</th>
+      <th>Initial billing frequency</th>
+      <th>Previous amount</th>
+      <th>Previous currency</th>
+      <th>Previous billing frequency</th>
+      <th>Last plan price change date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subscriptions.each do |subscription| %>
+      <tr>
+        <td><%= subscription.start_date %></td>
+        <td><%= subscription.end_date %></td>
+        <td><%= subscription.amount %></td>
+        <td><%= subscription.currency %></td>
+        <td><%= subscription.billing_frequency %></td>
+        <td><%= subscription.status %></td>
+        <td><%= subscription.user %></td>
+        <td><%= subscription.plan %></td>
+        <td><%= subscription.initial_amount %></td>
+        <td><%= subscription.initial_currency %></td>
+        <td><%= subscription.initial_billing_frequency %></td>
+        <td><%= subscription.previous_amount %></td>
+        <td><%= subscription.previous_currency %></td>
+        <td><%= subscription.previous_billing_frequency %></td>
+        <td><%= subscription.last_plan_price_change_date %></td>
+        <td><%= link_to 'Show', subscription %></td>
+        <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
+        <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subscription', new_subscription_path %>

@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @subscription.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @subscription.end_date %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @subscription.amount %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @subscription.currency %>
+</p>
+
+<p>
+  <strong>Billing frequency:</strong>
+  <%= @subscription.billing_frequency %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @subscription.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @subscription.user %>
+</p>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @subscription.plan %>
+</p>
+
+<p>
+  <strong>Initial amount:</strong>
+  <%= @subscription.initial_amount %>
+</p>
+
+<p>
+  <strong>Initial currency:</strong>
+  <%= @subscription.initial_currency %>
+</p>
+
+<p>
+  <strong>Initial billing frequency:</strong>
+  <%= @subscription.initial_billing_frequency %>
+</p>
+
+<p>
+  <strong>Previous amount:</strong>
+  <%= @subscription.previous_amount %>
+</p>
+
+<p>
+  <strong>Previous currency:</strong>
+  <%= @subscription.previous_currency %>
+</p>
+
+<p>
+  <strong>Previous billing frequency:</strong>
+  <%= @subscription.previous_billing_frequency %>
+</p>
+
+<p>
+  <strong>Last plan price change date:</strong>
+  <%= @subscription.last_plan_price_change_date %>
+</p>
+
+<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
+<%= link_to 'Back', subscriptions_path %>

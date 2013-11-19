@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118105101) do
+ActiveRecord::Schema.define(version: 20131119113631) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -109,17 +109,27 @@ ActiveRecord::Schema.define(version: 20131118105101) do
   end
 
   create_table "subscriptions", force: true do |t|
-    t.integer  "project_id"
-    t.string   "method"
-    t.integer  "time_capacity"
-    t.integer  "people_capacity"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.float    "amount"
     t.string   "currency"
+    t.integer  "billing_frequency"
+    t.integer  "status"
+    t.integer  "user_id"
+    t.integer  "plan_id"
+    t.float    "initial_amount"
+    t.string   "initial_currency"
+    t.integer  "initial_billing_frequency"
+    t.float    "previous_amount"
+    t.string   "previous_currency"
+    t.integer  "previous_billing_frequency"
+    t.datetime "last_plan_price_change_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "subscriptions", ["project_id"], name: "index_subscriptions_on_project_id"
+  add_index "subscriptions", ["plan_id"], name: "index_subscriptions_on_plan_id"
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email"

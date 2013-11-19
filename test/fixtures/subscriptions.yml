@@ -1,17 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  project_id: 
-  method: MyString
-  time_capacity: 1
-  people_capacity: 1
+  start_date: 
+  end_date:
+  status:
   amount: 1.5
   currency: MyString
+  billing_frequency: 1
+  initial_amount: 
+  initial_currency:
+  initial_billing_frequency:
+  previous_amount:
+  previous_currency:
+  previous_billing_frequency:
+  last_plan_price_change_date:
 
 two:
-  project_id: 
-  method: MyString
-  time_capacity: 1
-  people_capacity: 1
+  start_date: 
+  end_date:
+  status:
   amount: 1.5
   currency: MyString
+  billing_frequency: 1
+  initial_amount: 
+  initial_currency:
+  initial_billing_frequency:
+  previous_amount:
+  previous_currency:
+  previous_billing_frequency:
+  last_plan_price_change_date:

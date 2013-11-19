@@ -1,5 +1,7 @@
 Cinecinetique::Application.routes.draw do
 
+  resources :subscriptions
+
   devise_for :users, :controllers => { :registrations => 'registrations' }
   
   get '/portfolio', :to => redirect('/portfolio/index.html')
