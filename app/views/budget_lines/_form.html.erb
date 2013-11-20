@@ -1,0 +1,53 @@
+<%= form_for(@budget_line) do |f| %>
+  <% if @budget_line.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@budget_line.errors.count, "error") %> prohibited this budget_line from being saved:</h2>
+
+      <ul>
+      <% @budget_line.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :phase %><br>
+    <%= f.number_field :phase %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.number_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :item_decription %><br>
+    <%= f.text_field :item_decription %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_definition %><br>
+    <%= f.text_field :unit_definition %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_cost %><br>
+    <%= f.text_field :unit_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :cost %><br>
+    <%= f.text_field :cost %>
+  </div>
+  <div class="field">
+    <%= f.label :budget %><br>
+    <%= f.text_field :budget %>
+  </div>
+  <div class="field">
+    <%= f.label :resource %><br>
+    <%= f.text_field :resource %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

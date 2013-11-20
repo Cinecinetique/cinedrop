@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120114555) do
+ActiveRecord::Schema.define(version: 20131120114923) do
+
+  create_table "budget_lines", force: true do |t|
+    t.integer  "phase"
+    t.integer  "position"
+    t.string   "item_decription"
+    t.string   "unit_definition"
+    t.float    "unit_cost"
+    t.integer  "quantity"
+    t.float    "cost"
+    t.integer  "budget_id"
+    t.integer  "resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "budget_lines", ["budget_id"], name: "index_budget_lines_on_budget_id"
+  add_index "budget_lines", ["resource_id"], name: "index_budget_lines_on_resource_id"
 
   create_table "budgets", force: true do |t|
     t.float    "preprod_cost"

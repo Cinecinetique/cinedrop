@@ -1,5 +1,7 @@
 Cinecinetique::Application.routes.draw do
 
+  resources :budget_lines
+
   resources :budgets
 
   resources :proposals

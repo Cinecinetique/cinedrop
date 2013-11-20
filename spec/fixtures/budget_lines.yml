@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  phase: 1
+  position: 1
+  item_decription: MyString
+  unit_definition: MyString
+  unit_cost: 1.5
+  quantity: 1
+  cost: 1.5
+  budget: 
+  resource: 
+
+two:
+  phase: 1
+  position: 1
+  item_decription: MyString
+  unit_definition: MyString
+  unit_cost: 1.5
+  quantity: 1
+  cost: 1.5
+  budget: 
+  resource: 

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Phase:</strong>
+  <%= @budget_line.phase %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @budget_line.position %>
+</p>
+
+<p>
+  <strong>Item decription:</strong>
+  <%= @budget_line.item_decription %>
+</p>
+
+<p>
+  <strong>Unit definition:</strong>
+  <%= @budget_line.unit_definition %>
+</p>
+
+<p>
+  <strong>Unit cost:</strong>
+  <%= @budget_line.unit_cost %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @budget_line.quantity %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @budget_line.cost %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @budget_line.budget %>
+</p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @budget_line.resource %>
+</p>
+
+<%= link_to 'Edit', edit_budget_line_path(@budget_line) %> |
+<%= link_to 'Back', budget_lines_path %>

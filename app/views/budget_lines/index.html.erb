@@ -1,0 +1,43 @@
+<h1>Listing budget_lines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Phase</th>
+      <th>Position</th>
+      <th>Item decription</th>
+      <th>Unit definition</th>
+      <th>Unit cost</th>
+      <th>Quantity</th>
+      <th>Cost</th>
+      <th>Budget</th>
+      <th>Resource</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @budget_lines.each do |budget_line| %>
+      <tr>
+        <td><%= budget_line.phase %></td>
+        <td><%= budget_line.position %></td>
+        <td><%= budget_line.item_decription %></td>
+        <td><%= budget_line.unit_definition %></td>
+        <td><%= budget_line.unit_cost %></td>
+        <td><%= budget_line.quantity %></td>
+        <td><%= budget_line.cost %></td>
+        <td><%= budget_line.budget %></td>
+        <td><%= budget_line.resource %></td>
+        <td><%= link_to 'Show', budget_line %></td>
+        <td><%= link_to 'Edit', edit_budget_line_path(budget_line) %></td>
+        <td><%= link_to 'Destroy', budget_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Budget line', new_budget_line_path %>
