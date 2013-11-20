@@ -1,5 +1,7 @@
 Cinecinetique::Application.routes.draw do
 
+  resources :budgets
+
   resources :proposals
 
   resources :subscriptions

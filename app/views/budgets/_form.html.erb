@@ -1,0 +1,57 @@
+<%= form_for(@budget) do |f| %>
+  <% if @budget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+
+      <ul>
+      <% @budget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :preprod_cost %><br>
+    <%= f.text_field :preprod_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :prod_cost %><br>
+    <%= f.text_field :prod_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :postprod_cost %><br>
+    <%= f.text_field :postprod_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :outreach_cost %><br>
+    <%= f.text_field :outreach_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :marketing_distribution_cost %><br>
+    <%= f.text_field :marketing_distribution_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :administrative_cost %><br>
+    <%= f.text_field :administrative_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :total_cost %><br>
+    <%= f.text_field :total_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_currency %><br>
+    <%= f.text_field :cost_currency %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :project %><br>
+    <%= f.text_field :project %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

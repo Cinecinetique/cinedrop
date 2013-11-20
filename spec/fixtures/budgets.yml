@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  preprod_cost: 1.5
+  prod_cost: 1.5
+  postprod_cost: 1.5
+  outreach_cost: 1.5
+  marketing_distribution_cost: 1.5
+  administrative_cost: 1.5
+  total_cost: 1.5
+  cost_currency: MyString
+  status: MyString
+  project: 
+
+two:
+  preprod_cost: 1.5
+  prod_cost: 1.5
+  postprod_cost: 1.5
+  outreach_cost: 1.5
+  marketing_distribution_cost: 1.5
+  administrative_cost: 1.5
+  total_cost: 1.5
+  cost_currency: MyString
+  status: MyString
+  project: 

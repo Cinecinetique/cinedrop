@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Preprod cost:</strong>
+  <%= @budget.preprod_cost %>
+</p>
+
+<p>
+  <strong>Prod cost:</strong>
+  <%= @budget.prod_cost %>
+</p>
+
+<p>
+  <strong>Postprod cost:</strong>
+  <%= @budget.postprod_cost %>
+</p>
+
+<p>
+  <strong>Outreach cost:</strong>
+  <%= @budget.outreach_cost %>
+</p>
+
+<p>
+  <strong>Marketing distribution cost:</strong>
+  <%= @budget.marketing_distribution_cost %>
+</p>
+
+<p>
+  <strong>Administrative cost:</strong>
+  <%= @budget.administrative_cost %>
+</p>
+
+<p>
+  <strong>Total cost:</strong>
+  <%= @budget.total_cost %>
+</p>
+
+<p>
+  <strong>Cost currency:</strong>
+  <%= @budget.cost_currency %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @budget.status %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @budget.project %>
+</p>
+
+<%= link_to 'Edit', edit_budget_path(@budget) %> |
+<%= link_to 'Back', budgets_path %>

@@ -1,0 +1,45 @@
+<h1>Listing budgets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Preprod cost</th>
+      <th>Prod cost</th>
+      <th>Postprod cost</th>
+      <th>Outreach cost</th>
+      <th>Marketing distribution cost</th>
+      <th>Administrative cost</th>
+      <th>Total cost</th>
+      <th>Cost currency</th>
+      <th>Status</th>
+      <th>Project</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @budgets.each do |budget| %>
+      <tr>
+        <td><%= budget.preprod_cost %></td>
+        <td><%= budget.prod_cost %></td>
+        <td><%= budget.postprod_cost %></td>
+        <td><%= budget.outreach_cost %></td>
+        <td><%= budget.marketing_distribution_cost %></td>
+        <td><%= budget.administrative_cost %></td>
+        <td><%= budget.total_cost %></td>
+        <td><%= budget.cost_currency %></td>
+        <td><%= budget.status %></td>
+        <td><%= budget.project %></td>
+        <td><%= link_to 'Show', budget %></td>
+        <td><%= link_to 'Edit', edit_budget_path(budget) %></td>
+        <td><%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Budget', new_budget_path %>
