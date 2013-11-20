@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  topic: MyString
+  premise: MyString
+  message: MyString
+  outline: MyString
+  conflict: MyString
+  audience_bias: MyString
+  characters: MyString
+  interviews: MyString
+  preprod_start_date: 2013-11-20
+  time: MyString
+  preprod_end_date: 2013-11-20
+  time: MyString
+  prod_start_date: 2013-11-20
+  time: MyString
+  prod_end_date: 2013-11-20 19:28:17
+  postprod_start_date: 2013-11-20 19:28:17
+  postprod_end_date: 2013-11-20 19:28:17
+  form: MyString
+  style: MyString
+  resolution: MyString
+  differentiation: MyString
+  marketing: MyString
+  status: MyString
+  project: 
+
+two:
+  topic: MyString
+  premise: MyString
+  message: MyString
+  outline: MyString
+  conflict: MyString
+  audience_bias: MyString
+  characters: MyString
+  interviews: MyString
+  preprod_start_date: 2013-11-20
+  time: MyString
+  preprod_end_date: 2013-11-20
+  time: MyString
+  prod_start_date: 2013-11-20
+  time: MyString
+  prod_end_date: 2013-11-20 19:28:17
+  postprod_start_date: 2013-11-20 19:28:17
+  postprod_end_date: 2013-11-20 19:28:17
+  form: MyString
+  style: MyString
+  resolution: MyString
+  differentiation: MyString
+  marketing: MyString
+  status: MyString
+  project: 

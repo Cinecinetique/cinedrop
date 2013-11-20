@@ -1,0 +1,73 @@
+<h1>Listing proposals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Premise</th>
+      <th>Message</th>
+      <th>Outline</th>
+      <th>Conflict</th>
+      <th>Audience bias</th>
+      <th>Characters</th>
+      <th>Interviews</th>
+      <th>Preprod start date</th>
+      <th>Time</th>
+      <th>Preprod end date</th>
+      <th>Time</th>
+      <th>Prod start date</th>
+      <th>Time</th>
+      <th>Prod end date</th>
+      <th>Postprod start date</th>
+      <th>Postprod end date</th>
+      <th>Form</th>
+      <th>Style</th>
+      <th>Resolution</th>
+      <th>Differentiation</th>
+      <th>Marketing</th>
+      <th>Status</th>
+      <th>Project</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proposals.each do |proposal| %>
+      <tr>
+        <td><%= proposal.topic %></td>
+        <td><%= proposal.premise %></td>
+        <td><%= proposal.message %></td>
+        <td><%= proposal.outline %></td>
+        <td><%= proposal.conflict %></td>
+        <td><%= proposal.audience_bias %></td>
+        <td><%= proposal.characters %></td>
+        <td><%= proposal.interviews %></td>
+        <td><%= proposal.preprod_start_date %></td>
+        <td><%= proposal.time %></td>
+        <td><%= proposal.preprod_end_date %></td>
+        <td><%= proposal.time %></td>
+        <td><%= proposal.prod_start_date %></td>
+        <td><%= proposal.time %></td>
+        <td><%= proposal.prod_end_date %></td>
+        <td><%= proposal.postprod_start_date %></td>
+        <td><%= proposal.postprod_end_date %></td>
+        <td><%= proposal.form %></td>
+        <td><%= proposal.style %></td>
+        <td><%= proposal.resolution %></td>
+        <td><%= proposal.differentiation %></td>
+        <td><%= proposal.marketing %></td>
+        <td><%= proposal.status %></td>
+        <td><%= proposal.project %></td>
+        <td><%= link_to 'Show', proposal %></td>
+        <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
+        <td><%= link_to 'Destroy', proposal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proposal', new_proposal_path %>

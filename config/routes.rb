@@ -1,5 +1,7 @@
 Cinecinetique::Application.routes.draw do
 
+  resources :proposals
+
   resources :subscriptions
 
   devise_for :users, :controllers => { :registrations => 'registrations' }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119113631) do
+ActiveRecord::Schema.define(version: 20131120112817) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -75,6 +75,35 @@ ActiveRecord::Schema.define(version: 20131119113631) do
     t.string   "slug"
     t.datetime "date"
   end
+
+  create_table "proposals", force: true do |t|
+    t.string   "topic"
+    t.string   "premise"
+    t.string   "message"
+    t.string   "outline"
+    t.string   "conflict"
+    t.string   "audience_bias"
+    t.string   "characters"
+    t.string   "interviews"
+    t.date     "preprod_start_date"
+    t.string   "time"
+    t.date     "preprod_end_date"
+    t.date     "prod_start_date"
+    t.datetime "prod_end_date"
+    t.datetime "postprod_start_date"
+    t.datetime "postprod_end_date"
+    t.string   "form"
+    t.string   "style"
+    t.string   "resolution"
+    t.string   "differentiation"
+    t.string   "marketing"
+    t.string   "status"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proposals", ["project_id"], name: "index_proposals_on_project_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"

@@ -1,0 +1,113 @@
+<%= form_for(@proposal) do |f| %>
+  <% if @proposal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proposal.errors.count, "error") %> prohibited this proposal from being saved:</h2>
+
+      <ul>
+      <% @proposal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :topic %><br>
+    <%= f.text_field :topic %>
+  </div>
+  <div class="field">
+    <%= f.label :premise %><br>
+    <%= f.text_field :premise %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_field :message %>
+  </div>
+  <div class="field">
+    <%= f.label :outline %><br>
+    <%= f.text_field :outline %>
+  </div>
+  <div class="field">
+    <%= f.label :conflict %><br>
+    <%= f.text_field :conflict %>
+  </div>
+  <div class="field">
+    <%= f.label :audience_bias %><br>
+    <%= f.text_field :audience_bias %>
+  </div>
+  <div class="field">
+    <%= f.label :characters %><br>
+    <%= f.text_field :characters %>
+  </div>
+  <div class="field">
+    <%= f.label :interviews %><br>
+    <%= f.text_field :interviews %>
+  </div>
+  <div class="field">
+    <%= f.label :preprod_start_date %><br>
+    <%= f.date_select :preprod_start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.text_field :time %>
+  </div>
+  <div class="field">
+    <%= f.label :preprod_end_date %><br>
+    <%= f.date_select :preprod_end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.text_field :time %>
+  </div>
+  <div class="field">
+    <%= f.label :prod_start_date %><br>
+    <%= f.date_select :prod_start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.text_field :time %>
+  </div>
+  <div class="field">
+    <%= f.label :prod_end_date %><br>
+    <%= f.datetime_select :prod_end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :postprod_start_date %><br>
+    <%= f.datetime_select :postprod_start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :postprod_end_date %><br>
+    <%= f.datetime_select :postprod_end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :form %><br>
+    <%= f.text_field :form %>
+  </div>
+  <div class="field">
+    <%= f.label :style %><br>
+    <%= f.text_field :style %>
+  </div>
+  <div class="field">
+    <%= f.label :resolution %><br>
+    <%= f.text_field :resolution %>
+  </div>
+  <div class="field">
+    <%= f.label :differentiation %><br>
+    <%= f.text_field :differentiation %>
+  </div>
+  <div class="field">
+    <%= f.label :marketing %><br>
+    <%= f.text_field :marketing %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :project %><br>
+    <%= f.text_field :project %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
