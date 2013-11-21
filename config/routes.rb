@@ -6,6 +6,12 @@ Cinecinetique::Application.routes.draw do
 
   resources :proposals
 
+  resources :subscriptions do
+    collection do
+      get :complete_checkout
+    end
+  end
+
   resources :subscriptions
 
   devise_for :users, :controllers => { :registrations => 'registrations' }

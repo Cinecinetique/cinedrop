@@ -12,6 +12,14 @@ class SubscriptionsController < ApplicationController
   def show
   end
 
+  # GET /subscriptions/1
+  # GET /subscriptions/1.json
+  def complete_checkout
+    # if current_user is subscriber, redirect to dashboard
+    # otherwise render empty page with a message
+    render action: 'complete_checkout'
+  end
+
   # GET /subscriptions/new
   def new
     @subscription = Subscription.new
