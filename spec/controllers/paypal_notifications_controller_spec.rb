@@ -167,7 +167,18 @@ describe PaypalNotificationsController do
         Instalment.where("transaction_id = '61E67681CH3238416' and status = 0").count.should eq(1)
       end
 
-      it "creates an orphan instalment if there is no corresponding subscription"
+      it "creates an orphan instalment if there is no corresponding subscription" do 
+        stub_request(:post, "http://localhost:4578/cgi-bin/webscr?cmd=_notify-validate").to_return(:body => "VERIFIED")
+        my_params = {}
+        @payment_message.split(/&/).each { |pv| (k,v) =  pv.split(/\=/); my_params[k.to_sym] = v }
+        my_params['item_number'] = 7
+        post :create, my_params, {"Content-Type" => "application/x-www-form-urlencoded"}
+        response.body.should have_content("")
+        response.should be_success
+        instalment = Instalment.find_by_transaction_id_and_status("61E67681CH3238416", 0)
+        instalment.should_not be_nil
+        instalment.subscription_id.should be_nil
+      end
 
     end
 
