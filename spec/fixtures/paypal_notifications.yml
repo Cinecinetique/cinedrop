@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  transaction_type: MyString
+  transaction_id: MyString
+  parent_transaction_id: MyString
+  message: MyText
+  payment_status: MyString
+  receiver_email: MyString
+  buyer_email: MyString
+  status: MyString
+  custom: MyString
+
+two:
+  transaction_type: MyString
+  transaction_id: MyString
+  parent_transaction_id: MyString
+  message: MyText
+  payment_status: MyString
+  receiver_email: MyString
+  buyer_email: MyString
+  status: MyString
+  custom: MyString

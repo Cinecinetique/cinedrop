@@ -24,8 +24,8 @@ two:
   currency: MyString
   billing_frequency: 1
   status: 1
-  user: 
-  plan: 
+  user: 6
+  plan: 6
   initial_amount: 1.5
   initial_currency: MyString
   initial_billing_frequency: 1

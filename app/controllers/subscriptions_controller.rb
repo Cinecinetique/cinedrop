@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery :except => [:payment_notifications]
 
   # GET /subscriptions
   # GET /subscriptions.json
@@ -18,6 +19,26 @@ class SubscriptionsController < ApplicationController
     # if current_user is subscriber, redirect to dashboard
     # otherwise render empty page with a message
     render action: 'complete_checkout'
+  end
+
+  # POST /subscriptions/payment_notifications
+  def payment_notifications
+    # if current_user is subscriber, redirect to dashboard
+    # otherwise process the IPN message
+
+    response = IpnMessage.validate_IPN_notification(request.raw_post)
+    case response
+    when "VERIFIED"
+      IpnMessage.create(status:"VERIFIED",message:request.raw_post)
+      render :nothing => true, :status => 200
+    when "INVALID"
+      IpnMessage.create(status:"INVALID",message:request.raw_post)
+      render :nothing => true, :status => 200
+    else
+      Rails.logger.error "Paypal responded with incorrect value (neither VERIFIED or INVALID)"
+      render :nothing => true, :status => 400
+    end
+
   end
 
   # GET /subscriptions/new
@@ -79,4 +100,13 @@ class SubscriptionsController < ApplicationController
     def subscription_params
       params.require(:subscription).permit(:start_date, :end_date, :amount, :currency, :billing_frequency, :status, :user_id, :plan_id, :initial_amount, :initial_currency, :initial_billing_frequency, :previous_amount, :previous_currency, :previous_billing_frequency, :last_plan_price_change_date)
     end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def ipn_params
+      params.require(:subscription).permit(:mc_gross, :payer_id, :custom, :item_number, :quantity, :protection_eligibility, :payment_type, :mc_fee, :mc_currency, :payment_status, :payment_gross, :payment_fee, :payment_date, :receiver_email, :receiver_id, :txn_id, :payer_status, :payer_email, :txn_type)
+    end
+
+    protected 
+    
+
 end

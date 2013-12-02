@@ -1,0 +1,43 @@
+<h1>Listing paypal_notifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Transaction type</th>
+      <th>Transaction</th>
+      <th>Parent transaction</th>
+      <th>Message</th>
+      <th>Payment status</th>
+      <th>Receiver email</th>
+      <th>Buyer email</th>
+      <th>Status</th>
+      <th>Custom</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @paypal_notifications.each do |paypal_notification| %>
+      <tr>
+        <td><%= paypal_notification.transaction_type %></td>
+        <td><%= paypal_notification.transaction_id %></td>
+        <td><%= paypal_notification.parent_transaction_id %></td>
+        <td><%= paypal_notification.message %></td>
+        <td><%= paypal_notification.payment_status %></td>
+        <td><%= paypal_notification.receiver_email %></td>
+        <td><%= paypal_notification.buyer_email %></td>
+        <td><%= paypal_notification.status %></td>
+        <td><%= paypal_notification.custom %></td>
+        <td><%= link_to 'Show', paypal_notification %></td>
+        <td><%= link_to 'Edit', edit_paypal_notification_path(paypal_notification) %></td>
+        <td><%= link_to 'Destroy', paypal_notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Paypal notification', new_paypal_notification_path %>

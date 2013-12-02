@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120114923) do
+ActiveRecord::Schema.define(version: 20131129064126) do
 
   create_table "budget_lines", force: true do |t|
     t.integer  "phase"
@@ -68,6 +68,33 @@ ActiveRecord::Schema.define(version: 20131120114923) do
 
   add_index "documents", ["project_id"], name: "index_documents_on_project_id"
 
+  create_table "instalments", force: true do |t|
+    t.string   "transaction_id"
+    t.string   "status"
+    t.integer  "billing_period"
+    t.boolean  "is_trial"
+    t.datetime "payment_date"
+    t.float    "amount"
+    t.string   "currency"
+    t.integer  "subscription_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "instalments", ["subscription_id"], name: "index_instalments_on_subscription_id"
+
+  create_table "ipn_messages", force: true do |t|
+    t.string   "status"
+    t.string   "txn_id"
+    t.string   "parent_txn_id"
+    t.string   "txn_type"
+    t.string   "message"
+    t.string   "receiver_email"
+    t.string   "buyer_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "payments", force: true do |t|
     t.integer  "subscription_id"
     t.integer  "worker_id"
@@ -81,6 +108,20 @@ ActiveRecord::Schema.define(version: 20131120114923) do
 
   add_index "payments", ["subscription_id"], name: "index_payments_on_subscription_id"
   add_index "payments", ["worker_id"], name: "index_payments_on_worker_id"
+
+  create_table "paypal_notifications", force: true do |t|
+    t.string   "transaction_type"
+    t.string   "transaction_id"
+    t.string   "parent_transaction_id"
+    t.text     "message"
+    t.string   "payment_status"
+    t.string   "receiver_email"
+    t.string   "buyer_email"
+    t.string   "status"
+    t.string   "custom"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "plans", force: true do |t|
     t.string   "name"
@@ -189,8 +230,12 @@ ActiveRecord::Schema.define(version: 20131120114923) do
     t.datetime "last_plan_price_change_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "recurring_payment_id"
+    t.string   "recurring_payment_provider"
+    t.string   "recurring_payment_id_label"
   end
 
+  add_index "subscriptions", ["amount", "status", "user_id", "plan_id"], name: "uniq_subscr_idx", unique: true
   add_index "subscriptions", ["plan_id"], name: "index_subscriptions_on_plan_id"
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 

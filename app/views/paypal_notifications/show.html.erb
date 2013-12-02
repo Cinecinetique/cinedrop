@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Transaction type:</strong>
+  <%= @paypal_notification.transaction_type %>
+</p>
+
+<p>
+  <strong>Transaction:</strong>
+  <%= @paypal_notification.transaction_id %>
+</p>
+
+<p>
+  <strong>Parent transaction:</strong>
+  <%= @paypal_notification.parent_transaction_id %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @paypal_notification.message %>
+</p>
+
+<p>
+  <strong>Payment status:</strong>
+  <%= @paypal_notification.payment_status %>
+</p>
+
+<p>
+  <strong>Receiver email:</strong>
+  <%= @paypal_notification.receiver_email %>
+</p>
+
+<p>
+  <strong>Buyer email:</strong>
+  <%= @paypal_notification.buyer_email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @paypal_notification.status %>
+</p>
+
+<p>
+  <strong>Custom:</strong>
+  <%= @paypal_notification.custom %>
+</p>
+
+<%= link_to 'Edit', edit_paypal_notification_path(@paypal_notification) %> |
+<%= link_to 'Back', paypal_notifications_path %>

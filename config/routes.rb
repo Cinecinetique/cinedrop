@@ -1,5 +1,7 @@
 Cinecinetique::Application.routes.draw do
 
+  resources :paypal_notifications
+
   resources :budget_lines
 
   resources :budgets
@@ -9,6 +11,7 @@ Cinecinetique::Application.routes.draw do
   resources :subscriptions do
     collection do
       get :complete_checkout
+      post :payment_notifications
     end
   end
 

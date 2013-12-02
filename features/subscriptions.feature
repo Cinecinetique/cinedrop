@@ -20,7 +20,8 @@ Then she is shown a thank you and be patient message
 @wip
 Scenario: A member's signup to a plan is confirmed by paypal
 Given paypal has sent a notification to our platform
-When our platform has valided the authenticity of the message
+When our platform has validated the authenticity of the message
+And our platform has processed the message for completed payment
 Then the member's subscription plan is activated
 
 Scenario: A member signed up for a plan cancels her subscription

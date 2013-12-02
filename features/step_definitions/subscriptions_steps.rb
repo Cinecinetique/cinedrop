@@ -28,3 +28,32 @@ end
 Then(/^she is shown a thank you and be patient message$/) do
   page.should have_content("Thank you for sign up for a plan. Your subscription will be processed shortly.")
 end
+
+
+Given(/^paypal has sent a notification to our platform$/) do
+	@ipn_message="mc_gross=19.95&protection_eligibility=Eligible&address_status=confirmed&payer_id=LPLWNMTBWMFAY&tax=0.00&address_street=1+Main+St&payment_date=20%3A12%3A59+Jan+13%2C+2009+PST&payment_status=Completed&charset=windows-1252&address_zip=95131&first_name=Test&mc_fee=0.88&address_country_code=US&address_name=Test+User&notify_version=2.6&custom=&payer_status=verified&address_country=United+States&address_city=San+Jose&quantity=1&verify_sign=AtkOfCXbDm2hu0ZELryHFjY-Vb7PAUvS6nMXgysbElEn9v-1XcmSoGtf&payer_email=gpmac_1231902590_per%40paypal.com&txn_id=61E67681CH3238416&payment_type=instant&last_name=User&address_state=CA&receiver_email=gpmac_1231902686_biz%40paypal.com&payment_fee=0.88&receiver_id=S8XGHLYDW9T3S&txn_type=express_checkout&item_name=&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=&payment_gross=19.95&shipping=0.00"
+  post("/subscriptions/payment_notifications",@ipn_message)
+end
+
+
+When(/^our platform has validated the authenticity of the message$/) do
+	# 1. our platform makes a POST call to paypal endpoint with identical message
+	# 2. paypal return status to our endpoint
+	doubles_serialized = RestClient.get "http://localhost:4578/doubles.json"
+	doubles = JSON.parse(doubles_serialized)
+	double_id = doubles[0]['double']['id']
+	double_serialized = RestClient.get "http://localhost:4578/doubles/#{double_id}.json"
+	double_data = JSON.parse(double_serialized)
+	double_data['double']['requests'].length.should == 1
+	double_data['double']['requests'][0]['body'].should == @ipn_message
+end
+
+When(/^our platform has processed the message for completed payment$/) do
+  page.should have_content("")
+  last_response.status.should == 200
+end
+
+Then(/^the member's subscription plan is activated$/) do
+  visit('/subscriptions/complete_checkout')
+  page.current_url.should eq projects_url
+end

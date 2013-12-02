@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  status: MyString
+  txn_id: MyString
+  parent_txn_id: MyString
+  txn_type: MyString
+  message: MyString
+  receiver_email: MyString
+  buyer_email: MyString
+
+two:
+  status: MyString
+  txn_id: MyString
+  parent_txn_id: MyString
+  txn_type: MyString
+  message: MyString
+  receiver_email: MyString
+  buyer_email: MyString

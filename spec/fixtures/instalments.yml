@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  transaction_id: MyString
+  status: MyString
+  billing_period: 1
+  is_trial: false
+  payment_date: 2013-11-26 16:47:03
+  amount: 1.5
+  currency: MyString
+  subscription: 
+
+two:
+  transaction_id: MyString
+  status: MyString
+  billing_period: 1
+  is_trial: false
+  payment_date: 2013-11-26 16:47:03
+  amount: 1.5
+  currency: MyString
+  subscription: 

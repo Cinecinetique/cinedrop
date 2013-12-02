@@ -1,0 +1,53 @@
+<%= form_for(@paypal_notification) do |f| %>
+  <% if @paypal_notification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@paypal_notification.errors.count, "error") %> prohibited this paypal_notification from being saved:</h2>
+
+      <ul>
+      <% @paypal_notification.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :transaction_type %><br>
+    <%= f.text_field :transaction_type %>
+  </div>
+  <div class="field">
+    <%= f.label :transaction_id %><br>
+    <%= f.text_field :transaction_id %>
+  </div>
+  <div class="field">
+    <%= f.label :parent_transaction_id %><br>
+    <%= f.text_field :parent_transaction_id %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_area :message %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_status %><br>
+    <%= f.text_field :payment_status %>
+  </div>
+  <div class="field">
+    <%= f.label :receiver_email %><br>
+    <%= f.text_field :receiver_email %>
+  </div>
+  <div class="field">
+    <%= f.label :buyer_email %><br>
+    <%= f.text_field :buyer_email %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :custom %><br>
+    <%= f.text_field :custom %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
