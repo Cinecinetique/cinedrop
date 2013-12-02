@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131129064126) do
+ActiveRecord::Schema.define(version: 20131202104717) do
 
   create_table "budget_lines", force: true do |t|
     t.integer  "phase"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20131129064126) do
 
   create_table "instalments", force: true do |t|
     t.string   "transaction_id"
-    t.string   "status"
+    t.string   "payment_status"
     t.integer  "billing_period"
     t.boolean  "is_trial"
     t.datetime "payment_date"
@@ -79,9 +79,11 @@ ActiveRecord::Schema.define(version: 20131129064126) do
     t.integer  "subscription_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status"
   end
 
   add_index "instalments", ["subscription_id"], name: "index_instalments_on_subscription_id"
+  add_index "instalments", ["transaction_id", "status"], name: "index_instalments_on_transaction_id_and_status", unique: true
 
   create_table "ipn_messages", force: true do |t|
     t.string   "status"

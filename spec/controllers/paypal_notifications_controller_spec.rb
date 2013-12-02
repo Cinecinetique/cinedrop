@@ -151,7 +151,21 @@ describe PaypalNotificationsController do
         Instalment.find_by_transaction_id_and_subscription_id("61E67681CH3238416", subscriptions(:two).id).should_not be_nil
       end
 
-      it "does not create an instalment record when a notification is a duplicate"
+      it "does not create an instalment record when a notification is a duplicate" do 
+        stub_request(:post, "http://localhost:4578/cgi-bin/webscr?cmd=_notify-validate").to_return(:body => "VERIFIED")
+        my_params = {}
+        @payment_message.split(/&/).each { |pv| (k,v) =  pv.split(/\=/); my_params[k.to_sym] = v }
+
+        post :create, my_params, {"Content-Type" => "application/x-www-form-urlencoded"}
+        response.body.should have_content("")
+        response.should be_success
+
+        post :create, my_params, {"Content-Type" => "application/x-www-form-urlencoded"}
+        response.body.should have_content("")
+        response.should be_success
+
+        Instalment.where("transaction_id = '61E67681CH3238416' and status = 0").count.should eq(1)
+      end
 
       it "creates an orphan instalment if there is no corresponding subscription"
 

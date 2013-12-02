@@ -56,16 +56,18 @@ class PaypalNotificationsController < ApplicationController
         user = request.params[:custom]
         plan = request.params[:item_number]
         currency = request.params[:mc_currency]
-        if payment_status
+        begin
           instalment = Instalment.new(transaction_id: transaction_id, 
-                                      status: payment_status, 
+                                      payment_status: payment_status,
+                                      status: Instalment.status_hash(payment_status),
                                       payment_date: DateTime.strptime(CGI.unescape(payment_date), '%H:%M:%S %b %d, %Y %Z'), 
                                       amount: amount, 
                                       currency: currency)
           subscription = Subscription.find_by_user_id_and_plan_id_and_amount(user, plan, amount)
           instalment.subscription_id = subscription.id if subscription
           instalment.save
-
+        rescue ActiveRecord::RecordNotUnique
+          Rails.logger.warn "Duplicate IPN message: #{request.raw_post}"
         end
       else
         notification.save
