@@ -37,4 +37,7 @@ Cinecinetique::Application.configure do
   Firebase.base_uri = "https://ccq-test-notifications.firebaseio.com/"
 
   default_url_options[:host] = "localhost:3000"
+
+  ::PAYPAL_URL = "https://www.sandbox.paypal.com"
+  ::IPN_URL = "http://localhost:4578/cgi-bin/webscr?cmd=_notify-validate"
 end
