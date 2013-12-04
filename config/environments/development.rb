@@ -57,4 +57,7 @@ Cinecinetique::Application.configure do
 
   ::PAYPAL_URL = ses_credentials['PAYPAL_URL']
   ::IPN_URL = ses_credentials['IPN_URL']
+  ::SOLO_PAYPAL_BUTTON = ses_credentials['SOLO_PAYPAL_BUTTON']
+  ::INDIES_PAYPAL_BUTTON = ses_credentials['INDIES_PAYPAL_BUTTON']
+  ::AGENCIES_PAYPAL_BUTTON = ses_credentials['AGENCIES_PAYPAL_BUTTON']
 end

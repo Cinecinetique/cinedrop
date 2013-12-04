@@ -28,7 +28,7 @@
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="custom" value="<%= current_user.id %>">
 <input type="hidden" name="item_number" value="<%= plan.id %>">
-<input type="hidden" name="hosted_button_id" value="<%= ENV[plan.name.upcase + '_PAYPAL_BUTTON'] %>">
+<input type="hidden" name="hosted_button_id" value="<%= eval('::' + plan.name.upcase + '_PAYPAL_BUTTON') %>">
 <input id=<%= plan.name.downcase %> type="image" src="<%= PAYPAL_URL %>/en_GB/HK/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
 <img alt="" border="0" src="<%= PAYPAL_URL %>/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>

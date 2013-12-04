@@ -37,8 +37,11 @@ Cinecinetique::Application.configure do
   Firebase.base_uri = "https://ccq-test-notifications.firebaseio.com/"
 
   default_url_options[:host] = "localhost:3000"
-  
+
   ses_credentials = YAML.load_file("/tmp/ses_credentials.yml")
   ::PAYPAL_URL = ses_credentials['PAYPAL_URL']
   ::IPN_URL = ses_credentials['IPN_URL']
+  ::SOLO_PAYPAL_BUTTON = ses_credentials['SOLO_PAYPAL_BUTTON']
+  ::INDIES_PAYPAL_BUTTON = ses_credentials['INDIES_PAYPAL_BUTTON']
+  ::AGENCIES_PAYPAL_BUTTON = ses_credentials['AGENCIES_PAYPAL_BUTTON']
 end
