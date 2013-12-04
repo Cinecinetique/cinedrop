@@ -55,6 +55,6 @@ Cinecinetique::Application.configure do
 
   default_url_options[:host] = "localhost:3000"
 
-  ::PAYPAL_URL = "https://www.sandbox.paypal.com"
-  ::IPN_URL = "http://localhost:4578/cgi-bin/webscr?cmd=_notify-validate"
+  ::PAYPAL_URL = ses_credentials['PAYPAL_URL']
+  ::IPN_URL = ses_credentials['IPN_URL']
 end

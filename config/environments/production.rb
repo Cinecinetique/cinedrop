@@ -107,7 +107,7 @@ Cinecinetique::Application.configure do
 
 
   Firebase.base_uri = "https://ccq-prod-notifications.firebaseio.com/"
-  
-  ::PAYPAL_URL = "https://www.sandbox.paypal.com"
-  ::IPN_URL = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_notify-validate"
+
+  ::PAYPAL_URL = ses_credentials['PAYPAL_URL']
+  ::IPN_URL = ses_credentials['IPN_URL']
 end
