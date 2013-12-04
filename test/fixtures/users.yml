@@ -11,3 +11,4 @@ two:
   email: sarah@foo.com
   encrypted_password: <%= Devise.bcrypt(Struct.new(:pepper, :stretches).new("blahblah", 2),"12345678") %>
   confirmed_at: <%= Time.now %>
+

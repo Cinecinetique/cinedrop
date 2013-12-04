@@ -17,12 +17,20 @@ Given a member has payed with Paypal for the plan she has chosen
 When she is redirected to the platform
 Then she is shown a thank you and be patient message
 
-@wip
+@ok
 Scenario: A member's signup to a plan is confirmed by paypal
-Given paypal has sent a notification to our platform
+Given a member is signed in
+And paypal has sent a subscription notification to our platform
+And paypal has sent a payment notification to our platform
 When our platform has validated the authenticity of the message
-And our platform has processed the message for completed payment
-Then the member's subscription plan is activated
+Then our platform has processed the message for completed payment
+
+@ok
+Scenario: A member subscription is activated upon payment notificiation
+Given a member is signed in
+And a subscripttion and an instalment have been created
+When a member reload the completed_checkout page
+Then the member is redirected to the project page
 
 Scenario: A member signed up for a plan cancels her subscription
 

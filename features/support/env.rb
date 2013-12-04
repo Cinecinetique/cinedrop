@@ -69,7 +69,7 @@ Capybara.configure do |config|
 
 Rails.env="development"
 
-World(Capybara, Fixtures, AwsHelper, UserProfile, Rack::Test::Methods)
+World(Capybara, Fixtures, AwsHelper, UserProfile, Rack::Test::Methods, Warden::Test::Helpers)
 
 
 

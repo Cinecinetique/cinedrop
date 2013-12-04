@@ -30,9 +30,15 @@ Then(/^she is shown a thank you and be patient message$/) do
 end
 
 
-Given(/^paypal has sent a notification to our platform$/) do
-	@ipn_message="mc_gross=19.95&protection_eligibility=Eligible&address_status=confirmed&payer_id=LPLWNMTBWMFAY&tax=0.00&address_street=1+Main+St&payment_date=20%3A12%3A59+Jan+13%2C+2009+PST&payment_status=Completed&charset=windows-1252&address_zip=95131&first_name=Test&mc_fee=0.88&address_country_code=US&address_name=Test+User&notify_version=2.6&custom=&payer_status=verified&address_country=United+States&address_city=San+Jose&quantity=1&verify_sign=AtkOfCXbDm2hu0ZELryHFjY-Vb7PAUvS6nMXgysbElEn9v-1XcmSoGtf&payer_email=gpmac_1231902590_per%40paypal.com&txn_id=61E67681CH3238416&payment_type=instant&last_name=User&address_state=CA&receiver_email=gpmac_1231902686_biz%40paypal.com&payment_fee=0.88&receiver_id=S8XGHLYDW9T3S&txn_type=express_checkout&item_name=&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=&payment_gross=19.95&shipping=0.00"
-  post("/subscriptions/payment_notifications",@ipn_message)
+Given(/^paypal has sent a subscription notification to our platform$/) do
+  @subscription_message="mc_gross=19.95&protection_eligibility=Eligible&address_status=confirmed&payer_id=LPLWNMTBWMFAY&tax=0.00&address_street=1+Main+St&payment_date=20%3A12%3A59+Jan+13%2C+2009+PST&payment_status=Completed&charset=windows-1252&address_zip=95131&first_name=Test&mc_fee=0.88&address_country_code=US&address_name=Test+User&notify_version=2.6&custom=1&payer_status=verified&address_country=United+States&address_city=San+Jose&quantity=1&verify_sign=AtkOfCXbDm2hu0ZELryHFjY-Vb7PAUvS6nMXgysbElEn9v-1XcmSoGtf&payer_email=gpmac_1231902590_per%40paypal.com&txn_id=61E67681CH3238416&payment_type=instant&last_name=User&address_state=CA&receiver_email=gpmac_1231902686_biz%40paypal.com&payment_fee=0.88&receiver_id=S8XGHLYDW9T3S&txn_type=subscr_signup&subscr_date=20%3A12%3A59+Jan+13%2C+2009+PST&item_name=&mc_currency=USD&item_number=1&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=&payment_gross=19.95&shipping=0.00&subscr_id=dfsadfa77"
+  post("/paypal_notifications",@subscription_message)
+end
+
+
+Given(/^paypal has sent a payment notification to our platform$/) do
+	@payment_message="mc_gross=19.95&protection_eligibility=Eligible&address_status=confirmed&payer_id=LPLWNMTBWMFAY&tax=0.00&address_street=1+Main+St&payment_date=20%3A12%3A59+Jan+13%2C+2009+PST&payment_status=Completed&charset=windows-1252&address_zip=95131&first_name=Test&mc_fee=0.88&address_country_code=US&address_name=Test+User&notify_version=2.6&custom=1&payer_status=verified&address_country=United+States&address_city=San+Jose&quantity=1&verify_sign=AtkOfCXbDm2hu0ZELryHFjY-Vb7PAUvS6nMXgysbElEn9v-1XcmSoGtf&payer_email=gpmac_1231902590_per%40paypal.com&txn_id=61E67681CH3238416&payment_type=instant&last_name=User&address_state=CA&receiver_email=gpmac_1231902686_biz%40paypal.com&payment_fee=0.88&receiver_id=S8XGHLYDW9T3S&txn_type=recurring_payment&item_name=&mc_currency=USD&item_number=1&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=&payment_gross=19.95&shipping=0.00&subscr_id=dfsadfa77"
+  post("/paypal_notifications",@payment_message)
 end
 
 
@@ -44,8 +50,9 @@ When(/^our platform has validated the authenticity of the message$/) do
 	double_id = doubles[0]['double']['id']
 	double_serialized = RestClient.get "http://localhost:4578/doubles/#{double_id}.json"
 	double_data = JSON.parse(double_serialized)
-	double_data['double']['requests'].length.should == 1
-	double_data['double']['requests'][0]['body'].should == @ipn_message
+	double_data['double']['requests'].length.should == 2
+	double_data['double']['requests'][0]['body'].should == @subscription_message
+	double_data['double']['requests'][1]['body'].should == @payment_message
 end
 
 When(/^our platform has processed the message for completed payment$/) do
@@ -56,4 +63,28 @@ end
 Then(/^the member's subscription plan is activated$/) do
   visit('/subscriptions/complete_checkout')
   page.current_url.should eq projects_url
+  save_and_open_page
+end
+
+Given(/^a member is signed in$/) do
+  User.create!(name:"Rocky", 
+  						email: 'racktest_ccq@rijam.sent.as',
+  						password:'12345678',
+  						confirmed_at: Time.now)
+  login_as(User.first, :run_callbacks => false)
+end
+
+Given(/^a subscripttion and an instalment have been created$/) do
+  step 'paypal has sent a subscription notification to our platform'
+  step 'paypal has sent a payment notification to our platform'
+end
+
+When(/^a member reload the completed_checkout page$/) do
+  get("/subscriptions/complete_checkout")
+end
+
+Then(/^the member is redirected to the project page$/) do
+  last_response.should be_redirect
+  follow_redirect!
+  last_request.path.should == projects_path
 end

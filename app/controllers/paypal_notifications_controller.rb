@@ -27,6 +27,7 @@ class PaypalNotificationsController < ApplicationController
   # POST /paypal_notifications.json
   def create
     response = PaypalNotification.validate_IPN_notification(request.raw_post)
+    Rails.logger.info "IPN Message received!"
     case response
     when "VERIFIED"
       notification = PaypalNotification.new(status:"VERIFIED",message:request.raw_post)
@@ -37,7 +38,7 @@ class PaypalNotificationsController < ApplicationController
         currency = request.params[:mc_currency]
         start_date = request.params[:subscr_date]
         begin
-          Subscription.create(start_date:start_date,
+          Subscription.create(start_date: DateTime.strptime(CGI.unescape(start_date), '%H:%M:%S %b %d, %Y %Z'),
                               amount: amount,
                               currency:currency,
                               status: 1,
@@ -54,6 +55,7 @@ class PaypalNotificationsController < ApplicationController
         payment_date = request.params[:payment_date]
         amount = request.params[:mc_gross]
         user = request.params[:custom]
+        user_instance = User.find(user)
         plan = request.params[:item_number]
         currency = request.params[:mc_currency]
         begin
@@ -66,6 +68,9 @@ class PaypalNotificationsController < ApplicationController
           subscription = Subscription.find_by_user_id_and_plan_id_and_amount(user, plan, amount)
           instalment.subscription_id = subscription.id if subscription
           instalment.save
+          if payment_status == "Completed" && user_instance
+            user_instance.add_role :subscriber
+          end
         rescue ActiveRecord::RecordNotUnique
           Rails.logger.warn "Duplicate IPN message: #{request.raw_post}"
         end

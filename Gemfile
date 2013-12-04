@@ -70,10 +70,12 @@ gem 'devise'
 gem 'cancan'
 gem 'rolify'
 
+group :test do
+  gem 'webmock'
+end
 
 group :development, :test do
   gem 'rest-client'
-  gem 'webmock'
   gem 'selenium-webdriver', '>= 2.25.0'
   gem 'launchy'
   gem 'rspec-rails', '~> 2.0'

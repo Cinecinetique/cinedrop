@@ -26,4 +26,5 @@ end
 
 class ActionController::TestCase
   include Devise::TestHelpers
+  WebMock.allow_net_connect!
 end

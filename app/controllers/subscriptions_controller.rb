@@ -17,8 +17,12 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions/1.json
   def complete_checkout
     # if current_user is subscriber, redirect to dashboard
+    if Subscription.where("user_id = #{current_user.id} and start_date < '#{Time.now}'").count > 0
+      redirect_to projects_url
+    else
     # otherwise render empty page with a message
-    render action: 'complete_checkout'
+      render action: 'complete_checkout'
+    end
   end
 
   # POST /subscriptions/payment_notifications
