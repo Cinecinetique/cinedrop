@@ -1,6 +1,6 @@
 class DropOldSubscriptions < ActiveRecord::Migration
   def up
-  	unless table_exists?(:subscriptions)
+  	if table_exists?(:subscriptions)
 	  	drop_table :subscriptions
 		end
   end
