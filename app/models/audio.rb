@@ -1,9 +1,9 @@
 class Audio < Document
 	has_attached_file :data, 
-                    :styles => { :compressed => {:format => 'mp3'},
-                                 :ogg_compressed => {:format => 'ogg'} },
+                    # :styles => { :compressed => {:format => 'mp3'},
+                    #              :ogg_compressed => {:format => 'ogg'} },
         				    :default_url => "/images/:style/missing.png",
-        				    :processors => [ :audio_processor ],
+        				    # :processors => [ :audio_processor ],
                     :bucket => proc { |attachment| attachment.instance.project.bucket_name }
 					  
     validates_attachment :data, :presence => true,

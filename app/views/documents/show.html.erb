@@ -21,7 +21,7 @@
 	<%= link_to 'View document', signed_url_for(:original,@document) %>
 	</iframe>
 	</div>
-<% elsif @document.video? %>
+<% elsif false #@document.video? %>
 
 <video id="a240e92d" class="sublime" poster="<%= signed_url_for(:poster, @document) %>" width="400" height="300" title="Midnight Sun" data-uid="a240e92d" preload="none">
  <source src="<%= signed_url_for(:mobile, @document) %>" />
@@ -29,7 +29,7 @@
 
 <% elsif @document.image? %>
 	<%= image_tag signed_url_for(:medium,@document) %>
-<% elsif @document.audio? %>
+<% elsif false #@document.audio? %>
 	<audio controls>
 		<source src="<%= signed_url_for(:compressed, @document) %>" type="audio/mp3" />
 		<source src="<%= signed_url_for(:ogg_compressed, @document) %>" type="audio/ogg" />

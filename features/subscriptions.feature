@@ -11,13 +11,14 @@ When she visits the plans page
 And select one of the plan
 Then the user is redirect to Paypal for payment
 
-@ok
+@ok @use-test-env
 Scenario: A member is redirected to the site after paying on Paypal
 Given a member has payed with Paypal for the plan she has chosen
+And a member is signed in
 When she is redirected to the platform
 Then she is shown a thank you and be patient message
 
-@ok
+@ok @use-test-env
 Scenario: A member's signup to a plan is confirmed by paypal
 Given a member is signed in
 And paypal has sent a subscription notification to our platform

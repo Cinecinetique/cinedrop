@@ -1,12 +1,12 @@
 class Video < Document
       
 	has_attached_file :data, 
-                        :styles => { :mobile => {:geometry => "400x300", :format => 'mp4', :streaming => true}, 
-                                     :thumb => { :geometry => "120x90#", :format => 'jpg', :time => 1 }, 
-                                     :poster => { :geometry => "400x300#", :format => 'jpg', :time => 1 }},
+                        # :styles => { :mobile => {:geometry => "400x300", :format => 'mp4', :streaming => true}, 
+                        #              :thumb => { :geometry => "120x90#", :format => 'jpg', :time => 1 }, 
+                        #              :poster => { :geometry => "400x300#", :format => 'jpg', :time => 1 }},
                         :convert_options => { :mobile => "-movflags faststart"},
 			      :default_url => "/images/:style/missing.png",
-				:processors => [ :ffmpeg ],
+				# :processors => [ :ffmpeg ],
                         :bucket => proc { |attachment| attachment.instance.project.bucket_name }
       validates_attachment :data,
                            :size => { :in => 0..100.megabytes }

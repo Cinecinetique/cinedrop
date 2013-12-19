@@ -1,7 +1,7 @@
       <tr id="<%= "document_#{document.name.parameterize}" %>">
       	<td><%= document.scene_number %></td>
         <td id="<%= document.id %>" draggable>
-        <% if document.video? || document.image? || document.pdf? %>
+        <% if document.image? || document.pdf? %>
           <%= image_tag signed_url_for(:thumb, document), :id => document.id, :class => "img-thumbnail img-responsive" %>  
         <% elsif document.xls? || document.xlsx? %>
           <%= image_tag "/images/excel.png", :id => document.id, :class => "img-thumbnail img-responsive" %>

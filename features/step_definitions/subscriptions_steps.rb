@@ -14,7 +14,7 @@ When(/^select one of the plan$/) do
 end
 
 Then(/^the user is redirect to Paypal for payment$/) do
-  page.current_url.should =~ /https:\/\/www\.sandbox\.paypal\.com/
+  page.current_url.should =~ /#{PAYPAL_URL}/
 end
 
 Given(/^a member has payed with Paypal for the plan she has chosen$/) do
@@ -22,11 +22,11 @@ Given(/^a member has payed with Paypal for the plan she has chosen$/) do
 end
 
 When(/^she is redirected to the platform$/) do
-  visit("/subscriptions/complete_checkout?auth=@auth")
+  get("/subscriptions/complete_checkout?auth=@auth")
 end
 
 Then(/^she is shown a thank you and be patient message$/) do
-  page.should have_content("Thank you for sign up for a plan. Your subscription will be processed shortly.")
+  last_response.body.should have_content("Thank you for sign up for a plan. Your subscription will be processed shortly.")
 end
 
 
