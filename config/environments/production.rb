@@ -92,7 +92,7 @@ Cinecinetique::Application.configure do
     }
   }
 
-  ses_credentials = YAML.load_file("/tmp/ses_credentials.yml")
+  ses_credentials = YAML.load_file("/tmp/ses_credentials-staging.yml")
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address =>             'email-smtp.us-east-1.amazonaws.com',
