@@ -26,8 +26,9 @@ class PaypalNotificationsController < ApplicationController
   # POST /paypal_notifications
   # POST /paypal_notifications.json
   def create
-    response = PaypalNotification.validate_IPN_notification(request.raw_post)
     Rails.logger.info "IPN Message received!"
+    response = PaypalNotification.validate_IPN_notification(::IPN_URL, request.raw_post)
+    Rails.logger.info "Response from Paypal IPN: #{response}"
     case response
     when "VERIFIED"
       notification = PaypalNotification.new(status:"VERIFIED",message:request.raw_post)
