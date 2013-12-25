@@ -74,9 +74,8 @@ Given(/^a member is signed in$/) do
   login_as(User.first, :run_callbacks => false)
 end
 
-Given(/^a subscripttion and an instalment have been created$/) do
+Given(/^a subscription has been created$/) do
   step 'paypal has sent a subscription notification to our platform'
-  step 'paypal has sent a payment notification to our platform'
 end
 
 When(/^a member reload the completed_checkout page$/) do

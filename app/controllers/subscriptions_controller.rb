@@ -18,6 +18,7 @@ class SubscriptionsController < ApplicationController
   def complete_checkout
     # if current_user is subscriber, redirect to dashboard
     if Subscription.where("user_id = #{current_user.id} and start_date < '#{Time.now}'").count > 0
+      Rails.logger.debug "completed check out for user_id: #{current_user.id}"
       redirect_to projects_url
     else
     # otherwise render empty page with a message

@@ -76,7 +76,7 @@ end
 
 group :development, :test do
   gem 'rest-client'
-  gem 'selenium-webdriver', '>= 2.25.0'
+  gem 'selenium-webdriver', '~> 2.38.0'
   gem 'launchy'
   gem 'rspec-rails', '~> 2.0'
   gem 'rspec-multi-mock'

@@ -34,6 +34,7 @@ class PaypalNotificationsController < ApplicationController
       notification = PaypalNotification.new(status:"VERIFIED",message:request.raw_post)
       if request.params[:txn_type] == "subscr_signup"
         user = request.params[:custom]
+        user_instance = User.find(user)
         plan = request.params[:item_number]
         amount = request.params[:mc_gross]
         currency = request.params[:mc_currency]
@@ -47,6 +48,7 @@ class PaypalNotificationsController < ApplicationController
                               plan_id:plan
                               )
           notification.save
+          user_instance.add_role :subscriber
         rescue ActiveRecord::RecordNotUnique
           Rails.logger.warn "Duplicate IPN message: #{request.raw_post}"
         end

@@ -4,7 +4,7 @@ Before do |scenario|
   # executed.
   	Warden.test_mode!
 	Rails.logger.debug "Starting scenario: #{scenario.title}"
-	if scenario.title =~ /paypal/ || scenario.title =~ /payment/
+	if scenario.title =~ /paypal/ || scenario.title =~ /subscription notificiation/
   	RestClient.post "http://localhost:4578/doubles", "fullpath=/cgi-bin/webscr%3Fcmd=_notify-validate&verb=POST&content=VERIFIED&status=200"
 	end
 end

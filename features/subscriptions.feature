@@ -26,12 +26,20 @@ And paypal has sent a payment notification to our platform
 When our platform has validated the authenticity of the message
 Then our platform has processed the message for completed payment
 
-@ok
-Scenario: A member subscription is activated upon payment notificiation
+@ok @use-test-env
+Scenario: A member subscription is activated upon subscription notificiation
 Given a member is signed in
-And a subscripttion and an instalment have been created
+And a subscription has been created
 When a member reload the completed_checkout page
 Then the member is redirected to the project page
+
+
+Scenario: A member signed up for a plan make first payment
+Given a member is signed in
+And a subscription has been created
+And the first instalment has been paid
+Then the subscribtion status change to "paid"
+
 
 Scenario: A member signed up for a plan cancels her subscription
 
