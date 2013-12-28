@@ -43,7 +43,7 @@ class PaypalNotificationsController < ApplicationController
           Subscription.create(start_date: DateTime.strptime(CGI.unescape(start_date), '%H:%M:%S %b %d, %Y %Z'),
                               amount: amount,
                               currency:currency,
-                              status: 1,
+                              status: Subscription::STATUSES["trial"],
                               user_id:user,
                               plan_id:plan
                               )
@@ -69,8 +69,13 @@ class PaypalNotificationsController < ApplicationController
                                       amount: amount, 
                                       currency: currency)
           subscription = Subscription.find_by_user_id_and_plan_id_and_amount(user, plan, amount)
-          instalment.subscription_id = subscription.id if subscription
+          if subscription
+            instalment.subscription_id = subscription.id
+            subscription.status = Subscription::STATUSES["paid"]
+            subscription.save
+          end
           instalment.save
+
           if payment_status == "Completed" && user_instance
             user_instance.add_role :subscriber
           end

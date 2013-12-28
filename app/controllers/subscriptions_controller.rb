@@ -26,26 +26,6 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  # POST /subscriptions/payment_notifications
-  def payment_notifications
-    # if current_user is subscriber, redirect to dashboard
-    # otherwise process the IPN message
-
-    response = IpnMessage.validate_IPN_notification(request.raw_post)
-    case response
-    when "VERIFIED"
-      IpnMessage.create(status:"VERIFIED",message:request.raw_post)
-      render :nothing => true, :status => 200
-    when "INVALID"
-      IpnMessage.create(status:"INVALID",message:request.raw_post)
-      render :nothing => true, :status => 200
-    else
-      Rails.logger.error "Paypal responded with incorrect value (neither VERIFIED or INVALID)"
-      render :nothing => true, :status => 400
-    end
-
-  end
-
   # GET /subscriptions/new
   def new
     @subscription = Subscription.new

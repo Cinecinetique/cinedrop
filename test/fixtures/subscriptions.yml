@@ -22,7 +22,7 @@ two:
   amount: 19.95
   currency: MyString
   billing_frequency: 1
-  user: two
+  user: user_three
   plan_id: 6
   initial_amount: 
   initial_currency:

@@ -32,6 +32,7 @@ Given a member is signed in
 And a subscription has been created
 When a member reload the completed_checkout page
 Then the member is redirected to the project page
+And the subscribtion status change to "trial"
 
 @ok @use-test-env
 Scenario: A member signed up for a plan make first payment
