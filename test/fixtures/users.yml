@@ -12,3 +12,9 @@ two:
   encrypted_password: <%= Devise.bcrypt(Struct.new(:pepper, :stretches).new("blahblah", 2),"12345678") %>
   confirmed_at: <%= Time.now %>
 
+user_three:
+  name: Tora ToraPa
+  email: tt@foo.com
+  encrypted_password: <%= Devise.bcrypt(Struct.new(:pepper, :stretches).new("blahblah", 2),"12345678") %>
+  confirmed_at: <%= Time.now %>
+

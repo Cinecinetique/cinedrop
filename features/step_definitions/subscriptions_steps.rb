@@ -87,3 +87,12 @@ Then(/^the member is redirected to the project page$/) do
   follow_redirect!
   last_request.path.should == projects_path
 end
+
+Given(/^the first instalment has been paid$/) do
+  step 'paypal has sent a payment notification to our platform' # express the regexp above with the code you wish you had
+end
+
+Then(/^the subscribtion status change to "(.*?)"$/) do |status|
+  subscription = Subscription.find_by_user_id(1)
+  subscription.status.should eq(Subscription::STATUSES[status])
+end

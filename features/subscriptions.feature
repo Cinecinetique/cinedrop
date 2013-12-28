@@ -27,13 +27,13 @@ When our platform has validated the authenticity of the message
 Then our platform has processed the message for completed payment
 
 @ok @use-test-env
-Scenario: A member subscription is activated upon subscription notificiation
+Scenario: A member subscription is activated upon subscription notification
 Given a member is signed in
 And a subscription has been created
 When a member reload the completed_checkout page
 Then the member is redirected to the project page
 
-
+@ok @use-test-env
 Scenario: A member signed up for a plan make first payment
 Given a member is signed in
 And a subscription has been created

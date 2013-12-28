@@ -135,11 +135,11 @@ describe PaypalNotificationsController do
         my_params = {}
         @subscr_message.split(/&/).each { |pv| (k,v) =  pv.split(/\=/); my_params[k.to_sym] = v }
         my_params[:item_number] = 6
-        my_params[:custom] = 6
+        my_params[:custom] = users(:user_three).id
         post :create, my_params, {"Content-Type" => "application/x-www-form-urlencoded"}
         response.body.should have_content("")
         response.should be_success
-        Subscription.where("amount = 19.95 and status = 1 and user_id = 6 and plan_id = 6").count.should eq(1)
+        Subscription.where("amount = 19.95 and status = 1 and user_id = #{users(:user_three).id} and plan_id = 6").count.should eq(1)
       end
 
       it "it links to existing instalments if it finds any"

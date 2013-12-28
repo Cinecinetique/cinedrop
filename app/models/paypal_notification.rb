@@ -4,7 +4,7 @@ class PaypalNotification < ActiveRecord::Base
       uri = URI.parse(url)
       Rails.logger.info "About to connect to Paypal IPN: #{uri.host}:#{uri.port}"
       http = Net::HTTP.new(uri.host, uri.port)
-      http.set_debug_output(Rails.logger)
+      # http.set_debug_output(Rails.logger)
       http.open_timeout = 60
       http.read_timeout = 60
       #http.verify_mode = OpenSSL::SSL::VERIFY_NONE
