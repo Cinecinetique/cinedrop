@@ -44,3 +44,13 @@ end
 Then(/^I cannot request a new project to be created$/) do
   page.should_not have_content('New Project')
 end
+
+When(/^I navigate to the project dashboard$/) do
+  visit("/projects")
+end
+
+Then(/^I am redirected to the plans selection page$/) do
+  page.current_url.should eq('http://localhost:3000/plans')
+end
+
+

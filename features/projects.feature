@@ -32,6 +32,12 @@ Scenario: A member is not allowed to create a project
 	Given I am logged in as "Member"
 	Then I cannot request a new project to be created
 
+@ok
+Scenario: A member navigating to the dashboard is redirected to the plans page
+	Given I am logged in as "Member"
+	When I navigate to the project dashboard
+	Then I am redirected to the plans selection page
+
 Scenario: A subscriber with the small plan cannot create more than one project
 
 Scenario: A subscriber with the medium plan cannot create more than five projects
