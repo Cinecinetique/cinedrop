@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to plans_url #, :alert => exception.message
+    Rails.logger.info "#{exception.message} during attempt of #{exception.action} on #{exception.subject} by user #{current_user.try(:id)}"
   end
 
 
