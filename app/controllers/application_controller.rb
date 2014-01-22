@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
-    Rails.logger.warn("Previous stored url: #{session[:previous_url]}")
      if (request.fullpath != "/users/sign_in" &&
       request.fullpath != "/users/sign_up" &&
       request.fullpath != "/users/password" &&
@@ -14,7 +13,6 @@ class ApplicationController < ActionController::Base
       request.fullpath !~ /users\/confirmation/ &&
       !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath
-      Rails.logger.warn("new stored url: #{session[:previous_url]}")
     end
   end
 
@@ -38,7 +36,6 @@ class ApplicationController < ActionController::Base
 
 
     def after_sign_in_path_for(resource)
-      Rails.logger.debug "**********: in after_sign_in_path_for in ApplicationController"
       if session[:previous_url] && session[:previous_url] == "/"
       	if current_user.has_role? :crew or current_user.has_role? :admin or current_user.has_role? :subscriber
           projects_path
