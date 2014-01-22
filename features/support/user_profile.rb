@@ -4,6 +4,8 @@ module UserProfile
 			{email:"vera_ccq@rijam.sent.as", password:"12345678"}
 		elsif type_of_user == "Member"
 			{email:"john_ccq@rijam.sent.as", password:"12345678"}
+		elsif type_of_user == "Crew Member"
+			{email:"victor_ccq@rijam.sent.as", password:"12345678"}
 		else 
 			{email:"test_user_#{Time.now.to_i}_ccq@rijam.sent.as", password:"12345678"}
 		end

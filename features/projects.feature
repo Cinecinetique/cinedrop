@@ -38,6 +38,12 @@ Scenario: A member navigating to the dashboard is redirected to the plans page
 	When I navigate to the project dashboard
 	Then I am redirected to the plans selection page
 
+@paused
+Scenario: A member who is on a project navigating to the dashboard only see her project
+	Given I am logged in as "Crew Member"
+	When I navigate to the project dashboard
+	Then I can see project "Project 1" on the dashboard
+
 Scenario: A subscriber with the small plan cannot create more than one project
 
 Scenario: A subscriber with the medium plan cannot create more than five projects

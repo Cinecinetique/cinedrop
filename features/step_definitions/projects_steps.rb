@@ -53,4 +53,9 @@ Then(/^I am redirected to the plans selection page$/) do
   page.current_url.should eq('http://localhost:3000/plans')
 end
 
+Then(/^I can see project "(.*?)" on the dashboard$/) do |project|
+  visit("/projects")
+  page.should have_content(project)
+end
+
 
