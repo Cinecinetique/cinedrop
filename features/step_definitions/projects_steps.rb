@@ -17,9 +17,9 @@ Given(/^a project "(.*?)" created by me exists on the platform$/) do |arg1|
 	step 'a new project is created'
 end
 
-When(/^I request project "(.*?)" to be deleted$/) do |arg1|
+When(/^I request project "(.*?)" to be deleted$/) do |project|
   visit ("/projects/")
-	within('tr', text: 'MyProject') do
+	within('tr', text: project) do
 		click_link("Delete")
 	end
 end

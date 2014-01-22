@@ -14,14 +14,14 @@ end
 After do |scenario|
 	Warden.test_reset! 
 	Rails.logger.debug "Finishing scenario: #{scenario.title}"
-  	if scenario.title =~ /can.*create.*project/
+  	if scenario.title =~ /can.*create.*project/ || scenario.title =~ /A subscriber invite a user to a project/
 		visit ("/projects/")
 		within('tr', text: 'MyProject') do
 			click_link("Delete")
 			page.driver.browser.switch_to.alert.accept
 		end
 	end
-	if scenario.title =~ /can.*project/
+	if scenario.title =~ /can.*project/ || scenario.title =~ /A subscriber invite a user to a project/
 		cleanup_buckets("development-9-myproject")
 	end
 	if scenario.title =~ /paypal/ || scenario.title =~ /payment/
