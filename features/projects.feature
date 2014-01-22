@@ -38,7 +38,7 @@ Scenario: A member navigating to the dashboard is redirected to the plans page
 	When I navigate to the project dashboard
 	Then I am redirected to the plans selection page
 
-@paused
+@ok
 Scenario: A member who is on a project navigating to the dashboard only see her project
 	Given I am logged in as "Crew Member"
 	When I navigate to the project dashboard

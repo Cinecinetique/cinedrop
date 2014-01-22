@@ -33,6 +33,9 @@ class Ability
 
     if user.has_role? :member or user.has_role? :crew or user.has_role? :admin or user.has_role? :subscriber
         can :read, Plan
+        can :read, Project do |project|
+            project.workers.find_by_user_id(user.id) != nil if project
+        end
     end
 
     if user.has_role? :subscriber
