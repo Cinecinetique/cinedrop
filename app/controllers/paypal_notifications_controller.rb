@@ -52,7 +52,7 @@ class PaypalNotificationsController < ApplicationController
         rescue ActiveRecord::RecordNotUnique
           Rails.logger.warn "Duplicate IPN message: #{request.raw_post}"
         end
-      elsif request.params[:txn_type] == "recurring_payment"
+      elsif request.params[:txn_type] == "subscr_payment"
         transaction_id = request.params[:txn_id]
         payment_status = request.params[:payment_status]
         payment_date = request.params[:payment_date]
