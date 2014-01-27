@@ -5,7 +5,10 @@ Before do |scenario|
   	Warden.test_mode!
 	Rails.logger.debug "Starting scenario: #{scenario.title}"
 	if scenario.title =~ /paypal/ || scenario.title =~ /subscription notification/ || scenario.title =~ /payment notification/ || scenario.title =~ /first payment/
-  	RestClient.post "http://localhost:4578/doubles", "fullpath=/cgi-bin/webscr%3Fcmd=_notify-validate&verb=POST&content=VERIFIED&status=200"
+  		RestClient.post "http://localhost:4578/doubles", "fullpath=/cgi-bin/webscr%3Fcmd=_notify-validate&verb=POST&content=VERIFIED&status=200"
+	end
+	if scenario.title =~ /A member signed up for a plan make first payment/
+		Plan.create(name:'solo',paypal_test_button: '2741')
 	end
 end
 
@@ -26,5 +29,9 @@ After do |scenario|
 	end
 	if scenario.title =~ /paypal/ || scenario.title =~ /payment/
 		RestClient.delete "http://localhost:4578/doubles/all"
+	end	
+	if scenario.title =~ /A member signed up for a plan make first payment/
+		Plan.find_by_paypal_test_button('2741').delete
 	end
+
 end

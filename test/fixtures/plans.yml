@@ -12,6 +12,9 @@ simple:
   call_to_action: "Subscribe"
   max_projects: 1
   max_users: 3
+  paypal_dev_button: 1741
+  paypal_test_button: 2741
+  paypal_prod_button: 3741
 
 advanced:
   name: "Indies"
@@ -25,6 +28,9 @@ advanced:
   call_to_action: "Subscribe"
   max_projects: 3
   max_users: 7
+  paypal_dev_button: 1742
+  paypal_test_button: 2742
+  paypal_prod_button: 3742
 
 professional:
   name: "Agencies"
@@ -38,6 +44,9 @@ professional:
   call_to_action: "Subscribe"
   max_projects: 10
   max_users: 50
+  paypal_dev_button: 1743
+  paypal_test_button: 2743
+  paypal_prod_button: 3743
 
 
 consultancy:

@@ -68,10 +68,19 @@ class PaypalNotificationsController < ApplicationController
                                       payment_date: DateTime.strptime(CGI.unescape(payment_date), '%H:%M:%S %b %d, %Y %Z'), 
                                       amount: amount, 
                                       currency: currency)
-          subscription = Subscription.find_by_user_id_and_plan_id_and_amount(user, plan, amount)
+          if ENV['RAILS_ENV'] == "production"
+            plan_id = Plan.find_by_paypal_prod_button(plan)
+          elsif ENV['RAILS_ENV'] == "test"
+            plan_id = Plan.find_by_paypal_test_button(plan)
+          else
+            plan_id = Plan.find_by_paypal_dev_button(plan)
+          end
+          subscription = Subscription.find_by_user_id_and_plan_id_and_amount(user, plan_id, amount)
+
           if subscription
             instalment.subscription_id = subscription.id
             subscription.status = Subscription::STATUSES["paid"]
+            Rails.logger.info "Updating subscription #{subscription.id} to status: #{Subscription::STATUSES["paid"]}"
             subscription.save
           end
           instalment.save
