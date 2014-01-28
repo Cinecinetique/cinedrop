@@ -36,7 +36,7 @@ class PaypalNotificationsController < ApplicationController
         user = request.params[:custom]
         user_instance = User.find(user)
         plan = request.params[:item_number]
-        amount = request.params[:mc_gross]
+        amount = request.params[:mc_amount3]
         currency = request.params[:mc_currency]
         start_date = request.params[:subscr_date]
         begin
@@ -69,11 +69,11 @@ class PaypalNotificationsController < ApplicationController
                                       amount: amount, 
                                       currency: currency)
           if ENV['RAILS_ENV'] == "production"
-            plan_id = Plan.find_by_paypal_prod_button(plan)
+            plan_id = Plan.find_by_paypal_prod_button(plan).try(:id)
           elsif ENV['RAILS_ENV'] == "test"
-            plan_id = Plan.find_by_paypal_test_button(plan)
+            plan_id = Plan.find_by_paypal_test_button(plan).try(:id)
           else
-            plan_id = Plan.find_by_paypal_dev_button(plan)
+            plan_id = Plan.find_by_paypal_dev_button(plan).try(:id)
           end
           subscription = Subscription.find_by_user_id_and_plan_id_and_amount(user, plan_id, amount)
 
