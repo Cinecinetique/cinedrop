@@ -8,7 +8,7 @@ Before do |scenario|
   		RestClient.post "http://localhost:4578/doubles", "fullpath=/cgi-bin/webscr%3Fcmd=_notify-validate&verb=POST&content=VERIFIED&status=200"
 	end
 	if scenario.title =~ /A member signed up for a plan make first payment/
-		Plan.create(name:'solo',paypal_test_button: '2741')
+		Plan.create(name:'solo',paypal_dev_button: '1741')
 	end
 end
 
@@ -31,7 +31,7 @@ After do |scenario|
 		RestClient.delete "http://localhost:4578/doubles/all"
 	end	
 	if scenario.title =~ /A member signed up for a plan make first payment/
-		Plan.find_by_paypal_test_button('2741').delete
+		Plan.find_by_paypal_dev_button('1741').delete
 	end
 
 end

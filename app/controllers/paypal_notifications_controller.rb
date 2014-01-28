@@ -68,13 +68,15 @@ class PaypalNotificationsController < ApplicationController
                                       payment_date: DateTime.strptime(CGI.unescape(payment_date), '%H:%M:%S %b %d, %Y %Z'), 
                                       amount: amount, 
                                       currency: currency)
-          if ENV['RAILS_ENV'] == "production"
+          Rails.logger.debug("Rails env: #{Rails.env}")
+          if Rails.env == "production"
             plan_id = Plan.find_by_paypal_prod_button(plan).try(:id)
-          elsif ENV['RAILS_ENV'] == "test"
+          elsif Rails.env == "test"
             plan_id = Plan.find_by_paypal_test_button(plan).try(:id)
           else
             plan_id = Plan.find_by_paypal_dev_button(plan).try(:id)
           end
+          Rails.logger.debug("Plan Id: #{plan_id}")
           subscription = Subscription.find_by_user_id_and_plan_id_and_amount(user, plan_id, amount)
 
           if subscription
