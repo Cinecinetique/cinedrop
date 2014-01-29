@@ -39,13 +39,22 @@ class PaypalNotificationsController < ApplicationController
         amount = request.params[:mc_amount3]
         currency = request.params[:mc_currency]
         start_date = request.params[:subscr_date]
+        Rails.logger.debug("Rails env: #{Rails.env}")
+        if Rails.env == "production"
+          plan_id = Plan.find_by_paypal_prod_button(plan).try(:id)
+        elsif Rails.env == "test"
+          plan_id = Plan.find_by_paypal_test_button(plan).try(:id)
+        else
+          plan_id = Plan.find_by_paypal_dev_button(plan).try(:id)
+        end
+        Rails.logger.debug("Plan Id: #{plan_id}")
         begin
           Subscription.create(start_date: DateTime.strptime(CGI.unescape(start_date), '%H:%M:%S %b %d, %Y %Z'),
                               amount: amount,
                               currency:currency,
                               status: Subscription::STATUSES["trial"],
                               user_id:user,
-                              plan_id:plan
+                              plan_id:plan_id
                               )
           notification.save
           user_instance.add_role :subscriber
