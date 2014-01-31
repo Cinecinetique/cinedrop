@@ -39,14 +39,7 @@ class PaypalNotificationsController < ApplicationController
         amount = request.params[:mc_amount3]
         currency = request.params[:mc_currency]
         start_date = request.params[:subscr_date]
-        Rails.logger.debug("Rails env: #{Rails.env}")
-        if Rails.env == "production"
-          plan_id = Plan.find_by_paypal_prod_button(plan).try(:id)
-        elsif Rails.env == "test"
-          plan_id = Plan.find_by_paypal_test_button(plan).try(:id)
-        else
-          plan_id = Plan.find_by_paypal_dev_button(plan).try(:id)
-        end
+        plan_id = get_plan_id(plan)
         Rails.logger.debug("Plan Id: #{plan_id}")
         begin
           Subscription.create(start_date: DateTime.strptime(CGI.unescape(start_date), '%H:%M:%S %b %d, %Y %Z'),
@@ -77,14 +70,7 @@ class PaypalNotificationsController < ApplicationController
                                       payment_date: DateTime.strptime(CGI.unescape(payment_date), '%H:%M:%S %b %d, %Y %Z'), 
                                       amount: amount, 
                                       currency: currency)
-          Rails.logger.debug("Rails env: #{Rails.env}")
-          if Rails.env == "production"
-            plan_id = Plan.find_by_paypal_prod_button(plan).try(:id)
-          elsif Rails.env == "test"
-            plan_id = Plan.find_by_paypal_test_button(plan).try(:id)
-          else
-            plan_id = Plan.find_by_paypal_dev_button(plan).try(:id)
-          end
+          plan_id = get_plan_id(plan)
           Rails.logger.debug("Plan Id: #{plan_id}")
           subscription = Subscription.find_by_user_id_and_plan_id_and_amount(user, plan_id, amount)
 
@@ -149,5 +135,16 @@ class PaypalNotificationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def paypal_notification_params
       params.require(:paypal_notification).permit(:transaction_type, :transaction_id, :parent_transaction_id, :message, :payment_status, :receiver_email, :buyer_email, :status, :custom)
+    end
+
+    def get_plan_id(plan_ref)
+      Rails.logger.debug("Rails env: #{Rails.env}")
+      if Rails.env == "production"
+        plan_id = Plan.find_by_paypal_prod_button(plan_ref).try(:id)
+      elsif Rails.env == "test"
+        plan_id = Plan.find_by_paypal_test_button(plan_ref).try(:id)
+      else
+        plan_id = Plan.find_by_paypal_dev_button(plan_ref).try(:id)
+      end
     end
 end
