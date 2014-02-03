@@ -14,6 +14,14 @@
   <div class="field">
     <%= f.label :topic %><br>
     <%= f.text_area :topic %>
+    <span class="help-inline">
+      <span class="label-warning">Write a concise paragraph about:</span>
+      <ol>
+<li>Your filmʼs subject (person, group, environment, social issue, etc.)</li>
+<li>The necessary background information the audience must have to understand and to be
+interested in the enclosed world you intend to present. Be sure to show how this information will emerge.</li>
+</ol>
+    </span>
   </div>
   <div class="field">
     <%= f.label :premise %><br>
@@ -30,10 +38,30 @@
   <div class="field">
     <%= f.label :conflict %><br>
     <%= f.text_area :conflict %>
+    <span class="help-inline">
+      <span class="label-warning">What is at issue in this film? Consider:</span>
+      <ol>
+      <li>Who wants what of whom?</li>
+      <li>What conflicting principles do the characters stand for?</li>
+      <li>Does your film put different principles in opposition (of opinion, of view, of vision and so
+      forth)?</li>
+      <li>How will we see one force finally meet with the other? (the “confrontation”--very
+      important)</li>
+      <li>What range of possible developments do you see emerging from this confrontation?</li>
+      </ol>
+    </span>
   </div>
   <div class="field">
     <%= f.label :audience_bias %><br>
     <%= f.text_area :audience_bias %>
+    <span class="help-inline">
+      <span class="label-warning">To make a documentary means not only using conflicting “evidence” to put forward your subjectʼs dialectics, it also means knowing what stereotypes or expectations carried by your audience your film must deliberately set out to alter.</span>
+      <ol>
+<li>Biases ( may be positive or negative)</li>
+<li>What alternative views, facts or ideas does the audience need to understand</li>
+<li>What evidence will you show to get the audience to see those different truths</li>
+</ol>
+    </span>
   </div>
   <div class="field">
     <%= f.label :characters %><br>
@@ -42,7 +70,16 @@
   <div class="field">
     <%= f.label :interviews %><br>
     <%= f.text_area :interviews %>
+    <span class="help-inline">
+      <span class="label-warning">For each interview, list:</span>
+      <ul>
+<li>Name, role in life, metaphoric role in filmʼs dramatic structure</li>
+<li>Main elements the interview will seek to establish</li>
+</ul>
+    </span>
   </div>
+  <fieldset>
+    <legend>Project Schedule</legend>
   <div class="field">
     <%= f.label :preprod_start_date %><br>
     <%= f.date_select :preprod_start_date %>
@@ -79,6 +116,13 @@
     <%= f.label :postprod_end_date %><br>
     <%= f.datetime_select :postprod_end_date %>
   </div>
+  </fieldset>
+  <fieldset>
+    <legend>Form and Style</legend>
+    <span class="help-inline">
+      <p>
+      Any special considerations in shooting or editing style that might further your filmʼs content. Here you might comment on narrative lighting, camera handling, type and amount of intercutting, juxtaposition of scenes, parallel storytelling and the like.</p>
+    </span>
   <div class="field">
     <%= f.label :form %><br>
     <%= f.text_area :form %>
@@ -87,9 +131,14 @@
     <%= f.label :style %><br>
     <%= f.text_area :style %>
   </div>
+  </fieldset>
+
   <div class="field">
     <%= f.label :resolution %><br>
     <%= f.text_field :resolution %>
+    <span class="help-inline">
+      <p>Write a brief paragraph about how you imagine your film will end and what you would like the ending to accomplish for the audience. Comparing any intended ending with the filmʼs beginning.</p>
+    </span>
   </div>
   <div class="field">
     <%= f.label :differentiation %><br>
