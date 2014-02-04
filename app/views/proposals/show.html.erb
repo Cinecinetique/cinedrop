@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+
+<p>
+  <strong>Project:</strong>
+  <%= @proposal.project.try(:name) %>
+</p>
+
+
 <p>
   <strong>Topic/Synopsis:</strong>
   <%= @proposal.topic_synopsis %>
@@ -69,7 +76,8 @@
 
 <hr/>
 
-  <strong>Production schedule:</strong>
+<p>
+<strong>Production schedule:</strong>
 
 <table>
   <tr>
@@ -88,11 +96,31 @@
     <td><%= @proposal.project.postprod_end %></td>
   </tr>
 </table>
+</p>
 
 <p>
-  <strong>Project:</strong>
-  <%= @proposal.project.try(:name) %>
+<strong>Crew members</strong><br/>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @proposal.project.workers.each do |worker| %>
+      <tr>
+        <td><%= worker.user.name %></td>
+        <td><%= worker.role %></td>
+        <td><%= worker.department %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 </p>
+
 
 <%= link_to 'Edit', edit_proposal_path(@proposal) %> |
 <%= link_to 'Back', proposals_path %>
