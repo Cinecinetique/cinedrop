@@ -8,7 +8,7 @@ class ReduceProposalsColumns < ActiveRecord::Migration
 	  	  t.remove :postprod_start_date
 	  	  t.remove :postprod_end_date
 	  	  t.rename :topic, :topic_synopsis
-	  	  t.remove :message, :text
+	  	  t.remove :message
 	  	  t.rename :conflict, :conflicts
 	  	  t.remove :audience_bias
 	  	  t.rename :form, :form_style
