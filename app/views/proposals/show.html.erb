@@ -5,55 +5,89 @@
   <%= @proposal.topic_synopsis %>
 </p>
 
+<hr/>
+
 <p>
   <strong>Premise:</strong>
   <%= @proposal.premise %>
 </p>
+
+<hr/>
 
 <p>
   <strong>Outline:</strong>
   <%= @proposal.outline %>
 </p>
 
+<hr/>
 <p>
   <strong>Conflicts:</strong>
   <%= @proposal.conflicts %>
 </p>
 
+<hr/>
 
 <p>
   <strong>Characters:</strong>
   <%= @proposal.characters %>
 </p>
 
+<hr/>
+
 <p>
   <strong>Interviews:</strong>
   <%= @proposal.interviews %>
 </p>
 
+<hr/>
 
 <p>
   <strong>Form And Style:</strong>
   <%= @proposal.form_style %>
 </p>
 
-
+<hr/>
 
 <p>
   <strong>Resolution:</strong>
   <%= @proposal.resolution %>
 </p>
 
+<hr/>
+
 <p>
   <strong>Differentiation:</strong>
   <%= @proposal.differentiation %>
 </p>
+
+<hr/>
 
 <p>
   <strong>Distribution:</strong>
   <%= @proposal.distribution %>
 </p>
 
+<hr/>
+
+  <strong>Production schedule:</strong>
+
+<table>
+  <tr>
+    <td>pre-production</td>
+    <td><%= @proposal.project.preprod_start %></td>
+    <td><%= @proposal.project.preprod_end %></td>
+  </tr>
+  <tr>
+    <td>production</td>
+    <td><%= @proposal.project.prod_start %></td>
+    <td><%= @proposal.project.prod_end %></td>
+  </tr>
+  <tr>
+    <td>post-production</td>
+    <td><%= @proposal.project.postprod_start %></td>
+    <td><%= @proposal.project.postprod_end %></td>
+  </tr>
+</table>
 
 <p>
   <strong>Project:</strong>

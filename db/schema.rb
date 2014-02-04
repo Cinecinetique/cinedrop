@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204065737) do
+ActiveRecord::Schema.define(version: 20140204094929) do
 
   create_table "budget_lines", force: true do |t|
     t.integer  "phase"
@@ -151,6 +151,12 @@ ActiveRecord::Schema.define(version: 20140204065737) do
     t.integer  "created_by"
     t.string   "slug"
     t.datetime "date"
+    t.date     "preprod_start"
+    t.date     "preprod_end"
+    t.date     "prod_start"
+    t.date     "prod_end"
+    t.date     "postprod_start"
+    t.date     "postprod_end"
   end
 
   create_table "proposals", force: true do |t|

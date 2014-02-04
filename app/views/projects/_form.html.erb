@@ -27,6 +27,35 @@
     </div>
   </fieldset>
 
+    <fieldset>
+    <legend>Production details</legend>
+    <div class="field">
+      <%= f.label :preprod_start %><br>
+      <%= f.date_field :preprod_start %>
+    </div>
+    <div class="field">
+      <%= f.label :preprod_end %><br>
+      <%= f.date_field :preprod_end %>
+    </div>
+    <div class="field">
+      <%= f.label :prod_start %><br>
+      <%= f.date_field :prod_start %>
+    </div>
+    <div class="field">
+      <%= f.label :prod_end %><br>
+      <%= f.date_field :prod_end %>
+    </div>
+    <div class="field">
+      <%= f.label :postprod_start %><br>
+      <%= f.date_field :postprod_start %>
+    </div>
+    <div class="field">
+      <%= f.label :postprod_end %><br>
+      <%= f.date_field :postprod_end %>
+    </div>
+
+  </fieldset>
+
   <div class="actions">
     <%= f.submit %>
   </div>
