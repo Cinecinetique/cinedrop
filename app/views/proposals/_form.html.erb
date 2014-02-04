@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :topic %><br>
-    <%= f.text_area :topic %>
+    <%= f.text_area :topic, :rows => 10,  :class => "input-xxlarge" %>
     <span class="help-inline">
       <span class="label-warning">Write a concise paragraph about:</span>
       <ol>
@@ -23,21 +23,36 @@ interested in the enclosed world you intend to present. Be sure to show how this
 </ol>
     </span>
   </div>
+
+  <fieldset><legend>Structure</legend>
+  <span class="help-inline">
+    This section is how you hope to structure your film. When you are doing this, consider:
+    <ol>
+<li>How will you will handle the progression of time in the film</li>
+<li>How and at what point information important to story development will appear</li>
+<li>What you intend as the climactic sequence and where this should go</li>
+<li>How this relates to other sequences in terms of the action rising toward the filmʼs
+projected “crisis” or emotional apex and the falling action after it
+<li>Sequences or interviews you intend to use as parallel storytelling</li>
+</ol>
+
+  </span>
+
   <div class="field">
     <%= f.label :premise %><br>
-    <%= f.text_area :premise %>
+    <%= f.text_area :premise, :rows => 10,  :class => "input-xxlarge" %>
   </div>
   <div class="field">
     <%= f.label :message %><br>
-    <%= f.text_area :message %>
+    <%= f.text_area :message, :rows => 10,  :class => "input-xxlarge" %>
   </div>
   <div class="field">
     <%= f.label :outline %><br>
-    <%= f.text_area :outline %>
+    <%= f.text_area :outline, :rows => 10,  :class => "input-xxlarge" %>
   </div>
   <div class="field">
     <%= f.label :conflict %><br>
-    <%= f.text_area :conflict %>
+    <%= f.text_area :conflict, :rows => 10,  :class => "input-xxlarge" %>
     <span class="help-inline">
       <span class="label-warning">What is at issue in this film? Consider:</span>
       <ol>
@@ -53,7 +68,7 @@ interested in the enclosed world you intend to present. Be sure to show how this
   </div>
   <div class="field">
     <%= f.label :audience_bias %><br>
-    <%= f.text_area :audience_bias %>
+    <%= f.text_area :audience_bias, :rows => 10,  :class => "input-xxlarge" %>
     <span class="help-inline">
       <span class="label-warning">To make a documentary means not only using conflicting “evidence” to put forward your subjectʼs dialectics, it also means knowing what stereotypes or expectations carried by your audience your film must deliberately set out to alter.</span>
       <ol>
@@ -65,11 +80,11 @@ interested in the enclosed world you intend to present. Be sure to show how this
   </div>
   <div class="field">
     <%= f.label :characters %><br>
-    <%= f.text_area :characters %>
+    <%= f.text_area :characters, :rows => 10,  :class => "input-xxlarge" %>
   </div>
   <div class="field">
     <%= f.label :interviews %><br>
-    <%= f.text_area :interviews %>
+    <%= f.text_area :interviews, :rows => 10,  :class => "input-xxlarge" %>
     <span class="help-inline">
       <span class="label-warning">For each interview, list:</span>
       <ul>
@@ -78,43 +93,44 @@ interested in the enclosed world you intend to present. Be sure to show how this
 </ul>
     </span>
   </div>
+
+  <div class="field">
+    <%= f.label :resolution %><br>
+    <%= f.text_field :resolution, :rows => 10,  :class => "input-xxlarge" %>
+    <span class="help-inline">
+      <p>Write a brief paragraph about how you imagine your film will end and what you would like the ending to accomplish for the audience. Comparing any intended ending with the filmʼs beginning.</p>
+    </span>
+  </div>  
+</fieldset>
+
   <fieldset>
     <legend>Project Schedule</legend>
   <div class="field">
     <%= f.label :preprod_start_date %><br>
     <%= f.date_select :preprod_start_date %>
   </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
-  </div>
+
   <div class="field">
     <%= f.label :preprod_end_date %><br>
     <%= f.date_select :preprod_end_date %>
   </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
-  </div>
+
   <div class="field">
     <%= f.label :prod_start_date %><br>
     <%= f.date_select :prod_start_date %>
   </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
-  </div>
+
   <div class="field">
     <%= f.label :prod_end_date %><br>
-    <%= f.datetime_select :prod_end_date %>
+    <%= f.date_select :prod_end_date %>
   </div>
   <div class="field">
     <%= f.label :postprod_start_date %><br>
-    <%= f.datetime_select :postprod_start_date %>
+    <%= f.date_select :postprod_start_date %>
   </div>
   <div class="field">
     <%= f.label :postprod_end_date %><br>
-    <%= f.datetime_select :postprod_end_date %>
+    <%= f.date_select :postprod_end_date %>
   </div>
   </fieldset>
   <fieldset>
@@ -125,38 +141,39 @@ interested in the enclosed world you intend to present. Be sure to show how this
     </span>
   <div class="field">
     <%= f.label :form %><br>
-    <%= f.text_area :form %>
+    <%= f.text_area :form, :rows => 10,  :class => "input-xxlarge" %>
   </div>
   <div class="field">
     <%= f.label :style %><br>
-    <%= f.text_area :style %>
+    <%= f.text_area :style, :rows => 10,  :class => "input-xxlarge" %>
   </div>
   </fieldset>
 
-  <div class="field">
-    <%= f.label :resolution %><br>
-    <%= f.text_field :resolution %>
-    <span class="help-inline">
-      <p>Write a brief paragraph about how you imagine your film will end and what you would like the ending to accomplish for the audience. Comparing any intended ending with the filmʼs beginning.</p>
-    </span>
-  </div>
+<fieldset>
+<legend>What will make the project stand out</legend>
   <div class="field">
     <%= f.label :differentiation %><br>
-    <%= f.text_field :differentiation %>
+    <%= f.text_area :differentiation, :rows => 10,  :class => "input-xxlarge" %>
   </div>
   <div class="field">
     <%= f.label :marketing %><br>
-    <%= f.text_field :marketing %>
+    <%= f.text_area :marketing, :rows => 10,  :class => "input-xxlarge" %>
   </div>
+
+</fieldset>
+
+<fieldset>
+  <legend>Project Status and History</legend>
+
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.text_area :status, :rows => 10,  :class => "input-xxlarge" %>
   </div>
-  <div class="field">
-    <%= f.label :project %><br>
-    <%= f.text_field :project %>
-  </div>
+
+  </fieldset>
+
   <div class="actions">
+    <%= f.hidden_field :project_id, :value => "#{session[:current_project]}" %>
     <%= f.submit %>
   </div>
 <% end %>
