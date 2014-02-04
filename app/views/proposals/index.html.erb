@@ -14,9 +14,7 @@
       <th>Preprod start date</th>
       <th>Time</th>
       <th>Preprod end date</th>
-      <th>Time</th>
       <th>Prod start date</th>
-      <th>Time</th>
       <th>Prod end date</th>
       <th>Postprod start date</th>
       <th>Postprod end date</th>
@@ -45,11 +43,8 @@
         <td><%= proposal.characters %></td>
         <td><%= proposal.interviews %></td>
         <td><%= proposal.preprod_start_date %></td>
-        <td><%= proposal.time %></td>
         <td><%= proposal.preprod_end_date %></td>
-        <td><%= proposal.time %></td>
         <td><%= proposal.prod_start_date %></td>
-        <td><%= proposal.time %></td>
         <td><%= proposal.prod_end_date %></td>
         <td><%= proposal.postprod_start_date %></td>
         <td><%= proposal.postprod_end_date %></td>
@@ -59,7 +54,7 @@
         <td><%= proposal.differentiation %></td>
         <td><%= proposal.marketing %></td>
         <td><%= proposal.status %></td>
-        <td><%= proposal.project %></td>
+        <td><%= proposal.project.name %></td>
         <td><%= link_to 'Show', proposal %></td>
         <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
         <td><%= link_to 'Destroy', proposal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

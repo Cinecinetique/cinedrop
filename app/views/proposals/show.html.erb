@@ -105,7 +105,7 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @proposal.project.name %>
+  <%= @proposal.project.try(:name) %>
 </p>
 
 <%= link_to 'Edit', edit_proposal_path(@proposal) %> |
