@@ -45,30 +45,18 @@
   <%= @proposal.preprod_start_date %>
 </p>
 
-<p>
-  <strong>Time:</strong>
-  <%= @proposal.time %>
-</p>
 
 <p>
   <strong>Preprod end date:</strong>
   <%= @proposal.preprod_end_date %>
 </p>
 
-<p>
-  <strong>Time:</strong>
-  <%= @proposal.time %>
-</p>
 
 <p>
   <strong>Prod start date:</strong>
   <%= @proposal.prod_start_date %>
 </p>
 
-<p>
-  <strong>Time:</strong>
-  <%= @proposal.time %>
-</p>
 
 <p>
   <strong>Prod end date:</strong>
@@ -117,7 +105,7 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @proposal.project %>
+  <%= @proposal.project.name %>
 </p>
 
 <%= link_to 'Edit', edit_proposal_path(@proposal) %> |
