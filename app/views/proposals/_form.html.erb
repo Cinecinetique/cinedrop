@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :topic %><br>
-    <%= f.text_area :topic, :rows => 10,  :class => "input-xxlarge" %>
+    <%= f.label :topic_synopsis %><br>
+    <%= f.text_area :topic_synopsis, :rows => 10,  :class => "input-xxlarge" %>
     <span class="help-inline">
       <span class="label-warning">Write a concise paragraph about:</span>
       <ol>
@@ -25,6 +25,7 @@ interested in the enclosed world you intend to present. Be sure to show how this
   </div>
 
   <fieldset><legend>Structure</legend>
+
   <span class="help-inline">
     This section is how you hope to structure your film. When you are doing this, consider:
     <ol>
@@ -41,18 +42,20 @@ projected “crisis” or emotional apex and the falling action after it
   <div class="field">
     <%= f.label :premise %><br>
     <%= f.text_area :premise, :rows => 10,  :class => "input-xxlarge" %>
+    <span class="help-inline">
+      <span class="label-warning">This section is to detail the premise of your project.</span>
+      This where the project background and the intended message should go.
+    </span>
   </div>
-  <div class="field">
-    <%= f.label :message %><br>
-    <%= f.text_area :message, :rows => 10,  :class => "input-xxlarge" %>
-  </div>
+
   <div class="field">
     <%= f.label :outline %><br>
     <%= f.text_area :outline, :rows => 10,  :class => "input-xxlarge" %>
   </div>
+
   <div class="field">
-    <%= f.label :conflict %><br>
-    <%= f.text_area :conflict, :rows => 10,  :class => "input-xxlarge" %>
+    <%= f.label :conflicts %><br>
+    <%= f.text_area :conflicts, :rows => 10,  :class => "input-xxlarge" %>
     <span class="help-inline">
       <span class="label-warning">What is at issue in this film? Consider:</span>
       <ol>
@@ -65,10 +68,6 @@ projected “crisis” or emotional apex and the falling action after it
       <li>What range of possible developments do you see emerging from this confrontation?</li>
       </ol>
     </span>
-  </div>
-  <div class="field">
-    <%= f.label :audience_bias %><br>
-    <%= f.text_area :audience_bias, :rows => 10,  :class => "input-xxlarge" %>
     <span class="help-inline">
       <span class="label-warning">To make a documentary means not only using conflicting “evidence” to put forward your subjectʼs dialectics, it also means knowing what stereotypes or expectations carried by your audience your film must deliberately set out to alter.</span>
       <ol>
@@ -78,9 +77,21 @@ projected “crisis” or emotional apex and the falling action after it
 </ol>
     </span>
   </div>
+
   <div class="field">
     <%= f.label :characters %><br>
     <%= f.text_area :characters, :rows => 10,  :class => "input-xxlarge" %>
+    <span class="help-inline">
+      <span class="label-warning">Write a brief paragraph about each of your main characters.</span>
+      For each include:
+      <ol>
+<li> Who (name, relationship to others in film and so on)</li>
+<li> Where (where does this person fit in the scheme of things?)</li>
+<li>What (what is this characterʼs role, what makes the character(s) interesting, worthy of
+special attention and significant? What is this character trying to do or to get at?)</li>
+</ol>
+
+    </span>
   </div>
   <div class="field">
     <%= f.label :interviews %><br>
@@ -103,36 +114,7 @@ projected “crisis” or emotional apex and the falling action after it
   </div>  
 </fieldset>
 
-  <fieldset>
-    <legend>Project Schedule</legend>
-  <div class="field">
-    <%= f.label :preprod_start_date %><br>
-    <%= f.date_select :preprod_start_date %>
-  </div>
-
-  <div class="field">
-    <%= f.label :preprod_end_date %><br>
-    <%= f.date_select :preprod_end_date %>
-  </div>
-
-  <div class="field">
-    <%= f.label :prod_start_date %><br>
-    <%= f.date_select :prod_start_date %>
-  </div>
-
-  <div class="field">
-    <%= f.label :prod_end_date %><br>
-    <%= f.date_select :prod_end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :postprod_start_date %><br>
-    <%= f.date_select :postprod_start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :postprod_end_date %><br>
-    <%= f.date_select :postprod_end_date %>
-  </div>
-  </fieldset>
+  
   <fieldset>
     <legend>Form and Style</legend>
     <span class="help-inline">
@@ -140,13 +122,10 @@ projected “crisis” or emotional apex and the falling action after it
       Any special considerations in shooting or editing style that might further your filmʼs content. Here you might comment on narrative lighting, camera handling, type and amount of intercutting, juxtaposition of scenes, parallel storytelling and the like.</p>
     </span>
   <div class="field">
-    <%= f.label :form %><br>
-    <%= f.text_area :form, :rows => 10,  :class => "input-xxlarge" %>
+    <%= f.label :form_style %><br>
+    <%= f.text_area :form_style, :rows => 10,  :class => "input-xxlarge" %>
   </div>
-  <div class="field">
-    <%= f.label :style %><br>
-    <%= f.text_area :style, :rows => 10,  :class => "input-xxlarge" %>
-  </div>
+
   </fieldset>
 
 <fieldset>
@@ -156,24 +135,28 @@ projected “crisis” or emotional apex and the falling action after it
     <%= f.text_area :differentiation, :rows => 10,  :class => "input-xxlarge" %>
   </div>
   <div class="field">
-    <%= f.label :marketing %><br>
-    <%= f.text_area :marketing, :rows => 10,  :class => "input-xxlarge" %>
+    <%= f.label :distribution %><br>
+    <%= f.text_area :distribution, :rows => 10,  :class => "input-xxlarge" %>
+    <span class="help-inline">
+      <span class="label-warning">Indicate here on which distribution channels you intend to make the project available</span>
+      This may include:
+      <ul>
+       <li>theatrical release</li>
+       <li>community screening</li>
+       <li>DVD/Bluray</li>
+       <li>VOD platform</li>
+      </ul>
+      If there are interactive or transmedia elements to the project, you should explain them here from a distribution point of view.
+      Any form of marketing approaches should also be explained in this section.<p></p>
+    </span>
   </div>
 
 </fieldset>
-
-<fieldset>
-  <legend>Project Status and History</legend>
-
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_area :status, :rows => 10,  :class => "input-xxlarge" %>
-  </div>
-
-  </fieldset>
-
+<hr/>
   <div class="actions">
-    <%= f.hidden_field :project_id, :value => "#{session[:current_project]}" %>
-    <%= f.submit %>
+    <p>
+      <%= f.hidden_field :project_id, :value => "#{session[:current_project]}" %>
+      <%= f.submit %>
+    </p>
   </div>
 <% end %>

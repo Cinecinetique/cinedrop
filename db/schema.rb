@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204030604) do
+ActiveRecord::Schema.define(version: 20140204065737) do
 
   create_table "budget_lines", force: true do |t|
     t.integer  "phase"
@@ -154,26 +154,16 @@ ActiveRecord::Schema.define(version: 20140204030604) do
   end
 
   create_table "proposals", force: true do |t|
-    t.text     "topic",               limit: 255
-    t.text     "premise",             limit: 255
-    t.text     "message",             limit: 255
-    t.text     "outline",             limit: 255
-    t.text     "conflict",            limit: 255
-    t.text     "audience_bias",       limit: 255
-    t.text     "characters",          limit: 255
-    t.text     "interviews",          limit: 255
-    t.datetime "preprod_start_date"
-    t.datetime "preprod_end_date"
-    t.datetime "prod_start_date"
-    t.datetime "prod_end_date"
-    t.datetime "postprod_start_date"
-    t.datetime "postprod_end_date"
-    t.text     "form",                limit: 255
-    t.text     "style",               limit: 255
-    t.text     "resolution",          limit: 255
-    t.text     "differentiation",     limit: 255
-    t.text     "marketing",           limit: 255
-    t.text     "status",              limit: 255
+    t.text     "topic_synopsis",  limit: 255
+    t.text     "premise",         limit: 255
+    t.text     "outline",         limit: 255
+    t.text     "conflicts",       limit: 255
+    t.text     "characters",      limit: 255
+    t.text     "interviews",      limit: 255
+    t.text     "form_style",      limit: 255
+    t.text     "resolution",      limit: 255
+    t.text     "differentiation", limit: 255
+    t.text     "distribution",    limit: 255
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"

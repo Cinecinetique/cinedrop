@@ -23,7 +23,7 @@ describe ProposalsController do
   # This should return the minimal set of attributes required to create a valid
   # Proposal. As you add validations to Proposal, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "topic" => "MyString" } }
+  let(:valid_attributes) { { "topic_synopsis" => "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe ProposalsController do
       it "assigns a newly created but unsaved proposal as @proposal" do
         # Trigger the behavior that occurs when invalid params are submitted
         Proposal.any_instance.stub(:save).and_return(false)
-        post :create, {:proposal => { "topic" => "invalid value" }}, valid_session
+        post :create, {:proposal => { "topic_synopsis" => "invalid value" }}, valid_session
         assigns(:proposal).should be_a_new(Proposal)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Proposal.any_instance.stub(:save).and_return(false)
-        post :create, {:proposal => { "topic" => "invalid value" }}, valid_session
+        post :create, {:proposal => { "topic_synopsis" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe ProposalsController do
         # specifies that the Proposal created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Proposal.any_instance.should_receive(:update).with({ "topic" => "MyString" })
-        put :update, {:id => proposal.to_param, :proposal => { "topic" => "MyString" }}, valid_session
+        Proposal.any_instance.should_receive(:update).with({ "topic_synopsis" => "MyString" })
+        put :update, {:id => proposal.to_param, :proposal => { "topic_synopsis" => "MyString" }}, valid_session
       end
 
       it "assigns the requested proposal as @proposal" do
@@ -128,7 +128,7 @@ describe ProposalsController do
         proposal = Proposal.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Proposal.any_instance.stub(:save).and_return(false)
-        put :update, {:id => proposal.to_param, :proposal => { "topic" => "invalid value" }}, valid_session
+        put :update, {:id => proposal.to_param, :proposal => { "topic_synopsis" => "invalid value" }}, valid_session
         assigns(:proposal).should eq(proposal)
       end
 
@@ -136,7 +136,7 @@ describe ProposalsController do
         proposal = Proposal.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Proposal.any_instance.stub(:save).and_return(false)
-        put :update, {:id => proposal.to_param, :proposal => { "topic" => "invalid value" }}, valid_session
+        put :update, {:id => proposal.to_param, :proposal => { "topic_synopsis" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
