@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140206005956) do
+ActiveRecord::Schema.define(version: 20140206051228) do
 
   create_table "budget_lines", force: true do |t|
     t.integer  "phase"
@@ -169,7 +169,6 @@ ActiveRecord::Schema.define(version: 20140206005956) do
     t.text     "form_style",      limit: 255
     t.text     "resolution",      limit: 255
     t.text     "differentiation", limit: 255
-    t.text     "distribution",    limit: 255
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
