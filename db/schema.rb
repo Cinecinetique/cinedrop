@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204094929) do
+ActiveRecord::Schema.define(version: 20140206005956) do
 
   create_table "budget_lines", force: true do |t|
     t.integer  "phase"
@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 20140204094929) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "audience"
   end
 
   add_index "proposals", ["project_id"], name: "index_proposals_on_project_id"

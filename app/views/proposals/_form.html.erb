@@ -49,6 +49,24 @@ projected “crisis” or emotional apex and the falling action after it
   </div>
 
   <div class="field">
+    <%= f.label :audience %><br>
+    <%= f.text_area :audience, :rows => 10,  :class => "input-xxlarge" %>
+    <span class="help-inline">
+      <span class="label-warning">This section is about the audience of the project</span>
+      You need to be specific about the demographics of the target audience in terms of such items as:
+    <ul>
+      <li>age</li>
+      <li>gender</li>
+      <li>economic background</li>
+      <li>ethnicity</li>
+      <li>religion</li>
+      <li>geography</li>
+      <li>size of potential audience</li>
+    </ul>
+    </span>
+  </div>
+
+  <div class="field">
     <%= f.label :outline %><br>
     <%= f.text_area :outline, :rows => 10,  :class => "input-xxlarge" %>
   </div>
