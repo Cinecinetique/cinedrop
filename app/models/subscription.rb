@@ -7,7 +7,8 @@ class Subscription < ActiveRecord::Base
   		"error" => 0,
   		"paid" => 1,
   		"expired" => 2,
-  		"terminated" => 3
+  		"terminated" => 3,
+  		"cancelled" => 4
   }
 
 end

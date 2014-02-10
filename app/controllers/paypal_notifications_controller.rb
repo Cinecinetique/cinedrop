@@ -88,6 +88,23 @@ class PaypalNotificationsController < ApplicationController
         rescue ActiveRecord::RecordNotUnique
           Rails.logger.warn "Duplicate IPN message: #{request.raw_post}"
         end
+      elsif request.params[:txn_type] == "subscr_cancel"
+        user = request.params[:custom]
+        user_instance = User.find(user)
+        amount = request.params[:mc_amount3]
+        plan = request.params[:item_number]
+        plan_id = get_plan_id(plan)
+        subscription = Subscription.find_by_user_id_and_plan_id_and_amount(user, plan_id, amount)
+        if subscription
+          subscription.status = Subscription::STATUSES["cancelled"]
+          Rails.logger.info "Updating subscription #{subscription.id} to status: #{Subscription::STATUSES["cancelled"]}"
+          subscription.save
+          user_instance.remove_role :subscriber
+        else
+          Rails.logger.error "No subscription found for #{user}, #{plan_id}, #{amount}"
+
+        end
+
       else
         notification.save
       end

@@ -38,11 +38,18 @@ And the subscribtion status change to "trial"
 Scenario: A member signed up for a plan make first payment
 Given a member is signed in
 And a subscription has been created
-And the first instalment has been paid
+When the first instalment has been paid
 Then the subscribtion status change to "paid"
 
 
+@ok @use-test-env
 Scenario: A member signed up for a plan cancels her subscription
+Given a member is signed in
+And a subscription has been created
+When the user cancels her subscription
+Then the subscribtion status change to "cancelled"
+And the user is no longer a subscriber
+
 
 Scenario: A member signed up for a plan changes her subscription
 

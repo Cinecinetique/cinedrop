@@ -4,10 +4,10 @@ Before do |scenario|
   # executed.
   	Warden.test_mode!
 	Rails.logger.debug "Starting scenario: #{scenario.title}"
-	if scenario.title =~ /paypal/ || scenario.title =~ /subscription notification/ || scenario.title =~ /payment notification/ || scenario.title =~ /first payment/
+	if scenario.title =~ /paypal/ || scenario.title =~ /subscription notification/ || scenario.title =~ /payment notification/ || scenario.title =~ /first payment/ || scenario.title =~ /cancels her subscription/
   		RestClient.post "http://localhost:4578/doubles", "fullpath=/cgi-bin/webscr%3Fcmd=_notify-validate&verb=POST&content=VERIFIED&status=200"
 	end
-	if scenario.title =~ /A member subscription is activated upon subscription notification/ || scenario.title =~ /A member signed up for a plan make first payment/
+	if scenario.title =~ /A member subscription is activated upon subscription notification/ || scenario.title =~ /A member signed up for a plan make first payment/ || scenario.title =~ /cancels her subscription/
 		Plan.create(name:'solo',paypal_dev_button: '1741')
 	end
 end

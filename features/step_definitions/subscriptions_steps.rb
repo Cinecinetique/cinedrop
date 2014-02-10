@@ -41,6 +41,11 @@ Given(/^paypal has sent a payment notification to our platform$/) do
   post("/paypal_notifications",@payment_message)
 end
 
+Given(/^paypal has sent a cancellation notification to our platform$/) do
+  @cancel_message="amount1=0.00&amount3=19.95&address_status=confirmed&subscr_date=00:56:37 Feb 06, 2014 PST&payer_id=4GHMU6FGZ24WU&address_street=456, White Lake&mc_amount1=0.00&mc_amount3=19.95&charset=Big5&address_zip=VX 345&first_name=Rija&reattempt=1&address_country_code=GB&address_name=Ted Blank&notify_version=3.7&subscr_id=I-YD2BBKUPYMFY&custom=1&payer_status=verified&business=seller@shop.com&address_country=United Kingdom&address_city=London&verify_sign=AqtJPMlUVfy3SOYR9I5hm9h9mES0AnbNSvAKiugbpLxLxLdLq2af6tnc&payer_email=torsk@bamboo.com&btn_id=74592484&last_name=Blank&address_state=London&receiver_email=seller@shop.com&recurring=1&txn_type=subscr_cancel&item_name=CCQ Solo - 1 project/3 team members - monthly&mc_currency=USD&item_number=1741&residence_country=GB&period1=10 D&period3=1 M&ipn_track_id=6c81849f6b8c9"
+  post("/paypal_notifications",@cancel_message)
+end
+
 
 When(/^our platform has validated the authenticity of the message$/) do
 	# 1. our platform makes a POST call to paypal endpoint with identical message
@@ -100,3 +105,14 @@ Then(/^the subscribtion status change to "(.*?)"$/) do |status|
   subscription = Subscription.find_by_user_id(1)
   subscription.status.should eq(Subscription::STATUSES[status])
 end
+
+When(/^the user cancels her subscription$/) do
+  step 'paypal has sent a cancellation notification to our platform'
+end
+
+Then(/^the user is no longer a subscriber$/) do
+  user = User.find(1)
+  user.has_role?(:subcriber).should be_false
+end
+
+
